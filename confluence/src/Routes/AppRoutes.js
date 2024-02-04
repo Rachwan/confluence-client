@@ -7,6 +7,7 @@ import Layout from "../Routes/Layout.js";
 import Home from "../Pages/Home/Home.js";
 import Contact from "../Pages/Contact/Contact.js";
 import Creators from "../Pages/Creators/Creators.js";
+import NotFound from "../Pages/NotFound/NotFound.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
@@ -14,13 +15,17 @@ const Router = () => {
     <div>
       <BrowserRouter>
         <Routes>
+          {/* Routes W/o Layout */}
+          <Route path="/" element={<Home />} />
+          <Route path="/*" element={<NotFound />}/>
+
+          {/* Routes W/ Layout */}
           <Route element={<Layout />}>
             <Route path="/contact" element={<Contact />} />
-          </Route>
             <Route path="/creators" element={<Creators />} />
+          </Route>
 
-          <Route path="/" element={<Home />} />
-
+          {/* Protected Routes */}
           <Route
             element={
               <ProtectedRoute
