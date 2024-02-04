@@ -1,0 +1,55 @@
+.hero {
+  background-image: url(../../Assets/Images/Main-slider.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  padding: 85px 0 0 0;
+  overflow: hidden;
+  max-height: 80vh;
+  width: 100%;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content {
+  width: 50%;
+}
+.image__wrapper {
+  width: 50%;
+}
+.image__wrapper img {
+  max-width: 85%;
+}
+.content .main__title {
+  line-height: 69px;
+  color: #242424;
+  font-size: 60px;
+}
+.description {
+  margin: 32px 0;
+  line-height: 27px;
+  font-weight: 400;
+  color: #373737;
+  font-size: 20px;
+}
+.button {
+  color: var(--black-color);
+  background: var(--white-color);
+  padding: 12px 25px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  border-radius: 30px;
+  display: block;
+  width: fit-content;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.button:hover {
+  color: var(--white-color);
+  background: var(--black-color);
+}
