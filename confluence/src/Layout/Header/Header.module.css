@@ -82,19 +82,13 @@
   cursor: pointer;
   transition: var(--main-transition);
 }
-.button:hover {
-  background: var(--black-color);
-}
 .join__as__creator {
   background: var(--main-blue);
-}
-.join__as__creator:hover {
-  background: var(--black-color);
 }
 .join__as__brand {
   background: var(--main-orange);
 }
-.join__as__brand:hover {
+.button:hover {
   background: var(--black-color);
 }
 

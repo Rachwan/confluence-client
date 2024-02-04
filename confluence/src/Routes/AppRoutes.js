@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../UseContext/UserContext.js";
 import Layout from '../Routes/Layout.js'
 import Home from '../Pages/Home/Home.js'
+import Contact from "../Pages/Contact/Contact.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
@@ -13,8 +14,8 @@ const Router = () => {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-
           </Route>
+          <Route path="/contact" element={<Contact />} />
 
           <Route path="/" element={<Home />} />
 
