@@ -3,9 +3,10 @@ import ProtectedRoute from "./ProtectedRoutes.js";
 import React from "react";
 import { useContext } from "react";
 import { UserContext } from "../UseContext/UserContext.js";
-import Layout from '../Routes/Layout.js'
-import Home from '../Pages/Home/Home.js'
+import Layout from "../Routes/Layout.js";
+import Home from "../Pages/Home/Home.js";
 import Contact from "../Pages/Contact/Contact.js";
+import Creators from "../Pages/Creators/Creators.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
@@ -14,8 +15,9 @@ const Router = () => {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
+            <Route path="/contact" element={<Contact />} />
           </Route>
-          <Route path="/contact" element={<Contact />} />
+            <Route path="/creators" element={<Creators />} />
 
           <Route path="/" element={<Home />} />
 
@@ -25,9 +27,7 @@ const Router = () => {
                 isAllowed={user && user.role === "admin"}
                 redirectPath="/unauthorized"
               />
-            }>
-
-          </Route>
+            }></Route>
         </Routes>
       </BrowserRouter>
     </div>

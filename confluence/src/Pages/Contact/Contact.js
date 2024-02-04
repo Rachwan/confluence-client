@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Contact.module.css";
-import Intro from "../../Components/Intro/Intro";
 import message from "../../Assets/Icons/Main-contact01.png";
 import earth from "../../Assets/Icons/Main-contact02.png";
 import profile from "../../Assets/Icons/Main-contact03.png";
@@ -8,7 +7,11 @@ import profile from "../../Assets/Icons/Main-contact03.png";
 function Contact() {
   return (
     <main className={styles.main}>
-      <Intro />
+      <section className={styles.intro}>
+        <div className={styles.wrapper}>
+          <h1 className={styles.content}>Contact Us</h1>
+        </div>
+      </section>
       <div className={styles.contactPage}>
         <div className={`container ${styles.contactContainer}`}>
           <section className={styles.contactNb}>
@@ -103,7 +106,10 @@ function Contact() {
                   placeholder="Write you message down..."></textarea>
               </div>
               <div className={styles.btnHolder}>
-                <button className={styles.Submit__button} type="submit" value="submit">
+                <button
+                  className={styles.Submit__button}
+                  type="submit"
+                  value="submit">
                   Send Message
                 </button>
               </div>

@@ -12,7 +12,20 @@
   align-items: center;
   gap: 50px;
 }
-
+.intro {
+  height: 380px;
+  display: flex;
+  background-image: url(../../Assets/Images/contact-bread.jpg);
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.content {
+  color: var(--white-color);
+  font-size: 60px;
+}
 .contactNb {
   display: flex;
   padding: 2em 2em 2em 2em;
@@ -196,6 +209,9 @@ label {
 }
 
 @media (max-width: 768px) {
+  .content {
+    font-size: 35px;
+  }
   .contactForm {
     padding: 30px;
   }
