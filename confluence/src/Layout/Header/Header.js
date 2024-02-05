@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Header.module.css";
-import logoIcon from "../../Assets/Icons/agreement.png";
+// import logoIcon from "../../Assets/Icons/agreement.png";
 import loginIcon from "../../Assets/Icons/log-in.png";
 import { Link } from "react-router-dom";
 
@@ -46,12 +46,12 @@ function Header() {
             </Link>
           </div>
           <div className={styles.buttons}>
-            <Link to={"/signup/creator"}>
+            <Link to={"/creator-signup"}>
               <div className={`${styles.button} ${styles.join__as__creator}`}>
                 Join as Creator
               </div>
             </Link>
-            <Link to={"/signup/brand"}>
+            <Link to={"/brand-signup"}>
               <div className={`${styles.button} ${styles.join__as__brand}`}>
                 Join as Brand
               </div>

@@ -8,6 +8,8 @@ import Home from "../Pages/Home/Home.js";
 import Contact from "../Pages/Contact/Contact.js";
 import Creators from "../Pages/Creators/Creators.js";
 import NotFound from "../Pages/NotFound/NotFound.js";
+import CreatorSignup from "../Pages/CreatorSignup/CreatorSignup.js";
+import BrandSignup from "../Pages/BrandSignup/BrandSignup.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
@@ -23,6 +25,8 @@ const Router = () => {
           <Route element={<Layout />}>
             <Route path="/contact" element={<Contact />} />
             <Route path="/creators" element={<Creators />} />
+            <Route path="/creator-signup" element={<CreatorSignup />} />
+            <Route path="/brand-signup" element={<BrandSignup />} />
           </Route>
 
           {/* Protected Routes */}

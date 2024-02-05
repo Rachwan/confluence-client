@@ -1,0 +1,140 @@
+.main {
+  padding-bottom: 300px;
+}
+.intro {
+  height: 380px;
+  display: flex;
+  background-image: url(../../Assets/Images/contact-bread.jpg);
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.intro .content {
+  color: var(--white-color);
+  font-size: 60px;
+  color: white;
+  text-align: center;
+}
+.chain {
+  text-align: center;
+}
+.chain .sub__chain {
+  color: white;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+  margin-left: 5px;
+}
+@media (max-width: 992px) {
+  .intro .content {
+    font-size: 45px;
+  }
+}
+@media (max-width: 768px) {
+  .intro .content {
+    font-size: 35px;
+  }
+}
+.main__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main__section .signup__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 50px 60px;
+  background: #fff;
+  transition: box-shadow 0.25s ease-in-out;
+  box-shadow: 1px 1px 20px 0 #e9e9e9;
+  border-radius: 10px;
+  width: 60%;
+  margin: 100px 0;
+}
+form,
+.form__title,
+.single__input {
+  width: 100%;
+}
+.form__title {
+  color: #242424;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+label {
+  font-style: italic;
+  font-weight: 600;
+  color: #373737;
+}
+.star {
+  display: inline-block;
+  color: red;
+  margin-left: 2px;
+  font-weight: 500;
+}
+
+.single__input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px
+}
+.input {
+  width: 100%;
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  box-shadow: none;
+  padding: 12px 25px;
+  outline: none;
+  font-size: 16px;
+}
+.btnHolder {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.input:focus,
+.msgInput:focus {
+  outline: 1px solid var(--main-blue);
+}
+.Submit__button {
+  color: var(--white-color);
+  padding: 12px 25px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  border-radius: 30px;
+  display: block;
+  width: fit-content;
+  cursor: pointer;
+  transition: var(--main-transition);
+  background: var(--main-blue);
+  outline: none;
+  border: none;
+}
+.Submit__button:hover {
+  background: var(--black-color);
+}
+@media (max-width: 992px) {
+  .main__section .signup__wrapper {
+    width: 90%;
+  }
+  .form__title {
+    font-size: 35px;
+  }
+}
+@media (max-width: 768px) {
+  .main__section .signup__wrapper {
+    width: 100%;
+  }
+  .form__title {
+    font-size: 25px;
+  }
+}
