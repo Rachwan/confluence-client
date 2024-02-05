@@ -3,10 +3,22 @@ import styles from "./Contact.module.css";
 import message from "../../Assets/Icons/Main-contact01.png";
 import earth from "../../Assets/Icons/Main-contact02.png";
 import profile from "../../Assets/Icons/Main-contact03.png";
+import { Helmet } from "react-helmet-async";
 
 function Contact() {
   return (
     <main className={styles.main}>
+      <Helmet>
+        <title>Contact Us - Confluence</title>
+        <meta
+          name="description"
+          content="Get in touch with Confluence. Whether you're a business looking to collaborate or an influencer seeking opportunities, we're here to connect and support you."
+        />
+        <meta
+          name="keywords"
+          content="Contact Confluence, business collaboration, influencer partnerships, contact information, get in touch"
+        />
+      </Helmet>
       <section className={styles.intro}>
         <div className={styles.wrapper}>
           <h1 className={styles.content}>Contact Us</h1>

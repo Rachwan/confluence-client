@@ -5,10 +5,22 @@ import background from "../../Assets/Images/Main-listing3.jpg";
 import profile from "../../Assets/Images/Main-floating1-1.png";
 import phone from "../../Assets/Icons/phone-call.png";
 import mail from "../../Assets/Icons/mail.png";
+import { Helmet } from "react-helmet-async";
 
 function Creators() {
   return (
     <>
+      <Helmet>
+        <title>Our Creators - Confluence</title>
+        <meta
+          name="description"
+          content="Meet the talented creators on Confluence. Explore their profiles, expertise, and the unique perspectives they bring to digital collaborations. Join us in celebrating creativity and impactful partnerships."
+        />
+        <meta
+          name="keywords"
+          content="Creators on Confluence, influencer profiles, digital collaboration, creative partnerships, talent showcase"
+        />
+      </Helmet>
       <main className={styles.main}>
         <section className={styles.intro}>
           <div className={styles.wrapper}>
