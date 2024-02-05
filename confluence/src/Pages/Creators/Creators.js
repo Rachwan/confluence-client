@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Creators.module.css";
 import { Link } from "react-router-dom";
-import background from "../../Assets/Images/Main-listing3.jpg";
 import profile from "../../Assets/Images/Main-floating1-1.png";
 import phone from "../../Assets/Icons/phone-call.png";
 import mail from "../../Assets/Icons/mail.png";

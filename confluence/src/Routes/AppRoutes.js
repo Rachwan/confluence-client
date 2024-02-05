@@ -11,6 +11,7 @@ import NotFound from "../Pages/NotFound/NotFound.js";
 import CreatorSignup from "../Pages/CreatorSignup/CreatorSignup.js";
 import BrandSignup from "../Pages/BrandSignup/BrandSignup.js";
 import Login from "../Pages/Login/Login.js";
+import About from "../Pages/About/About.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
@@ -20,15 +21,16 @@ const Router = () => {
         <Routes>
           {/* Routes W/o Layout */}
           <Route path="/" element={<Home />} />
-          <Route path="/*" element={<NotFound />}/>
 
           {/* Routes W/ Layout */}
           <Route element={<Layout />}>
+            <Route path="/*" element={<NotFound />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/creators" element={<Creators />} />
             <Route path="/creator-signup" element={<CreatorSignup />} />
             <Route path="/brand-signup" element={<BrandSignup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<About />} />
           </Route>
 
           {/* Protected Routes */}

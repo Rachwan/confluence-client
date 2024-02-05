@@ -1,0 +1,105 @@
+.intro {
+  height: 380px;
+  display: flex;
+  background-image: url(../../Assets/Images/contact-bread.jpg);
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.intro .content {
+  color: var(--white-color);
+  font-size: 60px;
+}
+@media (max-width: 992px) {
+  .intro .content {
+    font-size: 45px;
+  }
+}
+@media (max-width: 768px) {
+  .intro .content {
+    font-size: 35px;
+  }
+}
+
+/**/
+
+.hero {
+  margin-top: 70px;
+}
+.hero .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.hero .wrapper .content {
+  width: 50%;
+}
+.image__wrapper {
+  width: 50%;
+}
+.image__wrapper img {
+  max-width: 100%;
+}
+.content .main__title {
+  font-size: 36px;
+  line-height: 49px;
+  text-align: left;
+  color: #242424;
+}
+.content .description {
+  margin: 25px 0;
+  line-height: 27px;
+  font-weight: 400;
+  color: #373737;
+  font-size: 20px;
+}
+.founder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 15px;
+  border-top: 1px solid #ccc;
+  gap: 20px;
+}
+.founder .image img {
+  max-width: 100%;
+}
+.founder__content .title {
+  text-align: left;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #373737;
+}
+.founder__content .description {
+margin: 15px 0;
+}
+@media (max-width: 992px) {
+  .founder {
+    gap: 0;
+  }
+  .hero .wrapper .content {
+    width: 100%;
+  }
+  .image__wrapper {
+    display: none;
+  }
+  .founder .image img {
+    max-width: 60%;
+  }
+}
+@media (max-width: 768px) {
+  .founder {
+    gap: 20px;
+    flex-direction: column;
+  }
+  .founder .image img {
+    max-width: 50%;
+  }
+  .founder__content .title {
+    margin-top: 15px;
+  }
+}

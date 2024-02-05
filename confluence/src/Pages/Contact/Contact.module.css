@@ -186,6 +186,9 @@ label {
 }
 
 @media (max-width: 992px) {
+  .content {
+    font-size: 45px;
+  }
   .contactContainer {
     flex-direction: column;
   }

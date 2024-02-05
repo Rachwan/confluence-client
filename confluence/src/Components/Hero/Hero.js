@@ -22,7 +22,7 @@ function Hero() {
             </Link>
           </div>
           <div className={styles.image__wrapper}>
-            <img src={heroImage} alt="Image for influencers" />
+            <img src={heroImage} alt="Influencers" />
           </div>
         </div>
       </section>
