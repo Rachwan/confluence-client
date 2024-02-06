@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Home.module.css";
 import Header from "../../Layout/Header/Header";
 import Hero from "../../Components/Hero/Hero";
+import CheckByPlatform from "../../Components/CheckByPlatform/CheckByPlatform";
 import { Helmet } from "react-helmet-async";
 import iconOne from '../../Assets/Icons/Main-serv1-230x238.png'
 import iconTwo from '../../Assets/Icons/Main-serv2-230x238.png'
@@ -19,7 +20,7 @@ function Home() {
         </Helmet>
         <Header home={true} />
         <Hero />
-        <div style={{height: "200px"}}></div>
+        <CheckByPlatform />
         <section className={styles.how__it__works}>
           <div className="container">
             <div className={styles.wrapper}>

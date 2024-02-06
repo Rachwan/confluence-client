@@ -1,12 +1,16 @@
+.main__hero {
+  position: relative;
+}
 .hero {
   background-image: url(../../Assets/Images/Main-slider.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 85px 0 0 0;
+  padding: 37px 0 0 0;
   overflow: hidden;
   max-height: 80vh;
   width: 100%;
+  position: relative;
 }
 .wrapper {
   display: flex;
@@ -17,10 +21,12 @@
   width: 50%;
 }
 .image__wrapper {
+  display: flex;
+  justify-content: flex-end;
   width: 50%;
 }
 .image__wrapper img {
-  max-width: 85%;
+  max-width: 90%;
 }
 .content .main__title {
   line-height: 69px;
@@ -50,4 +56,48 @@
 .button:hover {
   color: var(--white-color);
   background: var(--black-color);
+}
+
+.deals {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50%);
+}
+.deals .wrapper {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 100px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0 15px 10px -10px;
+  padding: 35px 50px;
+  height: 150px;
+}
+.deals .title {
+  font-family: Barlow;
+  line-height: 34px;
+  color: #242424;
+  font-size: 28px;
+}
+.deals .title span {
+  color: var(--main-orange);
+}
+.deals .companies {
+  display: flex;
+  gap: 20px;
+}
+.deals .company {
+}
+.deals .company img {
+  width: 145px;
+  transition: var(--main-transition);
+}
+.deals .company img:hover {
+  opacity: .6;
 }
