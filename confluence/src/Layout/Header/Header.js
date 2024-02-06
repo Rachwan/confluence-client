@@ -21,8 +21,8 @@ function Header({home = false}) {
             <Link to="/" className={styles.link}>
               <li>Home</li>
             </Link>
-            <Link to="/creators" className={styles.link}>
-              <li>Creators</li>
+            <Link to="/influencers" className={styles.link}>
+              <li>Influencers</li>
             </Link>
             <Link to="/pricing" className={styles.link}>
               <li>Pricing</li>

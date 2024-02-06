@@ -32,7 +32,8 @@ function CreatorSignup() {
             <form
               action="/"
               method="POST"
-              name="contact">
+              name="contact"
+              className={styles.form}>
               <div className={styles.single__input}>
                 <label htmlFor="fn">Full Name<span className={styles.star}>*</span></label>
                 <input

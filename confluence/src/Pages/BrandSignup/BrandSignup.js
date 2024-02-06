@@ -30,7 +30,7 @@ function BrandSignup() {
           <div className={`container ${styles.main__section}`}>
             <div className={styles.signup__wrapper}>
               <h2 className={styles.form__title}>Registration</h2>
-              <form action="/" method="POST" name="contact">
+              <form action="/" method="POST" name="contact" className={styles.form}>
                 <div className={styles.single__input}>
                   <label htmlFor="fn">
                     Brand Name<span className={styles.star}>*</span>

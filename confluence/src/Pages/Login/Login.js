@@ -29,7 +29,7 @@ function Login() {
         <section className={`container ${styles.main__section}`}>
           <div className={styles.signup__wrapper}>
             <h2 className={styles.form__title}>Login</h2>
-            <form action="/" method="POST" name="contact">
+            <form action="/" method="POST" name="contact" className={styles.form}>
               <div className={styles.single__input}>
                 <label htmlFor="email">
                   Email address<span className={styles.star}>*</span>

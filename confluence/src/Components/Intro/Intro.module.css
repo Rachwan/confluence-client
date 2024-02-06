@@ -1,0 +1,45 @@
+.main {
+  padding-bottom: 300px;
+}
+.intro {
+  height: 380px;
+  display: flex;
+  background-image: url(../../Assets/Images/contact-bread.jpg);
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.test {
+  background-image: none;
+}
+.intro .content {
+  color: var(--white-color);
+  font-size: 60px;
+  color: white;
+  text-align: center;
+}
+.chain {
+  text-align: center;
+}
+.chain .sub__chain {
+  color: white;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+  margin-left: 5px;
+}
+
+@media (max-width: 992px) {
+  .intro .content {
+    font-size: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .intro .content {
+    font-size: 35px;
+  }
+}
