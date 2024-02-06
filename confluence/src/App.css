@@ -16,7 +16,9 @@
 
   /* Transitions */
   --main-transition: 0.2s;
+
   /* Padding */
+  --main-section-spacing: 100px;
 }
 * {
   box-sizing: border-box;

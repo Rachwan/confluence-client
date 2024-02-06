@@ -4,9 +4,9 @@ import styles from "./Header.module.css";
 import loginIcon from "../../Assets/Icons/log-in.png";
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header({home = false}) {
   return (
-    <header className={styles.header}>
+    <header className={home? styles.home__header: styles.header}>
       <div className={`container ${styles.container}`}>
         <Link to={"/"}>
           <div className={styles.logo}>
