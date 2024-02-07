@@ -32,8 +32,8 @@ const Router = () => {
             <Route path="/brand-signup" element={<BrandSignup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
-          </Route>
             <Route path="/influencers" element={<Influencers />} />
+          </Route>
 
           {/* Protected Routes */}
           <Route

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Influencers.module.css";
 import { Helmet } from "react-helmet-async";
@@ -8,6 +8,18 @@ import background from "../../Assets/Images/Main-prod25-300x371.jpg";
 import View from "../../Components/View/View";
 
 function Influencers() {
+  const [selectedPlatform, setSelectedPlatform] = useState(null);
+  const [activeLink, setActiveLink] = useState(null);
+
+  const handlePlatformClick = (platform) => {
+    setSelectedPlatform((prevPlatform) =>
+      prevPlatform === platform ? null : platform
+    );
+    setActiveLink(null);
+  };
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+  };
   return (
     <>
       <main className={styles.main}>
@@ -19,39 +31,6 @@ function Influencers() {
         <Intro pageName={"Influencers"} />
         <div className={`container ${styles.wrapper}`}>
           <div className={styles.filter__wrapper}>
-            <div className={styles.platforms}>
-              <h1 className={styles.title}>Platforms</h1>
-              <div className={styles.platform}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                  <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
-                </svg>
-                <p>Facebook</p>
-              </div>
-              <div className={styles.platform}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                  <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
-                </svg>
-                <p>Instagram</p>
-              </div>
-              <div className={styles.platform}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                  <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
-                </svg>
-                <p>TikTok</p>
-              </div>
-              <div className={styles.platform}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                  <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
-                </svg>
-                <p>TikTok</p>
-              </div>
-              <div className={styles.platform}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                  <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
-                </svg>
-                <p>TikTok</p>
-              </div>
-            </div>
             <div className={styles.categories}>
               <h1 className={styles.title}>Categories</h1>
               <div className={styles.category}>
@@ -84,6 +63,76 @@ function Influencers() {
                 </svg>
                 <p>Fitness</p>
               </div>
+            </div>
+            <div className={styles.platforms}>
+              <h1 className={styles.title}>Platforms</h1>
+              {["Facebook", "Instagram", "TikTok"].map((platform) => (
+                <div key={platform} className={styles.platform}>
+                  <div
+                    onClick={() => handlePlatformClick(platform)}
+                    className={`${styles.platformHeader} ${
+                      selectedPlatform === platform && styles.activePlatform
+                    }`}>
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 320 512">
+                        <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
+                      </svg>
+                      <p>{platform}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* Display the ranges outside the mapping */}
+              {selectedPlatform && (
+                <div className={styles.ranges}>
+                  <p className={styles.platform__click__title}>
+                    Followers Number
+                  </p>
+                  <ul>
+                    <li className={styles.range}>
+                      <Link
+                        to="#"
+                        onClick={() => handleLinkClick("50k-100k")}
+                        className={
+                          activeLink === "50k-100k" && styles.activeLink
+                        }>
+                        50k-100k
+                      </Link>
+                    </li>
+                    <li className={styles.range}>
+                      <Link
+                        to="#"
+                        onClick={() => handleLinkClick("100k-500k")}
+                        className={
+                          activeLink === "100k-500k" && styles.activeLink
+                        }>
+                        100k-500k
+                      </Link>
+                    </li>
+                    <li className={styles.range}>
+                      <Link
+                        to="#"
+                        onClick={() => handleLinkClick("500k-1M")}
+                        className={
+                          activeLink === "500k-1M" && styles.activeLink
+                        }>
+                        500k-1M
+                      </Link>
+                    </li>
+                    <li className={styles.range}>
+                      <Link
+                        to="#"
+                        onClick={() => handleLinkClick("1M+")}
+                        className={activeLink === "1M+" && styles.activeLink}>
+                        1M+
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
             <div className={styles.by__city}>
               <h1 className={styles.title}>By City</h1>
