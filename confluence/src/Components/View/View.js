@@ -14,9 +14,8 @@ const View = ({
 }) => {
   return (
     <div className={styles.influencer}>
-      <div className={styles.image__wrapper}>
-        <img src={bgImg} alt="" className={styles.bg__image} />
-        <Link to={`${profileLink}`} className={styles.profile}>
+      <div className={styles.image__wrapper} style={{ backgroundImage: `url(${bgImg})`}}>
+        <Link to={`${profileLink || "#"}`} className={styles.profile}>
           <img src={pImg} alt="" />
           <div className={styles.details}>
             <h4 className={styles.name}>{infName}</h4>
@@ -27,7 +26,7 @@ const View = ({
         </Link>
       </div>
       <div className={styles.content}>
-        <Link to={`${link}`} className={styles.category}>
+        <Link to={`${link || "#"}`} className={styles.category}>
           {linkContent}
         </Link>
         <p className={styles.text}>{text}</p>

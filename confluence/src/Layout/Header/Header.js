@@ -1,18 +1,18 @@
 import React from "react";
 import styles from "./Header.module.css";
-// import logoIcon from "../../Assets/Icons/agreement.png";
 import loginIcon from "../../Assets/Icons/log-in.png";
 import { Link } from "react-router-dom";
+import confluence from "../../Assets/Icons/confluence.svg";
 
-function Header({home = false}) {
+function Header({ home = false }) {
   return (
-    <header className={home? styles.home__header: styles.header}>
+    <header className={home ? styles.home__header : styles.header}>
       <div className={`container ${styles.container}`}>
         <Link to={"/"}>
-          <div className={styles.logo}>
-            {/* <div className={styles.icon}>
-              <img src={logoIcon} alt="Logo" className={styles.logoIcon} />
-            </div> */}
+          <div className={styles.logo__wrapper}>
+            <div className={styles.logo}>
+              <img src={confluence} alt="" />
+            </div>
             <p className={styles.logo__name}>confluence</p>
           </div>
         </Link>

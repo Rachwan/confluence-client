@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Intro.module.css";
 
-const Intro = ({ pageName, test = false }) => {
+const Intro = ({ pageName, test = false, influencer = false }) => {
   return (
     <section className={`${styles.intro} ${test ? styles.test : ""}`}>
       <div className={styles.wrapper}>
         <div className={styles.chain}>
           <Link to={"/"}>
-            <span className={styles.sub__chain}>Home</span>
+            <span className={styles.sub__chain}>{influencer? "influencers": "Home"}</span>
           </Link>
           <span className={styles.sub__chain}>&gt;</span>
           <Link to={`/${pageName}`}>

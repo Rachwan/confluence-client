@@ -7,27 +7,34 @@
   height: 85px;
   z-index: 1000;
   position: relative;
-  background-color: #83B6F8;
+  background-color: #83b6f8;
 }
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.logo {
+.logo__wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.logoIcon {
-  width: 35px;
-  /* display: none; */
+.logo__wrapper .logo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(2px);
+}
+.logo__wrapper .logo img {
+  width: 25px;
 }
 .logo__name {
   font-size: 30px;
   text-transform: uppercase;
   font-weight: bold;
   color: var(--black-color);
+  margin-left: 5px;
 }
 .linklist {
   display: flex;
@@ -47,7 +54,7 @@
   transition: var(--main-transition);
 }
 .link li:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 .auth {
   display: flex;
@@ -58,7 +65,7 @@
   transition: var(--main-transition);
 }
 .my__account:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 .login__href {
   height: 100%;

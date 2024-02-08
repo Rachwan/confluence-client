@@ -31,16 +31,15 @@
 .filter__wrapper .category {
   width: 100%;
   padding: 13px 20px;
-  border: 1px solid #000;
   border-radius: 30px;
   text-align: center;
-  background: #fff;
   color: var(--black-color);
   font-size: 18px;
   position: relative;
   cursor: pointer;
   margin-bottom: 10px;
   transition: 0.3s;
+  background: #f9f9f9;
 }
 .filter__wrapper .platform:hover,
 .filter__wrapper .category:hover {
@@ -49,12 +48,12 @@
   outline: none;
   color: white;
 }
-.filter__wrapper .platform:hover svg,
-.filter__wrapper .category:hover svg {
+.filter__wrapper .platform:hover .icon,
+.filter__wrapper .category:hover .icon {
   fill: white;
 }
-.filter__wrapper .platform svg,
-.filter__wrapper .category svg {
+.filter__wrapper .platform .icon,
+.filter__wrapper .category .icon {
   position: absolute;
   left: 10%;
   width: 10px;
@@ -128,6 +127,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  row-gap: 60px;
 }
 /* .activePlatform {
   background-color: var(--main-blue);
@@ -156,7 +156,11 @@
     width: 70%;
   }
 }
-
+@media (max-width: 992px) {
+  .influencers {
+    gap: 20px;
+  }
+}
 @media (max-width: 768px) {
   .wrapper {
     flex-direction: column;

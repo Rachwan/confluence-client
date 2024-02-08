@@ -1,5 +1,5 @@
 .influencer {
-  width: calc((100% / 3) - 20px);
+  width: calc((100% / 4) - (90px / 4));
   transition: 1s;
 }
 .influencer .image__wrapper {
@@ -7,15 +7,13 @@
   border-bottom: 0;
   overflow: hidden;
   border-radius: 30px;
+  height: 350px;
   position: relative;
-}
-.influencer .image__wrapper .bg__image {
+  background-position: center;
+  background-size: cover;
   border-radius: 30px;
   transition: 0.5s;
   width: 100%;
-}
-.influencer .image__wrapper:hover .bg__image {
-  scale: 1.2;
 }
 .image__wrapper .profile {
   position: absolute;
@@ -76,6 +74,15 @@
   width: 100%;
 }
 
+@media(max-width: 1475px) {
+  .influencer {
+    width: calc((100% / 3) - 20px);
+  }
+  .influencer .image__wrapper {
+    height: 350px;
+  }
+}
+
 @media (max-width: 1200px) {
   .influencer {
     width: calc((50%) - 15px);
@@ -83,16 +90,26 @@
   .image__wrapper .profile {
     gap: 10px;
   }
+  .influencer .image__wrapper {
+    height: 375px;
+  }
 }
-
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .influencer {
-    width: calc((50%) - 15px);
+    width: calc((50%) - 10px);
+  }
+}
+@media (max-width: 768px) {
+  .influencer .image__wrapper {
+    height: 380px;
   }
 }
 
 @media (max-width: 600px) {
   .influencer {
     width: 100%;
+  }
+  .influencer .image__wrapper {
+    height: 400px;
   }
 }

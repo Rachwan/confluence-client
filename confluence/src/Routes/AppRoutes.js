@@ -13,6 +13,7 @@ import BrandSignup from "../Pages/BrandSignup/BrandSignup.js";
 import Login from "../Pages/Login/Login.js";
 import About from "../Pages/About/About.js";
 import Influencers from "../Pages/Influencers/Influencers.js";
+import SingleInfluencer from "../Pages/SingleInfluencer/SingleInfluencer.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
@@ -33,6 +34,7 @@ const Router = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
             <Route path="/influencers" element={<Influencers />} />
+            <Route path="/single-influencer" element={<SingleInfluencer />} />
           </Route>
 
           {/* Protected Routes */}
