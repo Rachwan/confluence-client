@@ -14,13 +14,15 @@ function Home() {
     <>
       <main className={styles.main}>
         <Helmet>
-          <title>Welcome Home - Confluence</title>
+          <title>Home - Confluence</title>
           <meta name="description" content="" />
           <meta name="keywords" content="" />
         </Helmet>
         <Header home={true} />
         <Hero />
+        {/* CheckByPlatform */}
         <CheckByPlatform />
+        {/* How it works */}
         <section className={styles.how__it__works}>
           <div className="container">
             <div className={styles.wrapper}>
@@ -78,6 +80,7 @@ function Home() {
             <div className={styles.image}></div>
           </div>
         </section>
+        {/* Features about the platform */}
       </main>
     </>
   );

@@ -23,6 +23,10 @@
 
   /* Padding */
   --main-section-spacing: 100px;
+
+  /* Box Shadows */
+  --box-shadow-transition: .5s;
+  --box-shadow-hover: 7px 7px 30px rgba(0, 0, 0, 0.3);
 }
 * {
   box-sizing: border-box;

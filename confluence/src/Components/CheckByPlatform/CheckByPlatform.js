@@ -18,32 +18,27 @@ function CheckByPlatform() {
           />
           <div className={styles.platforms}>
             <Link to={"/"} className={styles.platform}>
-                <div className={styles.image}>
-                  <img src={tiktok} alt="" />
+                <div className={styles.image} style={{ backgroundImage: `url(${tiktok})`}}>
                 </div>
                 <div className={styles.platform__name}>TikTok</div>
             </Link>
             <Link to={"/"} className={styles.platform}>
-                <div className={styles.image}>
-                  <img src={tiktok} alt="" />
+                <div className={styles.image} style={{ backgroundImage: `url(${tiktok})`}}>
                 </div>
                 <div className={styles.platform__name}>Instagram</div>
             </Link>
             <Link to={"/"} className={styles.platform}>
-                <div className={styles.image}>
-                  <img src={tiktok} alt="" />
+                <div className={styles.image} style={{ backgroundImage: `url(${tiktok})`}}>
                 </div>
                 <div className={styles.platform__name}>Facebook</div>
             </Link>
             <Link to={"/"} className={styles.platform}>
-                <div className={styles.image}>
-                  <img src={tiktok} alt="" />
+                <div className={styles.image} style={{ backgroundImage: `url(${tiktok})`}}>
                 </div>
                 <div className={styles.platform__name}>YouTube</div>
             </Link>
             <Link to={"/"} className={styles.platform}>
-                <div className={styles.image}>
-                  <img src={tiktok} alt="" />
+                <div className={styles.image} style={{ backgroundImage: `url(${tiktok})`}}>
                 </div>
                 <div className={styles.platform__name}>Snapshat</div>
             </Link>
