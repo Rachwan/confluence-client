@@ -143,6 +143,7 @@ label {
 @media (max-width: 768px) {
   .main__section .signup__wrapper {
     width: 100%;
+    padding: 30px 25px 30px;
   }
   .form__title {
     font-size: 25px;

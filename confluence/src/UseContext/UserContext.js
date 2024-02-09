@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
       setCheckUser(true);
 
       const response = await axios.get(
-        `${process.env.REACT_APP_PATH}/logged-in-user`
+        `${process.env.REACT_APP_BACKEND}/logged-in-user`
       );
       setUser(response.data.user);
       console.log("Fetched user data:", response.data.user);

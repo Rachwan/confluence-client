@@ -57,6 +57,16 @@ function FeaturedCollabs() {
               linkContent={"Platform"}
               text={"Tom Oliver is inspiring others to live their best lives"}
             />
+            <ViewHome
+              bgImg={background}
+              profileLink={"/about"}
+              pImg={profile}
+              infName={"Matt Young"}
+              totalFollowers={"300k"}
+              link={"/single-collab"}
+              linkContent={"Platform"}
+              text={"Tom Oliver is inspiring others to live their best lives"}
+            />
           </div>
         </div>
       </section>
