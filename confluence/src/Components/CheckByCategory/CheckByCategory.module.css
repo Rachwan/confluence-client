@@ -1,5 +1,5 @@
 .main__wrapper {
-  padding-top: var(--main-section-spacing);
+  padding-top: calc(var(--main-section-spacing) + 75px);
   padding-bottom: var(--main-section-spacing);
 }
 .platforms {
@@ -16,10 +16,17 @@
   box-shadow: var(--box-shadow-hover);
 }
 .platform .image {
+  /* width: 100%; */
+  /* border-bottom: 0; */
   overflow: hidden;
   border-radius: 20px;
   height: 170px;
+  /* position: relative; */
+  /* background-position: center; */
   background-size: cover;
+  /* border-radius: 30px; */
+  /* transition: 0.5s; */
+  /* width: 100%; */
 }
 .platform .platform__name {
   border-top-left-radius: 0;
