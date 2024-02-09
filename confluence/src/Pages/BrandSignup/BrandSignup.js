@@ -1,6 +1,5 @@
 import { React, useState, useContext } from "react";
 import { UserContext } from "../../UseContext/UserContext.js";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./BrandSignup.module.css";
 import { Helmet } from "react-helmet-async";
@@ -12,7 +11,6 @@ function BrandSignup() {
   const { setUser } = useContext(UserContext);
   const [profileFile, setProfileFile] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -142,21 +140,14 @@ function BrandSignup() {
 
       if (response.data) {
         setUser(response.data);
-        toast.success("Signup successfully!");
         Swal.fire({
           title: "Welcome",
           text: "Signup successfully!",
           icon: "success",
         });
-        setTimeout(() => {
-          navigate("/", { replace: true });
-        }, 1000);
       }
     } catch (error) {
-      if (error.response.status === 401) {
-        toast.error("Incorrect email or password");
-      } else if (error.response.status === 400) {
-        toast.error("Email already exists.");
+      if (error.response.status === 400) {
         Swal.fire({
           title: "You have been here?",
           text: "Email already exists.",
