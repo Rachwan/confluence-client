@@ -4,10 +4,11 @@ import styles from "./NotFound.module.css";
 import { Helmet } from "react-helmet-async";
 import mainImage from "../../Assets/Images/404-page.png";
 import secondImage from "../../Assets/Images/404.png";
+import Header from "../../Layout/Header/Header";
 
 function NotFound() {
   return (
-    <>
+    <main className={styles.main__wrapper}>
       <Helmet>
         <title>Page Not Found - Confluence</title>
         <meta
@@ -16,13 +17,14 @@ function NotFound() {
         />
         <meta name="keywords" content="404, page not found, error" />
       </Helmet>
-
-      <main className={styles.main}>
+      <Header />
+      <div className={styles.main}>
         <div className={`container ${styles.wrapper}`}>
           <div className={styles.content}>
             <img src={secondImage} alt="" />
             <p className={styles.message}>
-              Lost in cyberspace? Redirecting you to influential connections.
+              Lost on the collaboration path? Redirecting you to influential
+              connections.
             </p>
             <div className={styles.buttonWrapper}>
               <Link to={"/"}>
@@ -34,8 +36,8 @@ function NotFound() {
             <img src={mainImage} alt="A Sad Guy" />
           </div>
         </div>
-      </main>
-    </>
+      </div>
+    </main>
   );
 }
 

@@ -197,7 +197,7 @@ function Influencers() {
                   bgImg={background}
                   profileLink={"/single-influencer"}
                   pImg={profile}
-                  infName={"Matt Young"}
+                  infName={"Rachwan Harb"}
                   totalFollowers={"300k"}
                   link={"/login"}
                   linkContent={"Food Influencer"}
@@ -209,7 +209,7 @@ function Influencers() {
                   bgImg={background}
                   profileLink={"/single-influencer"}
                   pImg={profile}
-                  infName={"Matt Young"}
+                  infName={"Rachwan Harb"}
                   totalFollowers={"300k"}
                   link={"/login"}
                   linkContent={"Food Influencer"}
@@ -221,7 +221,7 @@ function Influencers() {
                   bgImg={background}
                   profileLink={"/single-influencer"}
                   pImg={profile}
-                  infName={"Matt Young"}
+                  infName={"Rachwan Harb"}
                   totalFollowers={"300k"}
                   link={"/login"}
                   linkContent={"Food Influencer"}
@@ -233,7 +233,7 @@ function Influencers() {
                   bgImg={background}
                   profileLink={"/single-influencer"}
                   pImg={profile}
-                  infName={"Matt Young"}
+                  infName={"Rachwan Harb"}
                   totalFollowers={"300k"}
                   link={"/login"}
                   linkContent={"Food Influencer"}
@@ -245,7 +245,7 @@ function Influencers() {
                   bgImg={background}
                   profileLink={"/single-influencer"}
                   pImg={profile}
-                  infName={"Matt Young"}
+                  infName={"Rachwan Harb"}
                   totalFollowers={"300k"}
                   link={"/login"}
                   linkContent={"Food Influencer"}

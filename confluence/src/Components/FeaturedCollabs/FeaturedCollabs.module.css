@@ -6,6 +6,6 @@
   display: flex;
   gap: 20px;
 }
-.collab {
+/* .collab {
   width: calc(20% - (80px / 5));
-}
+} */

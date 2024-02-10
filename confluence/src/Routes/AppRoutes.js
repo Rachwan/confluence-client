@@ -14,6 +14,7 @@ import Login from "../Pages/Login/Login.js";
 import About from "../Pages/About/About.js";
 import Influencers from "../Pages/Influencers/Influencers.js";
 import SingleInfluencer from "../Pages/SingleInfluencer/SingleInfluencer.js";
+import ComingSoon from "../Pages/ComingSoon/ComingSoon.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
@@ -23,10 +24,12 @@ const Router = () => {
         <Routes>
           {/* Routes W/o Layout */}
           <Route path="/" element={<Home />} />
+          <Route path="/*" element={<NotFound />} />
+          <Route path="/pricing" element={<ComingSoon />} />
+          <Route path="/coming-soon" element={<ComingSoon />} />
 
           {/* Routes W/ Layout */}
           <Route element={<Layout />}>
-            <Route path="/*" element={<NotFound />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/creators" element={<Creators />} />
             <Route path="/creator-signup" element={<CreatorSignup />} />

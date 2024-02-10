@@ -11,7 +11,7 @@ function SectionHead({ title, description }) {
             <h2 className={styles.title}>{title}</h2>
             <p className={styles.description}>{description}</p>
           </div>
-          <Link to={"/"}>
+          <Link to={"/influencers"}>
             <div className={styles.button}>View All</div>
           </Link>
         </div>
