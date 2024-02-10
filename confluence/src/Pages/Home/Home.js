@@ -14,6 +14,7 @@ import iconFour from "../../Assets/Icons/Main-serv4.png";
 import moneyIcon from "../../Assets/Icons/money-bill-solid.svg";
 import imageOne from "../../Assets/Images/Main-banner01-edit.png";
 import imageTwo from "../../Assets/Images/Main-banner02-edit.png";
+import Footer from "../../Layout/Footer/Footer";
 
 function Home() {
   return (
@@ -170,7 +171,7 @@ function Home() {
                   <p className={styles.title}>
                     They could be looking for someone like you.
                   </p>
-                  <Link to={"/coming-so-soon"}>
+                  <Link to={"/brands"}>
                     <div className={styles.button}>Coming Soon...</div>
                   </Link>
                 </div>
@@ -182,6 +183,7 @@ function Home() {
         <FeaturedCollabs />
         {/* FeaturedInfluencers */}
         <FeaturedCollabs />
+        <Footer />
       </main>
     </>
   );

@@ -25,8 +25,11 @@ const Router = () => {
           {/* Routes W/o Layout */}
           <Route path="/" element={<Home />} />
           <Route path="/*" element={<NotFound />} />
-          <Route path="/pricing" element={<ComingSoon />} />
+
+          {/* Coming Soon */}
           <Route path="/coming-soon" element={<ComingSoon />} />
+          <Route path="/pricing" element={<ComingSoon />} />
+          <Route path="/brands" element={<ComingSoon />} />
 
           {/* Routes W/ Layout */}
           <Route element={<Layout />}>

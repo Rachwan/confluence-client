@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./About.module.css";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
 import aboutImg from "../../Assets/Images/Main-about_bg.png";
 import rachwan from '../../Assets/Icons/Main-floating1.png'
 
