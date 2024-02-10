@@ -103,6 +103,25 @@
   background: var(--black-color);
 }
 
+.logout__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.logout__wrapper .logout__icon {
+  width: 18px;
+  fill: var(--white-color);
+}
+.logout__wrapper .logout {
+  color: var(--white-color);
+  font-size: 17px;
+  font-weight: 500;
+  display: block;
+  line-height: 23px;
+  transition: var(--main-transition);
+}
+
 @media (max-width: 1200px) {
   .link li {
     padding: 32px 11px;

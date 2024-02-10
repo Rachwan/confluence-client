@@ -26,7 +26,6 @@ export const UserProvider = ({ children }) => {
       setUserUpdated(false);
     } catch (err) {
       setUser(null);
-      console.log(err);
     } finally {
       setCheckUser(false);
     }
