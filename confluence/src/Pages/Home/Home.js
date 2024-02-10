@@ -180,6 +180,8 @@ function Home() {
         </section>
         {/* FeaturedCollabs */}
         <FeaturedCollabs />
+        {/* FeaturedInfluencers */}
+        <FeaturedCollabs />
       </main>
     </>
   );

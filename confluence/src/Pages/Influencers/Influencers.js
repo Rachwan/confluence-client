@@ -195,7 +195,7 @@ function Influencers() {
               <div className={styles.influencers}>
                 <View
                   bgImg={background}
-                  profileLink={"/about"}
+                  profileLink={"/single-influencer"}
                   pImg={profile}
                   infName={"Matt Young"}
                   totalFollowers={"300k"}
@@ -207,7 +207,7 @@ function Influencers() {
                 />
                 <View
                   bgImg={background}
-                  profileLink={"/about"}
+                  profileLink={"/single-influencer"}
                   pImg={profile}
                   infName={"Matt Young"}
                   totalFollowers={"300k"}
@@ -219,7 +219,7 @@ function Influencers() {
                 />
                 <View
                   bgImg={background}
-                  profileLink={"/about"}
+                  profileLink={"/single-influencer"}
                   pImg={profile}
                   infName={"Matt Young"}
                   totalFollowers={"300k"}
@@ -231,7 +231,7 @@ function Influencers() {
                 />
                 <View
                   bgImg={background}
-                  profileLink={"/about"}
+                  profileLink={"/single-influencer"}
                   pImg={profile}
                   infName={"Matt Young"}
                   totalFollowers={"300k"}
@@ -243,7 +243,7 @@ function Influencers() {
                 />
                 <View
                   bgImg={background}
-                  profileLink={"/about"}
+                  profileLink={"/single-influencer"}
                   pImg={profile}
                   infName={"Matt Young"}
                   totalFollowers={"300k"}

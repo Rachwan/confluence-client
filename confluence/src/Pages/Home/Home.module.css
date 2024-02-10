@@ -73,6 +73,7 @@
   background-color: var(--main-blue);
   padding-top: var(--main-section-spacing);
   padding-bottom: var(--main-section-spacing);
+  margin-top: 100px;
 }
 .features .wrapper {
   display: flex;
