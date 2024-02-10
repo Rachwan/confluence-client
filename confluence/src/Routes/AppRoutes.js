@@ -15,6 +15,7 @@ import About from "../Pages/About/About.js";
 import Influencers from "../Pages/Influencers/Influencers.js";
 import SingleInfluencer from "../Pages/SingleInfluencer/SingleInfluencer.js";
 import ComingSoon from "../Pages/ComingSoon/ComingSoon.js";
+import Dashboard from "../Pages/Dashboard/Dashboard.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
@@ -47,10 +48,16 @@ const Router = () => {
           <Route
             element={
               <ProtectedRoute
-                isAllowed={user && user.role === "admin"}
-                redirectPath="/unauthorized"
+                isAllowed={
+                  user &&
+                  (user.role === "admin" ||
+                    user.role === "influencer" ||
+                    user.role === "business")
+                }
               />
-            }></Route>
+            }>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

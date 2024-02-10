@@ -122,6 +122,25 @@
   transition: var(--main-transition);
 }
 
+.dashboard__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.dashboard__wrapper .dashboard__icon {
+  width: 17px;
+  fill: var(--white-color);
+}
+.dashboard__wrapper .dashboard {
+  color: var(--white-color);
+  font-size: 17px;
+  font-weight: 500;
+  display: block;
+  line-height: 23px;
+  transition: var(--main-transition);
+}
+
 @media (max-width: 1200px) {
   .link li {
     padding: 32px 11px;
