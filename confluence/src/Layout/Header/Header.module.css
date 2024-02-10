@@ -1,3 +1,7 @@
+header {
+  display: flex;
+  align-items: center;
+}
 .header {
   height: 85px;
   z-index: 1000;
@@ -44,16 +48,34 @@
 .link li {
   display: block;
   padding: 32px 17px;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
   display: block;
   line-height: 23px;
   color: black;
   transition: var(--main-transition);
 }
-.link li:hover {
-  opacity: 0.6;
+
+/* Active link */
+.link li:after,
+.active__link li:after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color:  var(--main-orange);
+  transition: var(--main-transition);
 }
+.link li:hover:after {
+  width: 100%;
+  background-color: var(--main-orange);
+}
+.link.active__link li:after {
+  width: 100%;
+  background-color:  var(--main-orange);
+}
+/* ---------- */
+
 .auth {
   display: flex;
   justify-content: center;
