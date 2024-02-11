@@ -1,5 +1,6 @@
 import { React, useState, useContext } from "react";
 import { UserContext } from "../../UseContext/UserContext.js";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./CreatorSignup.module.css";
 import { Helmet } from "react-helmet-async";
@@ -9,6 +10,7 @@ import Swal from "sweetalert2";
 import OAuth from "../../OAuth/OAuth.js";
 
 function CreatorSignup() {
+  const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -108,6 +110,9 @@ function CreatorSignup() {
           text: "Signup successfully!",
           icon: "success",
         });
+        setTimeout(() => {
+          navigate("/", { replace: true });
+        }, 1000);
       }
     } catch (error) {
       if (error.response.status === 400) {
@@ -224,7 +229,7 @@ function CreatorSignup() {
               <span className={styles.or__wrapper}>or</span>
             </div>
             <div className={styles.oauth}>
-              <OAuth signup={true} influencer={true}/>
+              <OAuth signup={true} influencer={true} />
             </div>
           </div>
         </section>

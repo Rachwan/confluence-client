@@ -1,5 +1,6 @@
 import { React, useState, useContext } from "react";
 import { UserContext } from "../../UseContext/UserContext.js";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./BrandSignup.module.css";
 import { Helmet } from "react-helmet-async";
@@ -9,6 +10,7 @@ import Swal from "sweetalert2";
 import OAuth from "../../OAuth/OAuth.js";
 
 function BrandSignup() {
+  const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   const [profileFile, setProfileFile] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -146,6 +148,9 @@ function BrandSignup() {
           text: "Signup successfully!",
           icon: "success",
         });
+        setTimeout(() => {
+          navigate("/", { replace: true });
+        }, 1000);
       }
     } catch (error) {
       if (error.response.status === 400) {

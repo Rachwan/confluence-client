@@ -1,15 +1,17 @@
 import { React, useState, useContext } from "react";
 import { UserContext } from "../../UseContext/UserContext.js";
+import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import hideOrSeen from "../../Assets/Icons/seen.png";
-import OAuth from '../../OAuth/OAuth.js'
+import OAuth from "../../OAuth/OAuth.js";
 
 function Login() {
   const { fetchUserData } = useContext(UserContext);
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -82,6 +84,9 @@ function Login() {
           text: "Login successfully!",
           icon: "success",
         });
+        setTimeout(() => {
+          navigate("/", { replace: true });
+        }, 1000);
       }
     } catch (error) {
       if (error.response.status === 401) {
