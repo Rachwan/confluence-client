@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import hideOrSeen from "../../Assets/Icons/seen.png";
+import OAuth from '../../OAuth/OAuth.js'
 
 function Login() {
   const { fetchUserData } = useContext(UserContext);
@@ -182,6 +183,13 @@ function Login() {
                 </Link>
               </div>
             </form>
+            <div className={styles.or__hr}>
+              <hr />
+              <span className={styles.or__wrapper}>or</span>
+            </div>
+            <div className={styles.oauth}>
+              <OAuth signup={false} />
+            </div>
           </div>
         </section>
       </main>

@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import hideOrSeen from "../../Assets/Icons/seen.png";
 import Swal from "sweetalert2";
+import OAuth from "../../OAuth/OAuth.js";
 
 function CreatorSignup() {
   const { setUser } = useContext(UserContext);
@@ -211,8 +212,20 @@ function CreatorSignup() {
                   onClick={handleSubmit}>
                   Register
                 </button>
+                <Link to={"/login"}>
+                  <p className={styles.have__account}>
+                    Already have an account?
+                  </p>
+                </Link>
               </div>
             </form>
+            <div className={styles.or__hr}>
+              <hr />
+              <span className={styles.or__wrapper}>or</span>
+            </div>
+            <div className={styles.oauth}>
+              <OAuth signup={true} influencer={true}/>
+            </div>
           </div>
         </section>
       </main>
