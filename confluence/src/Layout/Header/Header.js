@@ -6,6 +6,7 @@ import confluence from "../../Assets/Icons/confluence.svg";
 import edit from "../../Assets/Icons/pen-to-square-solid.svg";
 import { UserContext } from "../../UseContext/UserContext.js";
 import { useNavigate } from "react-router-dom";
+import burger from "../../Assets/Icons/bars-solid.svg";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -116,6 +117,11 @@ function Header({ home = false }) {
                   </div>
                 </Link>
               </div>
+              <img
+                src={burger}
+                alt="Burger Icon to display the menu"
+                className={styles.burger}
+              />
             </>
           ) : (
             <div className={styles.buttons}>
@@ -137,6 +143,11 @@ function Header({ home = false }) {
                 </svg>
                 <span className={styles.logout}>Logout</span>
               </div>
+              <img
+                src={burger}
+                alt="Burger Icon to display the menu"
+                className={styles.burger}
+              />
             </div>
           )}
         </div>

@@ -56,6 +56,18 @@ header {
   transition: var(--main-transition);
 }
 
+.burger {
+  width: 35px;
+  background-color: #fff;
+  padding: 6px;
+  border-radius: 4px;
+  transition: var(--main-transition);
+  cursor: pointer;
+  display: none;
+}
+.burger:hover {
+  background-color: var(--main-blue-hover);
+}
 /* Active link */
 .link li:after,
 .active__link li:after {
@@ -63,16 +75,16 @@ header {
   display: block;
   width: 0%;
   height: 2px;
-  background-color:  var(--main-orange);
+  background-color: var(--main-orange);
   transition: var(--main-transition);
 }
 .link li:hover:after {
   width: 100%;
-  background-color: var(--main-orange);
+  background-color: var(--main-blue);
 }
 .link.active__link li:after {
   width: 100%;
-  background-color:  var(--main-orange);
+  background-color: var(--main-orange);
 }
 /* ---------- */
 
@@ -164,13 +176,34 @@ header {
 }
 
 @media (max-width: 1200px) {
-  .link li {
-    padding: 32px 11px;
+  .logo__wrapper .logo img {
+    width: 23px;
   }
-  .loginIcon {
-    margin-right: 10px;
+  .logo__name {
+    font-size: 27px;
+  }
+  .link li {
+    padding: 32px 8px;
+  }
+  .login__icon {
+    margin-right: 5px;
+  }
+  .buttons {
+    gap: 5px;
   }
   .button {
-    padding: 12px 14px;
+    padding: 12px 11px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  .link li,
+  .login__icon,
+  .button {
+    display: none;
+  }
+  .burger {
+    display: block;
   }
 }
