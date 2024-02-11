@@ -26,7 +26,8 @@
 /**/
 
 .hero {
-  margin-top: 70px;
+  padding-top: var(--main-section-spacing);
+  padding-bottom: var(--main-section-spacing);
 }
 .hero .wrapper {
   display: flex;
@@ -63,6 +64,10 @@
   padding: 25px 15px;
   border-top: 1px solid #ccc;
   gap: 20px;
+}
+.founder .image {
+  display: flex;
+  justify-content: center;
 }
 .founder .image img {
   max-width: 100%;

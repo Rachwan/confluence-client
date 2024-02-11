@@ -1,9 +1,6 @@
 .background {
   background-image: url(../../Assets/Images/Main-test_bg.jpg);
 }
-.main {
-  padding-bottom: 300px;
-}
 .intro {
   height: 380px;
   display: flex;
