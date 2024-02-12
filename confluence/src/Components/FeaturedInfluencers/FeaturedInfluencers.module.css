@@ -1,0 +1,11 @@
+.main__wrapper {
+  padding-top: var(--main-section-spacing);
+  padding-bottom: var(--main-section-spacing);
+}
+.collabs {
+  display: flex;
+  gap: 20px;
+}
+/* .collab {
+  width: calc(20% - (80px / 5));
+} */

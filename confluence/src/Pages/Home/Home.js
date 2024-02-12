@@ -6,6 +6,7 @@ import Hero from "../../Components/Hero/Hero";
 import CheckByPlatform from "../../Components/CheckByPlatform/CheckByPlatform";
 import CheckByCategory from "../../Components/CheckByCategory/CheckByCategory";
 import FeaturedCollabs from "../../Components/FeaturedCollabs/FeaturedCollabs";
+import FeaturedInfluencers from "../../Components/FeaturedInfluencers/FeaturedInfluencers";
 import { Helmet } from "react-helmet-async";
 import iconOne from "../../Assets/Icons/Main-serv1-230x238.png";
 import iconTwo from "../../Assets/Icons/Main-serv2-230x238.png";
@@ -182,7 +183,7 @@ function Home() {
         {/* FeaturedCollabs */}
         <FeaturedCollabs />
         {/* FeaturedInfluencers */}
-        <FeaturedCollabs />
+        <FeaturedInfluencers />
         <Footer />
       </main>
     </>

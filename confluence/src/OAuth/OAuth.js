@@ -1,7 +1,7 @@
 import style from "./OAuth.module.css";
 import googleIcon from "../Assets/Icons/google.png";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import { app } from "../Firebase/firebase.js";
+import { app } from "../Firebase/Firebase.js";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../UseContext/UserContext.js";
