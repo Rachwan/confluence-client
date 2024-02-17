@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styles from "./CheckByPlatform.module.css";
 import SectionHead from "../SectionHead/SectionHead";
 import { Link } from "react-router-dom";
-import tiktok from '../../Assets/Images/Main-categ6-500x300.jpg'
-// import test from '../../Assets/Images/Main-slider.png'
 
 function CheckByPlatform() {
+  const [platformsData, setPlatformsData] = useState([]);
+
+  const fetchplatformsData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND}/platform/get/eight`
+      );
+      setPlatformsData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchplatformsData();
+  }, []);
   return (
     <>
       <section className={styles.main__wrapper}>
@@ -17,31 +33,17 @@ function CheckByPlatform() {
             }
           />
           <div className={styles.platforms}>
-            <Link to={"/"} className={styles.platform}>
-                <div className={styles.image} style={{ backgroundImage: `url(${tiktok})`}}>
-                </div>
-                <div className={styles.platform__name}>TikTok</div>
-            </Link>
-            <Link to={"/"} className={styles.platform}>
-                <div className={styles.image} style={{ backgroundImage: `url(${tiktok})`}}>
-                </div>
-                <div className={styles.platform__name}>Instagram</div>
-            </Link>
-            <Link to={"/"} className={styles.platform}>
-                <div className={styles.image} style={{ backgroundImage: `url(${tiktok})`}}>
-                </div>
-                <div className={styles.platform__name}>Facebook</div>
-            </Link>
-            <Link to={"/"} className={styles.platform}>
-                <div className={styles.image} style={{ backgroundImage: `url(${tiktok})`}}>
-                </div>
-                <div className={styles.platform__name}>YouTube</div>
-            </Link>
-            <Link to={"/"} className={styles.platform}>
-                <div className={styles.image} style={{ backgroundImage: `url(${tiktok})`}}>
-                </div>
-                <div className={styles.platform__name}>Snapshat</div>
-            </Link>
+            {platformsData &&
+              platformsData.map((platform) => (
+                <Link to={"/"} className={styles.platform}>
+                  <div
+                    className={styles.image}
+                    style={{
+                      backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${platform.background})`,
+                    }}></div>
+                  <div className={styles.platform__name}>{platform.name}</div>
+                </Link>
+              ))}
           </div>
         </div>
       </section>
