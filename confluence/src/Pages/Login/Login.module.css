@@ -151,7 +151,7 @@ label {
   margin-top: 35px;
   margin-bottom: 35px;
   width: 100%;
-  background-color: var(--main-orange);
+  background-color: var(--main-blue);
 }
 .or__hr hr {
   width: 100%;
@@ -167,7 +167,7 @@ label {
   transform: translate(50%, -50%) !important;
   color: var(--white-color);
   border-radius: 50%;
-  background: var(--main-orange);
+  background: var(--main-blue);
   text-align: center;
   padding-top: 1px;
 }

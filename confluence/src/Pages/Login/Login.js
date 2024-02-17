@@ -71,7 +71,6 @@ function Login() {
       });
       return;
     }
-
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND}/login`,
@@ -89,15 +88,15 @@ function Login() {
         }, 1000);
       }
     } catch (error) {
-      if (error.response.status === 401) {
+      if (error.response && error.response.status === 401) {
         Swal.fire({
           title: "Are you sure about your info?",
           text: "Incorrect email or password.",
           icon: "question",
         });
-      } else if (error.response.status === 400) {
+      } else if (error.response &&  error.response.status === 400) {
         Swal.fire({
-          title: "You have been here?",
+          title: "You have been here?", 
           text: "Email already exists.",
           icon: "question",
         });
