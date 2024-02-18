@@ -42,8 +42,15 @@ const Router = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
             <Route path="/influencers" element={<Influencers />} />
-            <Route path="/single-influencer" element={<SingleInfluencer />} />
-            <Route path="/collaboration" element={<Collaboration />} />
+            <Route path="/influencer/:name" element={<SingleInfluencer />} />
+            {/* <Route
+              path="/influencer/:name/collaborations"
+              element={<SingleInfluencer />}
+            /> */}
+            <Route
+              path=":userName/collaborations/:title"
+              element={<Collaboration />}
+            />
           </Route>
 
           {/* Protected Routes */}

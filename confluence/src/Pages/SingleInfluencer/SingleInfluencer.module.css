@@ -96,6 +96,8 @@
   height: 180px;
   max-width: 100%;
   border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 /* .personal__info .image .verified {
   width: 45px;
@@ -121,17 +123,17 @@
   font-weight: 400;
 }
 .social__stats .social__icon {
-  width: 35px;
-  height: 35px;
-  /* background: var(--main-blue); */
+  width: 36px;
+  height: 36px;
   padding: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
 }
-.social__stats .social__icon svg {
-  width: 18px;
+.social__stats .social__icon .icon {
+  height: 18px;
+  filter: brightness(0) invert(1);
 }
 .social__icon .account .content .text {
   margin-bottom: 5px;

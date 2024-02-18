@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./ViewRelated.module.css";
+import styles from "./ViewRelatedCollabs.module.css";
 
-const ViewRelated = ({ data }) => {
-  const totalFollowers = data?.platforms?.reduce(
+const ViewRelatedCollabs = ({ data }) => {
+  const totalFollowers = data?.userId?.platforms?.reduce(
     (sum, platform) => sum + platform?.followers,
     0
   );
@@ -25,16 +25,16 @@ const ViewRelated = ({ data }) => {
           backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.background})`,
         }}>
         <Link
-          to={`/influencer/${influencer?.name}`}
+          to={`/${data?.userId?.name}/collaborations/${data?.title}`}
           state={data}
           className={styles.profile}>
           <div
             className={styles.profile__image}
             style={{
-              backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.profile})`,
+              backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.userId?.profile})`,
             }}></div>
           <div className={styles.details}>
-            <h4 className={styles.name}>{data?.name}</h4>
+            <h4 className={styles.name}>{data?.userId?.name}</h4>
             <div className={styles.total__followers}>
               {followersToShow} Followers
             </div>
@@ -43,17 +43,21 @@ const ViewRelated = ({ data }) => {
       </div>
       <div className={styles.content}>
         <Link
-          to={`/influencer/${influencer?.name}`}
-          state={data}
-          className={styles.category}>
-          {data?.categoryId?.name} influencer
+          to={`/${data?.userId?.name}/collaborations/${data?.title}`}
+          className={styles.category}
+          state={data}>
+          {data.platforms && data?.platforms?.length === 0
+            ? "*No Platforms*"
+            : data.platforms.map((platform, index) => (
+                <span key={platform} style={{ fontSize: "17px" }}>
+                  {platform}
+                  {index !== data.platforms.length - 1 && " ∙ "}
+                </span>
+              ))}
         </Link>
-        <p className={styles.text}>
-          Dive into {data?.name}'s world: Discover collaborations, insights, and
-          more.
-        </p>
+        <p className={styles.text}>{data?.title}</p>
       </div>
     </div>
   );
 };
-export default ViewRelated;
+export default ViewRelatedCollabs;

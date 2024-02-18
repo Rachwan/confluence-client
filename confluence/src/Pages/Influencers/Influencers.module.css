@@ -27,6 +27,7 @@
   margin-bottom: 25px;
   font-weight: 500;
 }
+/* both */
 .filter__wrapper .platform,
 .filter__wrapper .category {
   width: 100%;
@@ -40,26 +41,57 @@
   margin-bottom: 10px;
   transition: 0.3s;
   background: #f9f9f9;
+  font-weight: 500;
 }
-.filter__wrapper .platform:hover,
+/* category */
 .filter__wrapper .category:hover {
-  background: #316ff6;
+  background: var(--main-blue);
   border-color: transparent;
   outline: none;
   color: white;
+  font-weight: 600;
 }
-.filter__wrapper .platform:hover .icon,
-.filter__wrapper .category:hover .icon {
-  fill: white;
+/* platform */
+
+.platform__hover:hover {
+  border-color: transparent;
+  outline: none;
+  color: white;
+  font-weight: 600;
+  background-color: var(--hover-color, transparent);
 }
+
+.instagram__hover:hover {
+  background: var(--hover-color, transparent);
+  color: white;
+}
+
+.platform.activePlatform {
+  background-color: var(--hover-color, transparent);
+  color: white;
+}
+
+.instagram__hover.activePlatform {
+  background: var(--hover-color, transparent);
+  color: white;
+}
+/* Icon  */
+/* both */
 .filter__wrapper .platform .icon,
 .filter__wrapper .category .icon {
   position: absolute;
   left: 10%;
-  width: 10px;
+  height: 18px;
   top: 50%;
   transform: translateY(-50%);
 }
+.filter__wrapper .category:hover .icon,
+.filter__wrapper .platform:hover .icon,
+.filter__wrapper .platform.activePlatform .icon,
+.filter__wrapper .instagram__hover.activePlatform .icon {
+  filter: brightness(0) invert(1);
+}
+
 .city,
 .range {
   padding: 5px 0;
@@ -84,6 +116,13 @@
 .by__city .city:hover a,
 .range:hover a {
   color: var(--main-blue);
+}
+
+.range .activeLink {
+  color: var(--main-blue);
+}
+.city.activeLink {
+  color: red;
 }
 /* Second Section wrapper */
 .influencers__wrapper {
@@ -110,7 +149,7 @@
 }
 .influencers__wrapper .header .form {
   padding: 0 15px;
-  background-color: #F1F3F6;
+  background-color: #f1f3f6;
   border-radius: 30px;
 }
 .influencers__wrapper .select {
@@ -160,11 +199,23 @@
   }
 }
 @media (max-width: 992px) {
+  .wrapper {
+    gap: 20px;
+  }
+  .filter__wrapper {
+    padding: 40px 15px 40px;
+  }
   .influencers {
     gap: 20px;
   }
 }
 @media (max-width: 768px) {
+  .wrapper {
+    gap: 30px;
+  }
+  .filter__wrapper {
+    padding: 40px 25px 40px;
+  }
   .wrapper {
     flex-direction: column;
   }
@@ -173,6 +224,9 @@
   }
   .influencers__wrapper {
     width: 100%;
+  }
+  .influencers {
+    padding-top: 30px;
   }
 }
 

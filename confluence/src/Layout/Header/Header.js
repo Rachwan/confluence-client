@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styles from "./Header.module.css";
 import loginIcon from "../../Assets/Icons/log-in.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import confluence from "../../Assets/Icons/confluence.svg";
+import confluence from "../../Assets/Icons/confluenceTwo.svg";
 import edit from "../../Assets/Icons/pen-to-square-solid.svg";
 import { UserContext } from "../../UseContext/UserContext.js";
 import { useNavigate } from "react-router-dom";

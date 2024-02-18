@@ -28,7 +28,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(2px);
+  transform: translateY(3px);
 }
 .logo__wrapper .logo img {
   width: 25px;

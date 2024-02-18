@@ -2,7 +2,7 @@
 import "./App.css";
 import AppRoutes from "./Routes/AppRoutes.js";
 import { Helmet } from "react-helmet-async";
-import favicon from "./Assets/Icons/faviconn.svg";
+import favicon from "./Assets/Icons/faviconnn.svg";
 import axios from "axios";
 
 function App() {
