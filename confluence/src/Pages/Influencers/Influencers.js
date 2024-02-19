@@ -303,7 +303,7 @@ function Influencers() {
                 ))}
               </div>
               <div className={styles.pagination}>
-                {pageNumbers !== 1 &&
+                {pageNumbers != 1 &&
                   pageNumbers.map((number) => (
                     <button
                       key={number}
