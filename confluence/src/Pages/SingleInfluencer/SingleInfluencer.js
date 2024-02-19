@@ -84,6 +84,33 @@ function SingleInfluencer() {
       return followers?.toString();
     }
   }
+
+  // Pagination
+  const [activePage, setActivePage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+  const totalItems = collaborations.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const visibleCollaborations = collaborations.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
+  const pageNumbers = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i);
+  }
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setActivePage(pageNumber);
+  };
+
+  //--------------------------------------------------
+
   return (
     <main className={styles.main}>
       <Helmet>
@@ -216,25 +243,35 @@ function SingleInfluencer() {
 
             <div className={styles.main__container}>
               <div className={styles.influencers}>
-                {collaborations &&
+                {/* {collaborations &&
                   collaborations.map((collaboration) => (
                     <ViewCollabs
                       key={collaboration._id}
                       data={collaboration}
                       formatFollowersCount={formatFollowersCount}
                     />
+                  ))} */}
+                {visibleCollaborations.map((collaboration) => (
+                  <ViewCollabs
+                    key={collaboration._id}
+                    data={collaboration}
+                    formatFollowersCount={formatFollowersCount}
+                  />
+                ))}
+              </div>
+              <div className={styles.pagination}>
+                {pageNumbers !== 1 &&
+                  pageNumbers.map((number) => (
+                    <button
+                      key={number}
+                      onClick={() => handlePageChange(number)}
+                      className={`${styles.pagination__button} ${
+                        number === activePage ? styles.activePage : ""
+                      }`}>
+                      {number}
+                    </button>
                   ))}
               </div>
-              <p
-                style={{
-                  marginTop: "50px",
-                  marginBottom: "50px",
-                  color: "blue",
-                  fontSize: "40px",
-                  textAlign: "center",
-                }}>
-                Pagination Here
-              </p>
             </div>
           </div>
         </div>
