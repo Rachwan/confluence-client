@@ -33,15 +33,6 @@ header {
 
 .logo__wrapper .logo img {
   width: 25px;
-  animation: rotateX infinite 0.7s linear;
-}
-@keyframes rotateX {
-  0% {
-    transform: rotateY(360deg);
-  }
-  100% {
-    transform: rotateY(0deg);
-  }
 }
 .logo__name {
   font-size: 30px;

@@ -123,9 +123,37 @@ function Header({ home = false }) {
                 className={styles.burger}
               />
             </>
+          ) : user.role === "admin" || user.role === "influencer" ? (
+            <div className={styles.buttons}>
+              <Link
+                to={`${process.env.REACT_APP_DASHBOARD_LINK}`}
+                target="_blank">
+                <div
+                  className={`${styles.dashboard__wrapper} ${styles.button} ${styles.join__as__creator}`}>
+                  <img src={edit} alt="" className={styles.dashboard__icon} />
+                  Dashboard
+                </div>
+              </Link>
+              <div
+                className={`${styles.logout__wrapper} ${styles.button} ${styles.join__as__brand}`}
+                onClick={handleLogout}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  className={styles.logout__icon}>
+                  <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z" />
+                </svg>
+                <span className={styles.logout}>Logout</span>
+              </div>
+              <img
+                src={burger}
+                alt="Burger Icon to display the menu"
+                className={styles.burger}
+              />
+            </div>
           ) : (
             <div className={styles.buttons}>
-              <Link to={"/dashboard"}>
+              <Link to={`/coming-soon`} target="_blank">
                 <div
                   className={`${styles.dashboard__wrapper} ${styles.button} ${styles.join__as__creator}`}>
                   <img src={edit} alt="" className={styles.dashboard__icon} />

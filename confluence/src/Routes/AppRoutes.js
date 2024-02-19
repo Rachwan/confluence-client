@@ -17,6 +17,7 @@ import SingleInfluencer from "../Pages/SingleInfluencer/SingleInfluencer.js";
 import ComingSoon from "../Pages/ComingSoon/ComingSoon.js";
 import Dashboard from "../Pages/Dashboard/Dashboard.js";
 import Collaboration from "../Pages/Collaboration/Collaboration.js";
+import Loading from "../Components/Loading/Loading.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
@@ -51,6 +52,7 @@ const Router = () => {
               path=":userName/collaborations/:title"
               element={<Collaboration />}
             />
+            <Route path="/loading" element={<Loading />} />
           </Route>
 
           {/* Protected Routes */}
