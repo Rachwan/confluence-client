@@ -5,7 +5,7 @@ import styles from "./Influencers.module.css";
 import { Helmet } from "react-helmet-async";
 import Intro from "../../Components/Intro/Intro";
 import View from "../../Components/View/View";
-import Loading from "../../Components/Loading/Loading";
+// import Loading from "../../Components/Loading/Loading";
 
 function Influencers() {
   const [selectedPlatform, setSelectedPlatform] = useState(null);

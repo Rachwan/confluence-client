@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Footer.module.css";
 import styles from "./Footer.module.css";
-import confluence from "../../Assets/Icons/confluence-footer.svg";
+import confluence from "../../Assets/Icons/confluenceTwo.svg";
 import anglesRight from "../../Assets/Icons/angles-right-solid.svg";
 import airplaing from "../../Assets/Icons/paper-plane-solid.svg";
 import Swal from "sweetalert2";
@@ -85,7 +85,7 @@ const Footer = () => {
                 Influencers
               </li>
             </Link>
-            <Link to={'/pricing'}>
+            <Link to={"/pricing"}>
               <li>
                 <img src={anglesRight} alt="" />
                 Pricing
@@ -114,7 +114,7 @@ const Footer = () => {
                 Influencers
               </li>
             </Link>
-            <Link to={'/pricing'}>
+            <Link to={"/pricing"}>
               <li>
                 <img src={anglesRight} alt="" />
                 Pricing

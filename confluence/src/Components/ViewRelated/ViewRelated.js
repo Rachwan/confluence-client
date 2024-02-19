@@ -25,7 +25,7 @@ const ViewRelated = ({ data }) => {
           backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.background})`,
         }}>
         <Link
-          to={`/influencer/${influencer?.name}`}
+          to={`/influencer/${data?.name}`}
           state={data}
           className={styles.profile}>
           <div
@@ -43,7 +43,7 @@ const ViewRelated = ({ data }) => {
       </div>
       <div className={styles.content}>
         <Link
-          to={`/influencer/${influencer?.name}`}
+          to={`/influencer/${data?.name}`}
           state={data}
           className={styles.category}>
           {data?.categoryId?.name} influencer

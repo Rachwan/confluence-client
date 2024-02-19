@@ -30,6 +30,7 @@
 }
 .logo__wrapper .logo img {
   width: 25px;
+  filter: brightness(0) invert(1);
 }
 .logo__name {
   font-size: 30px;
@@ -119,7 +120,7 @@
 }
 .input::placeholder {
   transition: 0.4s;
-  font-family: 'Barlow', sans-serif;
+  font-family: "Barlow", sans-serif;
 }
 .input:focus::placeholder {
   opacity: 0;
@@ -150,17 +151,17 @@
 }
 
 @media (max-width: 992px) {
-.container__wrapper {
-  flex-direction: column;
-  gap: 40px;
-  padding-bottom: 50px;
-}
-.container__wrapper > div {
-  width: 100%;
-}
-.email__input {
-  width: 75%;
-}
+  .container__wrapper {
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 50px;
+  }
+  .container__wrapper > div {
+    width: 100%;
+  }
+  .email__input {
+    width: 75%;
+  }
 }
 
 @media (max-width: 768px) {
