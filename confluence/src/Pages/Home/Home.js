@@ -22,7 +22,7 @@ function Home() {
     <>
       <main className={styles.main}>
         <Helmet>
-          <title>Home - Confluence</title>
+          <title>Home | Confluence</title>
           <meta name="description" content="" />
           <meta name="keywords" content="" />
         </Helmet>

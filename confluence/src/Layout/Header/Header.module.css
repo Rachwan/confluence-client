@@ -30,8 +30,18 @@ header {
   align-items: center;
   transform: translateY(3px);
 }
+
 .logo__wrapper .logo img {
   width: 25px;
+  animation: rotateX infinite 0.7s linear;
+}
+@keyframes rotateX {
+  0% {
+    transform: rotateY(360deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
 }
 .logo__name {
   font-size: 30px;
@@ -192,7 +202,7 @@ header {
     gap: 5px;
   }
   .button {
-    padding: 12px 11px;
+    padding: 12px 20px;
     font-size: 16px;
   }
 }

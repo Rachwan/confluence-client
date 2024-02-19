@@ -15,9 +15,11 @@ function Hero() {
                 Find and hire the perfect Influencer for the Job
               </h1>
               <p className={styles.description}>
-                Our marketplace offers a wide range of features designed to make
+                {/* Our marketplace offers a wide range of features designed to make
                 the collaboration process efficient and effective. Influencers
-                can showcase their unique talents.
+                can showcase their unique talents. */}
+                Our marketplace streamlines collaboration, enabling influencers
+                to showcase their unique talents and collaborations efficiently.
               </p>
               <Link to={"/creators"}>
                 <div className={styles.button}>Discover Now</div>
