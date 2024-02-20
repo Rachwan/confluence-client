@@ -121,7 +121,7 @@
 }
 @media (max-width: 1200px) {
   .hero {
-    height: 60vh;
+    height: 65vh;
     background-position: inherit;
   }
   .content .main__title {

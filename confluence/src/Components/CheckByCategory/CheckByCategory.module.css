@@ -55,3 +55,8 @@
   line-height: 18px;
   font-weight: 700;
 }
+@media (max-width: 992px) {
+  .main__wrapper {
+    padding-top: calc(var(--main-section-spacing));
+  }
+}

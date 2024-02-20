@@ -18,6 +18,26 @@ function Collaboration() {
   const location = useLocation();
   const data = location.state && location.state;
 
+  // Fetch the collab related to this influencer
+  const [fourCollabs, setFourCollabs] = useState([]);
+  const fetchFourCollabs = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND}/collaboration/userfourcollaborations/${data?.userId?._id}`
+      );
+      setFourCollabs(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchFourCollabs();
+  }, []);
+
+  //--------------------
+
   // Fetch 5 related collabs to the same category
   useEffect(() => {
     const fetchSimilarCollabs = async () => {
@@ -224,64 +244,20 @@ function Collaboration() {
                   ))}
               </div>
             </div>
-            <h3 className={styles.check__this}>You can also check this:</h3>
+            <h3 className={styles.check__this}>
+              You can also check this for {data?.userId?.name}:
+            </h3>
             <div className={styles.related__self}>
-              <div className={styles.singlee}>
-                <ViewRelated
-                  bgImg={background}
-                  profileLink={"/collaboration"}
-                  pImg={profile}
-                  infName={"Rachwan Harb"}
-                  totalFollowers={"300k"}
-                  link={"/filter-by-platform"}
-                  linkContent={"YouTube"}
-                  text={
-                    "Tom Oliver is inspiring others to live their best lives"
-                  }
-                />
-              </div>
-              <div className={styles.singlee}>
-                <ViewRelated
-                  bgImg={background}
-                  profileLink={"/collaboration"}
-                  pImg={profile}
-                  infName={"Rachwan Harb"}
-                  totalFollowers={"300k"}
-                  link={"/filter-by-platform"}
-                  linkContent={"YouTube"}
-                  text={
-                    "Tom Oliver is inspiring others to live their best lives"
-                  }
-                />
-              </div>
-              <div className={styles.singlee}>
-                <ViewRelated
-                  bgImg={background}
-                  profileLink={"/collaboration"}
-                  pImg={profile}
-                  infName={"Rachwan Harb"}
-                  totalFollowers={"300k"}
-                  link={"/filter-by-platform"}
-                  linkContent={"YouTube"}
-                  text={
-                    "Tom Oliver is inspiring others to live their best lives"
-                  }
-                />
-              </div>
-              <div className={styles.singlee}>
-                <ViewRelated
-                  bgImg={background}
-                  profileLink={"/collaboration"}
-                  pImg={profile}
-                  infName={"Rachwan Harb"}
-                  totalFollowers={"300k"}
-                  link={"/filter-by-platform"}
-                  linkContent={"YouTube"}
-                  text={
-                    "Tom Oliver is inspiring others to live their best lives"
-                  }
-                />
-              </div>
+              {fourCollabs &&
+                fourCollabs.map((collab) => (
+                  <div className={styles.singlee}>
+                    <ViewRelatedCollabs
+                      key={collab?._id}
+                      data={collab}
+                      linkTo={`${collab?.userId?.name}/collaboration/${collab?.title}`}
+                    />
+                  </div>
+                ))}
             </div>
           </div>
         </div>
