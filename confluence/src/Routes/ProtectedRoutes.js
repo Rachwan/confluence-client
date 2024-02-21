@@ -1,38 +1,21 @@
 import React, { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { UserContext } from "../UseContext/UserContext.js";
-import Layout from "./Layout.js";
-import Login from "../Pages/Login/Login.js";
+import Loading from "../Components/Loading/Loading.js";
 
 function ProtectedRoutes({ isAllowed, children }) {
   const { user, checkUser } = useContext(UserContext);
 
   if (checkUser) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (!user && !checkUser) {
-    return (
-      <Navigate
-        to={
-          <Layout>
-            <Login />
-          </Layout>
-        }
-      />
-    );
+    return <Navigate to={"/login"} />;
   }
 
   if (!isAllowed) {
-    return (
-      <Navigate
-        to={
-          <Layout>
-            <Login />
-          </Layout>
-        }
-      />
-    );
+    return <Navigate to={"/unauthorized"} />;
   }
 
   if (user.role === "business") {

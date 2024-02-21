@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoutes.js";
-import React from "react";
-import { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { UserContext } from "../UseContext/UserContext.js";
 import Layout from "../Routes/Layout.js";
 import Home from "../Pages/Home/Home.js";
@@ -15,12 +14,21 @@ import About from "../Pages/About/About.js";
 import Influencers from "../Pages/Influencers/Influencers.js";
 import SingleInfluencer from "../Pages/SingleInfluencer/SingleInfluencer.js";
 import ComingSoon from "../Pages/ComingSoon/ComingSoon.js";
-import Dashboard from "../Pages/Dashboard/Dashboard.js";
 import Collaboration from "../Pages/Collaboration/Collaboration.js";
 import Loading from "../Components/Loading/Loading.js";
+import Unauthorized from "../Pages/Unauthorized/Unauthorized.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
+
+  const DashboardRedirect = () => {
+    useEffect(() => {
+      window.location.href = `${process.env.REACT_APP_DASHBOARD_LINK}`;
+    }, []);
+
+    return null;
+  };
+
   return (
     <div>
       <BrowserRouter>
@@ -28,6 +36,7 @@ const Router = () => {
           {/* Routes W/o Layout */}
           <Route path="/" element={<Home />} />
           <Route path="/*" element={<NotFound />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
 
           {/* Coming Soon */}
           <Route path="/coming-soon" element={<ComingSoon />} />
@@ -44,10 +53,6 @@ const Router = () => {
             <Route path="/about" element={<About />} />
             <Route path="/influencers" element={<Influencers />} />
             <Route path="/influencer/:name" element={<SingleInfluencer />} />
-            {/* <Route
-              path="/influencer/:name/collaborations"
-              element={<SingleInfluencer />}
-            /> */}
             <Route
               path=":userName/collaborations/:title"
               element={<Collaboration />}
@@ -67,7 +72,7 @@ const Router = () => {
                 }
               />
             }>
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard" element={<DashboardRedirect />} />
           </Route>
         </Routes>
       </BrowserRouter>

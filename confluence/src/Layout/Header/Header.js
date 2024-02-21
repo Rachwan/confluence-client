@@ -153,7 +153,7 @@ function Header({ home = false }) {
             </div>
           ) : (
             <div className={styles.buttons}>
-              <Link to={`/coming-soon`} target="_blank">
+              <Link to={`/dashboard`} target="_blank">
                 <div
                   className={`${styles.dashboard__wrapper} ${styles.button} ${styles.join__as__creator}`}>
                   <img src={edit} alt="" className={styles.dashboard__icon} />
