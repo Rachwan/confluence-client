@@ -6,7 +6,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 37px 0 0 0;
+  /* padding: 37px 0 0 0; */
   overflow: hidden;
   width: 100%;
   position: relative;
@@ -77,23 +77,26 @@
   border-radius: 100px;
   box-shadow: rgba(33, 35, 38, 0.1) 0 15px 10px -10px;
   padding: 35px 50px;
-  height: 150px;
+  height: 125px;
 }
 .deals .title {
   font-family: Barlow;
   line-height: 34px;
   color: #242424;
-  font-size: 28px;
 }
 .deals .title span {
   color: var(--main-orange);
 }
 .deals .companies {
   display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  flex: 1 1;
+  justify-content: center;
   gap: 20px;
 }
 .deals .company img {
-  width: 145px;
+  width: 120px;
   transition: var(--main-transition);
 }
 .deals .company img:hover {
@@ -103,12 +106,15 @@
   .hero {
     max-height: 80vh;
   }
+  .deals .title {
+    font-size: 26px;
+  }
 }
 @media (max-width: 1440px) {
   .hero {
     height: 65vh;
     display: flex;
-    padding-top: 40px;
+    /* padding-top: 40px; */
   }
   .content .main__title {
     line-height: 60px;
@@ -117,6 +123,19 @@
   .description {
     margin: 20px 0;
     font-size: 19px;
+  }
+  .deals .wrapper {
+    padding: 35px 40px;
+    height: 125px;
+  }
+  .deals .title {
+    font-size: 25px;
+  }
+  .deals .companies .company:nth-child(1) {
+    display: none;
+  }
+  .deals .companies {
+    gap: 10px;
   }
 }
 @media (max-width: 1200px) {
@@ -135,6 +154,12 @@
   .button {
     padding: 12px 20px;
     font-size: 16px;
+  }
+  .deals .title {
+    font-size: 22px;
+  }
+  .deals .companies .company:nth-child(2) {
+    display: none;
   }
 }
 @media (max-width: 992px) {
@@ -157,6 +182,7 @@
 @media (max-width: 600px) {
   .hero {
     padding-top: 0;
+    height: 60vh;
   }
   .content {
     margin-bottom: 0;

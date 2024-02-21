@@ -1,72 +1,97 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styles from "./FeaturedCollabs.module.css";
 import SectionHead from "../SectionHead/SectionHead";
-import profile from "../../Assets/Images/Main-floating3-1.png";
-import background from "../../Assets/Images/Main-prod25-300x371.jpg";
-import ViewHome from "../../Components/ViewHome/ViewHome";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import ViewRelatedCollabs from "../ViewRelatedCollabs/ViewRelatedCollabs";
 
 function FeaturedCollabs() {
+  const [eightCollabs, setEightCollabs] = useState([]);
+
+  const fetchEightCollabs = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND}/collaboration/get/newesteight`
+      );
+      setEightCollabs(response.data);
+      console.log("response.data helloooooooo", response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchEightCollabs();
+  }, []);
+
+  //--------------------
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1440,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <>
       <section className={styles.main__wrapper}>
         <div className={`container ${styles.wrapper}`}>
           <SectionHead
             title={"Featured Collaborations"}
-            description={
-              "We have a lot of opportunities for you. Come check them!"
-            }
+            description={"We have a lot of opportunities for you!"}
           />
           <div className={styles.collabs}>
-            <ViewHome
-              bgImg={background}
-              profileLink={"/about"}
-              pImg={profile}
-              infName={"Matt Young"}
-              totalFollowers={"300k"}
-              link={"/single-collab"}
-              linkContent={"Platform"}
-              text={"Tom Oliver is inspiring others to live their best lives"}
-            />
-            <ViewHome
-              bgImg={background}
-              profileLink={"/about"}
-              pImg={profile}
-              infName={"Matt Young"}
-              totalFollowers={"300k"}
-              link={"/single-collab"}
-              linkContent={"Platform"}
-              text={"Tom Oliver is inspiring others to live their best lives"}
-            />
-            <ViewHome
-              bgImg={background}
-              profileLink={"/about"}
-              pImg={profile}
-              infName={"Matt Young"}
-              totalFollowers={"300k"}
-              link={"/single-collab"}
-              linkContent={"Platform"}
-              text={"Tom Oliver is inspiring others to live their best lives"}
-            />
-            <ViewHome
-              bgImg={background}
-              profileLink={"/about"}
-              pImg={profile}
-              infName={"Matt Young"}
-              totalFollowers={"300k"}
-              link={"/single-collab"}
-              linkContent={"Platform"}
-              text={"Tom Oliver is inspiring others to live their best lives"}
-            />
-            <ViewHome
-              bgImg={background}
-              profileLink={"/about"}
-              pImg={profile}
-              infName={"Matt Young"}
-              totalFollowers={"300k"}
-              link={"/single-collab"}
-              linkContent={"Platform"}
-              text={"Tom Oliver is inspiring others to live their best lives"}
-            />
+            <Slider {...settings} className={styles.carousel}>
+              {eightCollabs &&
+                eightCollabs.map((collab) => (
+                  <div className={styles.single}>
+                    <ViewRelatedCollabs
+                      key={collab?._id}
+                      data={collab}
+                      linkTo={`${collab?.userId?.name}/collaboration/${collab?.title}`}
+                    />
+                  </div>
+                ))}
+            </Slider>
           </div>
         </div>
       </section>

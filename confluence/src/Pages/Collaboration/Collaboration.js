@@ -4,14 +4,12 @@ import { Link } from "react-router-dom";
 import styles from "./Collaboration.module.css";
 import { Helmet } from "react-helmet-async";
 import Intro from "../../Components/Intro/Intro";
-import image from "../../Assets/Images/Main-prod25-300x371.jpg";
-import ViewRelated from "../../Components/ViewRelated/ViewRelated";
 import ViewRelatedCollabs from "../../Components/ViewRelatedCollabs/ViewRelatedCollabs";
-import profile from "../../Assets/Images/Main-floating3-1.png";
-import background from "../../Assets/Images/Main-prod25-300x371.jpg";
 import star from "../../Assets/Icons/star-solid.svg";
 import { useLocation } from "react-router-dom";
-import ViewCollabs from "../../Components/ViewCollabs/ViewCollabs";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function Collaboration() {
   const [similarCollabs, setSimilarCollabs] = useState([]);
@@ -74,6 +72,29 @@ function Collaboration() {
       return followers.toString();
     }
   }
+  // const settings = {
+  //   dots: true,
+  //   autoplay: true,
+  //   autoplaySpeed: 1500,
+  //   pauseOnHover: true,
+  //   className: "center",
+  //   centerMode: true,
+  //   infinite: true,
+  //   centerPadding: "70px",
+  //   slidesToShow: 3,
+  //   speed: 500,
+  // };
+  const settings = {
+    dots: true,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    pauseOnHover: true,
+    centerMode: true,
+    centerPadding: "0px",
+    infinite: true,
+    slidesToShow: 3,
+    speed: 500,
+  };
 
   return (
     <main className={styles.main}>
@@ -89,37 +110,36 @@ function Collaboration() {
       />
       <div className={`container ${styles.wrapper}`}>
         <div className={styles.images}>
-          <div className={styles.image}>
-            <img
-              src={`${process.env.REACT_APP_BACKEND}/${data?.firstImage}`}
-              alt=""
-              className={styles.image}
-            />
-          </div>
-          <div className={styles.image}>
-            <img
-              src={`${process.env.REACT_APP_BACKEND}/${data?.secondImage}`}
-              alt=""
-              className={styles.image}
-            />
-          </div>
-          <div className={styles.image}>
-            <img
-              src={`${process.env.REACT_APP_BACKEND}/${data?.thirdImage}`}
-              alt=""
-              className={styles.image}
-            />
-          </div>
-          <div className={styles.image}>
-            <img
-              src={`${process.env.REACT_APP_BACKEND}/${data?.fourthImage}`}
-              alt=""
-              className={styles.image}
-            />
-          </div>
-          {/* <div
-            className={styles.image}
-            style={{ backgroundImage: `url(${image})` }}></div> */}
+          <Slider {...settings}>
+            <div className={styles.image__wrapper}>
+              <div
+                className={styles.image}
+                style={{
+                  backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.firstImage})`,
+                }}></div>
+            </div>
+            <div className={styles.image__wrapper}>
+              <div
+                className={styles.image}
+                style={{
+                  backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.secondImage})`,
+                }}></div>
+            </div>
+            <div className={styles.image__wrapper}>
+              <div
+                className={styles.image}
+                style={{
+                  backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.thirdImage})`,
+                }}></div>
+            </div>
+            <div className={styles.image__wrapper}>
+              <div
+                style={{
+                  backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.fourthImage})`,
+                }}
+                className={styles.image}></div>
+            </div>
+          </Slider>
         </div>
         <div className={styles.content}>
           <div className={styles.info}>
@@ -220,7 +240,7 @@ function Collaboration() {
                     style={{
                       backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.userId?.profile})`,
                     }}></div>
-                  <h3 className={styles.name}>Rachwan Harb</h3>
+                  <h3 className={styles.name}>{data?.userId?.name}</h3>
                 </div>
               </Link>
               <p className={styles.note}>

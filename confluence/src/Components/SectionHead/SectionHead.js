@@ -9,12 +9,12 @@ function SectionHead({ title, description }) {
         <div className={styles.wrapper}>
           <div className={styles.text}>
             <h2 className={styles.title}>{title}</h2>
-            <p className={styles.description}>{description}</p>
           </div>
           <Link to={"/influencers"}>
             <div className={styles.button}>View All</div>
           </Link>
         </div>
+        <p className={styles.description}>{description}</p>
       </div>
     </>
   );

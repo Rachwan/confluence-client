@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styles from "./Hero.module.css";
 import heroImage from "../../Assets/Images/Main-slider_img.png";
 import { Link } from "react-router-dom";
 import company from "../../Assets/Images/Main-Client2.png";
 
 function Hero() {
+  const [businesses, setBusinesses] = useState([]);
+
+  const fetchBusinesses = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND}/user/get/newestfive`
+      );
+      setBusinesses(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBusinesses();
+  }, []);
+
   return (
     <>
       <section className={styles.main__hero}>
@@ -15,9 +33,6 @@ function Hero() {
                 Find and hire the perfect Influencer for the Job
               </h1>
               <p className={styles.description}>
-                {/* Our marketplace offers a wide range of features designed to make
-                the collaboration process efficient and effective. Influencers
-                can showcase their unique talents. */}
                 Our marketplace streamlines collaboration, enabling influencers
                 to showcase their unique talents and collaborations efficiently.
               </p>
@@ -36,21 +51,15 @@ function Hero() {
               You are in <span className={styles.special}>Good Company:</span>
             </h2>
             <div className={styles.companies}>
-              <div className={styles.company}>
-                <img src={company} alt="" />
-              </div>
-              <div className={styles.company}>
-                {" "}
-                <img src={company} alt="" />
-              </div>
-              <div className={styles.company}>
-                {" "}
-                <img src={company} alt="" />
-              </div>
-              <div className={styles.company}>
-                {" "}
-                <img src={company} alt="" />
-              </div>
+              {businesses &&
+                businesses.map((business) => (
+                  <div className={styles.company}>
+                    <img
+                      src={`${process.env.REACT_APP_BACKEND}/${business?.profile}`}
+                      alt=""
+                    />
+                  </div>
+                ))}
             </div>
           </div>
         </div>

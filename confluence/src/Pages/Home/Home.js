@@ -38,7 +38,7 @@ function Home() {
                 <div className={styles.heading}>
                   <h2 className={styles.title}>How it works</h2>
                   <p className={styles.paragraph}>
-                    We have a lot of opportunities for you. Come check them!
+                    We have a lot of opportunities for you.
                   </p>
                 </div>
                 <div className={styles.boxes}>
@@ -145,6 +145,8 @@ function Home() {
         </section>
         {/* CheckByPlatform */}
         <CheckByPlatform />
+        {/* FeaturedInfluencers */}
+        <FeaturedInfluencers />
         {/* Find */}
         <section className={styles.find}>
           <div className="container">
@@ -182,8 +184,6 @@ function Home() {
         </section>
         {/* FeaturedCollabs */}
         <FeaturedCollabs />
-        {/* FeaturedInfluencers */}
-        <FeaturedInfluencers />
         <Footer />
       </main>
     </>

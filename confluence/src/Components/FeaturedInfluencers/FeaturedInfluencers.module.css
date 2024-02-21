@@ -2,10 +2,9 @@
   padding-top: var(--main-section-spacing);
   padding-bottom: var(--main-section-spacing);
 }
-.collabs {
-  display: flex;
-  gap: 20px;
+@media (max-width: 768px) {
+  .main__wrapper {
+    padding-top: calc(var(--main-section-spacing) / 2);
+    padding-bottom: calc(var(--main-section-spacing) / 2);
+  }
 }
-/* .collab {
-  width: calc(20% - (80px / 5));
-} */

@@ -56,13 +56,14 @@ function Influencers() {
   //--------------------
 
   // Platforms
-
+  let array;
   const fetchplatformsData = async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND}/platform/all`
       );
-      setPlatformsData(response.data);
+      array = response.data.reverse();
+      setPlatformsData(array);
     } catch (error) {
       console.error("Error fetching platforms:", error);
     }
