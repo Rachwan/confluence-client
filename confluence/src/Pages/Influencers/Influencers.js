@@ -7,6 +7,7 @@ import Intro from "../../Components/Intro/Intro";
 import View from "../../Components/View/View";
 import LoadingSection from "../../Components/LoadingSection/LoadingSection";
 import Loading from "../../Components/Loading/Loading";
+import { useLocation } from "react-router-dom";
 
 function Influencers() {
   const [selectedPlatform, setSelectedPlatform] = useState(null);
@@ -20,25 +21,65 @@ function Influencers() {
   const [citiesData, setCitiesData] = useState([]);
 
   const [influencers, setInfluencers] = useState([]);
+  const [allInfluencers, setAllInfluencers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingPage, setLoadingPage] = useState(true);
+  const location = useLocation();
+
+  const [filterOptions, setFilterOptions] = useState({
+    categories: [],
+    platformId: null,
+    platformRange: null,
+    cities: [],
+    totalRange: [],
+  });
 
   // Influencers
-  const fetchInfluencersData = async () => {
+  const fetchAllInfluencersData = async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND}/user/get/influencer`
       );
       setLoading(false);
-      setInfluencers(response.data);
+      setAllInfluencers(response.data);
     } catch (error) {
       console.error("Error fetching influencers:", error);
     }
   };
 
   useEffect(() => {
-    fetchInfluencersData();
+    fetchAllInfluencersData();
   }, []);
+
+  // *******************
+
+  // useEffect(() => {
+  //   if (location.state && location?.state?.filterState) {
+  //     console.log("helloooo");
+  //     setFilterOptions(() => ({
+  //       // ...prevOptions,
+  //       categories: location.state.filterState.categories || [],
+  //     }));
+  //     handleFilter(filterOptions);
+  //   }
+  // }, [location.state]);
+  useEffect(() => {
+    if (location.state?.filterState) {
+      setFilterOptions({
+        categories: location.state.filterState.categories || [],
+      });
+    } else {
+      handleFilter({});
+    }
+  }, []);
+
+  useEffect(() => {
+    if (filterOptions) {
+      handleFilter(filterOptions);
+    } else {
+      setInfluencers(allInfluencers);
+    }
+  }, [filterOptions]);
   //--------------------
 
   // Categories + Loading
@@ -103,7 +144,7 @@ function Influencers() {
   const [activePage, setActivePage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
-  const totalItems = influencers.length;
+  const totalItems = influencers?.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   // For displaying the showing title
@@ -135,22 +176,12 @@ function Influencers() {
     setActivePage(pageNumber);
   };
 
-  //--------------------------------------------------
-
-  const [filterOptions, setFilterOptions] = useState({
-    categories: [],
-    platformId: null,
-    platformRange: null,
-    cities: [],
-    totalRange: [],
-  });
-
-  //--------------------
+  //-------------------------------------------------
 
   const handleCategoryClick = (categoryId) => {
     setSelectedCategory((prevCategories) =>
-      prevCategories.includes(categoryId)
-        ? prevCategories.filter((id) => id !== categoryId)
+      prevCategories?.includes(categoryId)
+        ? prevCategories?.filter((id) => id !== categoryId)
         : [...prevCategories, categoryId]
     );
 
@@ -162,15 +193,15 @@ function Influencers() {
 
   // Add this helper function to check if a category is selected
   const isCategorySelected = (categoryId) => {
-    return selectedCategory && selectedCategory.includes(categoryId);
+    return selectedCategory && selectedCategory?.includes(categoryId);
   };
 
   // --------
 
   const handleCityLinkClick = (cityId) => {
     setCityActiveLink((prevCities) =>
-      prevCities.includes(cityId)
-        ? prevCities.filter((city) => city !== cityId)
+      prevCities?.includes(cityId)
+        ? prevCities?.filter((city) => city !== cityId)
         : [...prevCities, cityId]
     );
 
@@ -181,7 +212,7 @@ function Influencers() {
   };
 
   const isCitySelected = (cityId) => {
-    return cityActiveLink.includes(cityId);
+    return cityActiveLink?.includes(cityId);
   };
   // ------------------
 
@@ -196,59 +227,8 @@ function Influencers() {
     }));
   };
 
-  // const handleLinkClick = (range) => {
-  //   setActiveLink(range);
-  //   setFilterOptions((prevOptions) => ({
-  //     ...prevOptions,
-  //     platformRange: range,
-  //   }));
-  // };
   const handleLinkClick = (range) => {
     setActiveLink(range);
-    // let convertedRange;
-
-    // if (range.includes("<")) {
-    //   // Handle "<10K" case
-    //   const match = range.match(/(\d+)/); // Extract numeric part using regex
-    //   console.log(match);
-    //   if (match && match[0]) {
-    //     const numericValue = Number(match[0]);
-    //     console.log(numericValue);
-    //     convertedRange = numericValue * 1000;
-    //     console.log(convertedRange);
-    //   } else {
-    //     // Handle the case where the value is not a valid number
-    //     console.error(`Invalid range: ${range}`);
-    //     return;
-    //   }
-    // } else if (range.includes("K") && range.includes("M")) {
-    //   // Handle "500K-1M" case
-    //   const rangeParts = range.split("-");
-    //   const minRange = Number(rangeParts[0].replace("K", "")) * 1000;
-    //   const maxRange = Number(rangeParts[1].replace("M", "")) * 1000000;
-    //   convertedRange = `${Number(minRange)}-${Number(maxRange)}`;
-    //   console.log(convertedRange);
-    // } else if (range.includes("K")) {
-    //   // Handle "10K-100K" case
-    //   const rangeParts = range.split("-");
-    //   const minRange = Number(rangeParts[0].replace("K", "")) * 1000;
-    //   const maxRange = Number(rangeParts[1].replace("K", "")) * 1000;
-    //   convertedRange = `${minRange}-${maxRange}`;
-    //   console.log(convertedRange);
-    // } else if (range.includes("M")) {
-    //   // Handle "1M+" case
-    //   const match = range.match(/(\d+)/);
-    //   if (match && match[0]) {
-    //     const numericValue = Number(match[0]);
-    //     convertedRange = numericValue * 1000000;
-    //   } else {
-    //     console.error(`Invalid range: ${range}`);
-    //     return;
-    //   }
-    // } else {
-    //   // Handle other cases (should be pure numbers)
-    //   convertedRange = Number(range);
-    // }
 
     setFilterOptions((prevOptions) => ({
       ...prevOptions,
@@ -265,8 +245,8 @@ function Influencers() {
   };
 
   const toggleArrayItem = (array, item) => {
-    if (array.includes(item)) {
-      return array.filter((value) => value !== item);
+    if (array?.includes(item)) {
+      return array?.filter((value) => value !== item);
     } else {
       return [...array, item];
     }
@@ -287,8 +267,8 @@ function Influencers() {
         platformId,
         platformRange,
         cities,
-        // ...(totalRange.length > 0 && { totalRange }),
-        totalRange: totalRange.length > 0 ? totalRange : null,
+        // ...(totalRange?.length > 0 && { totalRange }),
+        totalRange: totalRange?.length > 0 ? totalRange : null,
       };
 
       console.log(params);
@@ -310,21 +290,6 @@ function Influencers() {
     }
   };
 
-  const clearFilter = () => {
-    setFilterOptions({
-      categories: [],
-      platformId: null,
-      platformRange: null,
-      cities: [],
-      totalRange: [],
-    });
-    setSelectedPlatform(null);
-    setSelectedCategory(null);
-    setActiveLink(null);
-    setCityActiveLink(null);
-    setTotalFollowersActiveLink(null);
-  };
-
   if (loadingPage) {
     return <Loading />;
   }
@@ -340,12 +305,6 @@ function Influencers() {
         <Intro pageName={"Influencers"} background={"influencers"} />
         <div className={`container ${styles.wrapper}`}>
           <div className={styles.filter__wrapper}>
-            <button onClick={handleFilter} className={styles.filterButton}>
-              Apply Filters
-            </button>
-            <button onClick={clearFilter} className={styles.filterButton}>
-              Clear
-            </button>
             <div className={styles.categories}>
               <h1 className={styles.title}>Categories</h1>
               {categoriesData &&
@@ -552,19 +511,16 @@ function Influencers() {
                 <input type="hidden" name="query_type_country" value="or" />
               </form>
             </div>
+            {console.log(visibleInfluencers)}
             <div className={styles.main__container}>
               <div className={styles.influencers}>
-                {loading && (
+                {loading ? (
                   <LoadingSection
                     padding={`calc(var(--main-section-spacing) * 1.5)`}
                   />
-                )}
-
-                {console.log(visibleInfluencers)}
-
-                {visibleInfluencers &&
-                visibleInfluencers.length === 0 &&
-                !loading ? (
+                ) : visibleInfluencers &&
+                  visibleInfluencers?.length === 0 &&
+                  !loading ? (
                   <div className={styles.empty}>
                     <h1
                       style={{

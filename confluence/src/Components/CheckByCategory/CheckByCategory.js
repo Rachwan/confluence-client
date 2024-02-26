@@ -7,10 +7,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import LoadingSection from "../LoadingSection/LoadingSection";
+import { useNavigate } from "react-router-dom";
 
 function CheckByCategory() {
   const [categoriesData, setCategoriesData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const fetchCategoriesData = async () => {
     try {
@@ -74,6 +76,12 @@ function CheckByCategory() {
       },
     ],
   };
+
+  const handleCategory = (id) => {
+    const filterState = { categories: [id] };
+    navigate("/influencers", { state: { filterState } });
+  };
+
   return (
     <>
       <section className={styles.main__wrapper}>
@@ -91,19 +99,27 @@ function CheckByCategory() {
               <Slider {...settings}>
                 {categoriesData &&
                   categoriesData.map((category) => (
-                    <Link
-                      to={"/"}
-                      className={styles.platform}
-                      key={category._id}>
-                      <div
-                        className={styles.image}
-                        style={{
-                          backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${category?.background})`,
-                        }}></div>
-                      <div className={styles.platform__name}>
-                        {category.name}
-                      </div>
-                    </Link>
+                    <div
+                      onClick={() => handleCategory(category?._id)}
+                      key={category?._id}>
+                      <Link
+                        to={`/influencers?categoryId=${category?._id}`}
+                        className={styles.platform}>
+                        <a
+                          href={`/influencers?categoryId=${category?._id}`}
+                          target="_blank"
+                          rel="noopener noreferrer">
+                          <div
+                            className={styles.image}
+                            style={{
+                              backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${category?.background})`,
+                            }}></div>
+                          <div className={styles.platform__name}>
+                            {category.name}
+                          </div>
+                        </a>
+                      </Link>
+                    </div>
                   ))}
               </Slider>
             )}

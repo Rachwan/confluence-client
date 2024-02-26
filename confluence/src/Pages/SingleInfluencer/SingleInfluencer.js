@@ -259,9 +259,13 @@ function SingleInfluencer() {
                 ) : !loading &&
                   visibleCollaborations &&
                   visibleCollaborations.length == 0 ? (
-                  <h4 style={{ color: "var(--main-blue)", fontSize: "18px" }}>
+                  <h1
+                    style={{
+                      fontSize: "25px",
+                      fontFamily: "Barlow",
+                    }}>
                     {data?.name} has no collaborations yet.
-                  </h4>
+                  </h1>
                 ) : (
                   <>
                     {visibleCollaborations.map((collaboration) => (
