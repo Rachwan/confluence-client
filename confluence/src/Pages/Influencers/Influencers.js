@@ -35,51 +35,49 @@ function Influencers() {
   });
 
   // Influencers
-  const fetchAllInfluencersData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND}/user/get/influencer`
-      );
-      setLoading(false);
-      setAllInfluencers(response.data);
-    } catch (error) {
-      console.error("Error fetching influencers:", error);
-    }
-  };
+  // const fetchAllInfluencersData = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_BACKEND}/user/get/influencer`
+  //     );
+  //     setLoading(false);
+  //     setAllInfluencers(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching influencers:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchAllInfluencersData();
-  }, []);
+  // useEffect(() => {
+  //   fetchAllInfluencersData();
+  // }, []);
 
   // *******************
 
-  // useEffect(() => {
-  //   if (location.state && location?.state?.filterState) {
-  //     console.log("helloooo");
-  //     setFilterOptions(() => ({
-  //       // ...prevOptions,
-  //       categories: location.state.filterState.categories || [],
-  //     }));
-  //     handleFilter(filterOptions);
-  //   }
-  // }, [location.state]);
   useEffect(() => {
-    if (location.state?.filterState) {
-      setFilterOptions({
+    if (location.state && location?.state?.filterState) {
+      console.log("helloooo");
+      setFilterOptions(() => ({
+        // ...prevOptions,
         categories: location.state.filterState.categories || [],
-      });
-    } else {
-      handleFilter({});
+      }));
+      // handleFilter(filterOptions);
     }
-  }, []);
+  }, [location.state]);
+  // useEffect(() => {
+  //   if (location.state?.filterState) {
+  //     setFilterOptions({
+  //       categories: location.state.filterState.categories || [],
+  //     });
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    if (filterOptions) {
-      handleFilter(filterOptions);
-    } else {
-      setInfluencers(allInfluencers);
-    }
-  }, [filterOptions]);
+  // useEffect(() => {
+  //   if (filterOptions) {
+  //     handleFilter(filterOptions);
+  //   } else {
+  //     setInfluencers(allInfluencers);
+  //   }
+  // }, [filterOptions]);
   //--------------------
 
   // Categories + Loading
@@ -252,43 +250,80 @@ function Influencers() {
     }
   };
 
-  const handleFilter = async () => {
-    setLoading(true);
+  // const handleFilter = async () => {
+  //   setLoading(true);
 
-    try {
-      console.log("Filter Options:", filterOptions);
-      const { categories, platformId, platformRange, cities, totalRange } =
-        filterOptions;
-      console.log("Filter Options:", filterOptions);
-      console.log("Total Range:", totalRange);
+  //   try {
+  //     console.log("Filter Options:", filterOptions);
+  //     const { categories, platformId, platformRange, cities, totalRange } =
+  //       filterOptions;
+  //     console.log("Filter Options:", filterOptions);
+  //     console.log("Total Range:", totalRange);
 
-      const params = {
-        categories,
-        platformId,
-        platformRange,
-        cities,
-        // ...(totalRange?.length > 0 && { totalRange }),
-        totalRange: totalRange?.length > 0 ? totalRange : null,
-      };
+  //     const params = {
+  //       categories,
+  //       platformId,
+  //       platformRange,
+  //       cities,
+  //       // ...(totalRange?.length > 0 && { totalRange }),
+  //       totalRange: totalRange?.length > 0 ? totalRange : null,
+  //     };
 
-      console.log(params);
+  //     console.log(params);
 
-      const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND}/user/get/By/Filter`,
-        { params },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      setInfluencers(response.data);
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_BACKEND}/user/get/By/Filter`,
+  //       { params },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     setInfluencers(response.data);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.error("Error fetching filtered influencers:", error);
+  //     setLoading(false);
+  //   }
+  // };
+  const [filterLoading, setFilterLoading] = useState(false);
+  useEffect(() => {
+    const fetchFilteredInfluencers = async () => {
+      setFilterLoading(true);
       setLoading(false);
-    } catch (error) {
-      console.error("Error fetching filtered influencers:", error);
-      setLoading(false);
-    }
-  };
+
+      try {
+        const { categories, platformId, platformRange, cities, totalRange } =
+          filterOptions;
+
+        const params = {
+          categories,
+          platformId,
+          platformRange,
+          cities,
+          totalRange: totalRange?.length > 0 ? totalRange : null,
+        };
+
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND}/user/get/By/Filter`,
+          { params },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        setInfluencers(response.data);
+      } catch (error) {
+        console.error("Error fetching filtered influencers:", error);
+      } finally {
+        setFilterLoading(false);
+      }
+    };
+
+    fetchFilteredInfluencers();
+  }, [filterOptions]);
 
   if (loadingPage) {
     return <Loading />;
@@ -514,13 +549,14 @@ function Influencers() {
             {console.log(visibleInfluencers)}
             <div className={styles.main__container}>
               <div className={styles.influencers}>
-                {loading ? (
+                {loading || filterLoading ? (
                   <LoadingSection
                     padding={`calc(var(--main-section-spacing) * 1.5)`}
                   />
                 ) : visibleInfluencers &&
                   visibleInfluencers?.length === 0 &&
-                  !loading ? (
+                  !loading &&
+                  !filterLoading ? (
                   <div className={styles.empty}>
                     <h1
                       style={{
@@ -537,19 +573,21 @@ function Influencers() {
                   ))
                 )}
               </div>
-              <div className={styles.pagination}>
-                {pageNumbers != 1 &&
-                  pageNumbers.map((number) => (
-                    <button
-                      key={number}
-                      onClick={() => handlePageChange(number)}
-                      className={`${styles.pagination__button} ${
-                        number === activePage ? styles.activePage : ""
-                      }`}>
-                      {number}
-                    </button>
-                  ))}
-              </div>
+              {!loading && !filterLoading && (
+                <div className={styles.pagination}>
+                  {pageNumbers != 1 &&
+                    pageNumbers.map((number) => (
+                      <button
+                        key={number}
+                        onClick={() => handlePageChange(number)}
+                        className={`${styles.pagination__button} ${
+                          number === activePage ? styles.activePage : ""
+                        }`}>
+                        {number}
+                      </button>
+                    ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
