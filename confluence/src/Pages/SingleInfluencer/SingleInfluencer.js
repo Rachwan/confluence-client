@@ -3,8 +3,6 @@ import axios from "axios";
 import styles from "./SingleInfluencer.module.css";
 import { Helmet } from "react-helmet-async";
 import Intro from "../../Components/Intro/Intro";
-import profile from "../../Assets/Images/Main-floating3-1.png";
-import background from "../../Assets/Images/Main-prod25-300x371.jpg";
 import ViewCollabs from "../../Components/ViewCollabs/ViewCollabs";
 import { Link } from "react-router-dom";
 import verified from "../../Assets/Icons/verified.png";
@@ -13,20 +11,25 @@ import calendarIcon from "../../Assets/Icons/calendar.svg";
 import genderIcon from "../../Assets/Icons/gender.svg";
 import ViewRelated from "../../Components/ViewRelated/ViewRelated";
 import { useLocation } from "react-router-dom";
+import LoadingSection from "../../Components/LoadingSection/LoadingSection";
 
 function SingleInfluencer() {
   const [collaborations, setCollaborations] = useState([]);
   const [similarInfluencers, setSimilarInfluencers] = useState([]);
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
   const data = location.state && location.state;
-
+  console.log(data);
   // Fetch the collab related to this influencer
   const fetchCollaborations = async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND}/collaboration/usercollaborations/${data._id}`
       );
-      setCollaborations(response.data);
+      if (response.data) {
+        setCollaborations(response.data);
+        setLoading(false);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -124,7 +127,13 @@ function SingleInfluencer() {
           content={`SingleInfluencer Confluence, ${data?.categoryId?.name} influencer, business collaboration, influencer partnerships, SingleInfluencer information, get in touch`}
         />
       </Helmet>
-      <Intro pageName={data?.name} influencer={true} />
+      <Intro
+        pageName={data?.name}
+        influencer={true}
+        background={
+          data?.gender === "Male" ? "maleInfluencer" : "femaleInfluencer"
+        }
+      />
       <div className="container">
         <div className={styles.wrapper}>
           {/* Filter Section */}
@@ -155,7 +164,7 @@ function SingleInfluencer() {
                   <img src={calendarIcon} alt="" /> {data?.age}
                 </span>
                 <span className={styles.gender}>
-                  <img src={genderIcon} alt="" /> Male
+                  <img src={genderIcon} alt="" /> {data?.gender || "Male"}
                 </span>
               </div>
               <Link
@@ -217,7 +226,7 @@ function SingleInfluencer() {
                           />
                         </div>
                         <div className={styles.content}>
-                          <Link to={`${platform?.platformId?.name}-Link`}>
+                          <Link to={`${platform?.link}`} target="_blank">
                             <div className={styles.text}>{data?.name}</div>
                           </Link>
                           <div className={styles.count}>
@@ -243,21 +252,27 @@ function SingleInfluencer() {
 
             <div className={styles.main__container}>
               <div className={styles.influencers}>
-                {/* {collaborations &&
-                  collaborations.map((collaboration) => (
-                    <ViewCollabs
-                      key={collaboration._id}
-                      data={collaboration}
-                      formatFollowersCount={formatFollowersCount}
-                    />
-                  ))} */}
-                {visibleCollaborations.map((collaboration) => (
-                  <ViewCollabs
-                    key={collaboration._id}
-                    data={collaboration}
-                    formatFollowersCount={formatFollowersCount}
+                {loading ? (
+                  <LoadingSection
+                    padding={"calc(var(--main-section-spacing) / 2)"}
                   />
-                ))}
+                ) : !loading &&
+                  visibleCollaborations &&
+                  visibleCollaborations.length == 0 ? (
+                  <h4 style={{ color: "var(--main-blue)", fontSize: "18px" }}>
+                    {data?.name} has no collaborations yet.
+                  </h4>
+                ) : (
+                  <>
+                    {visibleCollaborations.map((collaboration) => (
+                      <ViewCollabs
+                        key={collaboration._id}
+                        data={collaboration}
+                        formatFollowersCount={formatFollowersCount}
+                      />
+                    ))}
+                  </>
+                )}
               </div>
               <div className={styles.pagination}>
                 {pageNumbers != 1 &&
@@ -277,17 +292,20 @@ function SingleInfluencer() {
         </div>
 
         {/* Related influencers */}
-        <div className={styles.related__wrapper}>
-          <h2 className={styles.title}>Related Influencers</h2>
-          <div className={styles.related}>
-            {similarInfluencers &&
-              similarInfluencers.map((influencer) => (
-                <div className={styles.single}>
-                  <ViewRelated key={influencer?._id} data={influencer} />
-                </div>
-              ))}
-          </div>
-        </div>
+        {similarInfluencers && similarInfluencers.length !== 0 ? (
+          <>
+            <div className={styles.related__wrapper}>
+              <h2 className={styles.title}>Related Influencers</h2>
+              <div className={styles.related}>
+                {similarInfluencers.map((influencer) => (
+                  <div className={styles.single}>
+                    <ViewRelated key={influencer?._id} data={influencer} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
+        ) : null}
       </div>
     </main>
   );

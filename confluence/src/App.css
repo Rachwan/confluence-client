@@ -55,12 +55,16 @@ a {
   width: 90%;
 }
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
   height: 12px;
 }
 ::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
+  background-color: var(--main-blue-hover);
 }
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-blue);
+}
+
 .slick-dots {
   bottom: -50px !important;
 }

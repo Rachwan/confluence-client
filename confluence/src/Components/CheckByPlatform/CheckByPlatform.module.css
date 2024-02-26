@@ -14,7 +14,7 @@
   /* width: 95% !important; */
 }
 .platform:hover {
-  box-shadow: var(--box-shadow-hover);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
 }
 .platform .image {
   overflow: hidden;

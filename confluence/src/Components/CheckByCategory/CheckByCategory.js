@@ -6,16 +6,21 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import LoadingSection from "../LoadingSection/LoadingSection";
 
 function CheckByCategory() {
   const [categoriesData, setCategoriesData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchCategoriesData = async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND}/category/get/eight`
       );
-      setCategoriesData(response.data);
+      if (response.data) {
+        setCategoriesData(response.data);
+        setLoading(false);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -26,11 +31,6 @@ function CheckByCategory() {
   }, []);
 
   const settings = {
-    // dots: true,
-    // infinite: true,
-    // speed: 500,
-    // slidesToShow: 5,
-    // slidesToScroll: 1,
     dots: true,
     infinite: true,
     slidesToShow: 5,
@@ -79,23 +79,34 @@ function CheckByCategory() {
       <section className={styles.main__wrapper}>
         <div className={`container ${styles.wrapper}`}>
           <SectionHead
-            title={"Check by Category"}
-            description={"We have a lot of opportunities for you!"}
+            title={"Explore by Category"}
+            description={"Endless opportunities await your discovery!"}
           />
           <div className={styles.platforms}>
-            <Slider {...settings}>
-              {categoriesData &&
-                categoriesData.map((category) => (
-                  <Link to={"/"} className={styles.platform}>
-                    <div
-                      className={styles.image}
-                      style={{
-                        backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${category?.background})`,
-                      }}></div>
-                    <div className={styles.platform__name}>{category.name}</div>
-                  </Link>
-                ))}
-            </Slider>
+            {loading ? (
+              <LoadingSection
+                padding={"calc(var(--main-section-spacing) / 2)"}
+              />
+            ) : (
+              <Slider {...settings}>
+                {categoriesData &&
+                  categoriesData.map((category) => (
+                    <Link
+                      to={"/"}
+                      className={styles.platform}
+                      key={category._id}>
+                      <div
+                        className={styles.image}
+                        style={{
+                          backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${category?.background})`,
+                        }}></div>
+                      <div className={styles.platform__name}>
+                        {category.name}
+                      </div>
+                    </Link>
+                  ))}
+              </Slider>
+            )}
           </div>
         </div>
       </section>

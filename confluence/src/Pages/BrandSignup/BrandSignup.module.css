@@ -1,15 +1,29 @@
-.background {
-  background-image: url(../../Assets/Images/Main-test_bg.jpg);
-}
 .intro {
   height: 380px;
   display: flex;
-  background-image: url(../../Assets/Images/contact-bread.jpg);
+  background-image: url(../../Assets/Images/joinasbrand.jpg);
   justify-content: center;
   align-items: center;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+}
+.intro::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+.intro .content,
+.chain {
+  position: relative;
+  z-index: 3;
 }
 .intro .content {
   color: var(--white-color);
@@ -56,6 +70,9 @@
   border-radius: 10px;
   width: 60%;
   margin: 100px 0;
+}
+.background {
+  background-image: url(../../Assets/Images/Main-test_bg.jpg);
 }
 .form,
 .form__title,

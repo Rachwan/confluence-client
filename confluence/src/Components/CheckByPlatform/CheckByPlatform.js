@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import LoadingSection from "../LoadingSection/LoadingSection";
 
 function CheckByPlatform() {
   const [platformsData, setPlatformsData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchplatformsData = async () => {
     try {
@@ -16,7 +18,7 @@ function CheckByPlatform() {
         `${process.env.REACT_APP_BACKEND}/platform/get/eight`
       );
       setPlatformsData(response.data);
-      console.log(response.data);
+      setLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -27,11 +29,6 @@ function CheckByPlatform() {
   }, []);
 
   const settings = {
-    // dots: true,
-    // infinite: true,
-    // speed: 500,
-    // slidesToShow: 5,
-    // slidesToScroll: 1,
     dots: true,
     infinite: true,
     slidesToShow: 5,
@@ -81,23 +78,34 @@ function CheckByPlatform() {
       <section className={styles.main__wrapper}>
         <div className={`container ${styles.wrapper}`}>
           <SectionHead
-            title={"Check by Platform"}
-            description={"We have a lot of opportunities for you!"}
+            title={"Explore by Platform"}
+            description={"Endless opportunities await your discovery!"}
           />
           <div className={styles.platforms}>
-            <Slider {...settings}>
-              {platformsData &&
-                platformsData.map((platform) => (
-                  <Link to={"/"} className={styles.platform}>
-                    <div
-                      className={styles.image}
-                      style={{
-                        backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${platform.background})`,
-                      }}></div>
-                    <div className={styles.platform__name}>{platform.name}</div>
-                  </Link>
-                ))}
-            </Slider>
+            {loading ? (
+              <LoadingSection
+                padding={"calc(var(--main-section-spacing) / 2)"}
+              />
+            ) : (
+              <Slider {...settings}>
+                {platformsData &&
+                  platformsData.map((platform) => (
+                    <Link
+                      to={"/"}
+                      className={styles.platform}
+                      key={platform._id}>
+                      <div
+                        className={styles.image}
+                        style={{
+                          backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${platform.background})`,
+                        }}></div>
+                      <div className={styles.platform__name}>
+                        {platform.name}
+                      </div>
+                    </Link>
+                  ))}
+              </Slider>
+            )}
           </div>
         </div>
       </section>

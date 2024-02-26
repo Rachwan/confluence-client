@@ -6,17 +6,21 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ViewRelatedCollabs from "../ViewRelatedCollabs/ViewRelatedCollabs";
+import LoadingSection from "../LoadingSection/LoadingSection";
 
 function FeaturedCollabs() {
   const [eightCollabs, setEightCollabs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchEightCollabs = async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND}/collaboration/get/newesteight`
       );
-      setEightCollabs(response.data);
-      console.log("response.data helloooooooo", response.data);
+      if (response.data) {
+        setEightCollabs(response.data);
+        setLoading(false);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -28,13 +32,9 @@ function FeaturedCollabs() {
 
   //--------------------
   const settings = {
-    dots: true,
+    // dots: true,
     infinite: true,
     slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1440,
@@ -76,22 +76,28 @@ function FeaturedCollabs() {
       <section className={styles.main__wrapper}>
         <div className={`container ${styles.wrapper}`}>
           <SectionHead
-            title={"Featured Collaborations"}
-            description={"We have a lot of opportunities for you!"}
+            title={"Collaboration Showcase"}
+            description={"Unlock the potential of influential partnerships!"}
           />
           <div className={styles.collabs}>
-            <Slider {...settings} className={styles.carousel}>
-              {eightCollabs &&
-                eightCollabs.map((collab) => (
-                  <div className={styles.single}>
-                    <ViewRelatedCollabs
-                      key={collab?._id}
-                      data={collab}
-                      linkTo={`${collab?.userId?.name}/collaboration/${collab?.title}`}
-                    />
-                  </div>
-                ))}
-            </Slider>
+            {loading ? (
+              <LoadingSection
+                padding={"calc(var(--main-section-spacing) / 2)"}
+              />
+            ) : (
+              <Slider {...settings} className={styles.carousel}>
+                {eightCollabs &&
+                  eightCollabs.map((collab) => (
+                    <div className={styles.single} key={collab._id}>
+                      <ViewRelatedCollabs
+                        key={collab?._id}
+                        data={collab}
+                        linkTo={`${collab?.userId?.name}/collaboration/${collab?.title}`}
+                      />
+                    </div>
+                  ))}
+              </Slider>
+            )}
           </div>
         </div>
       </section>

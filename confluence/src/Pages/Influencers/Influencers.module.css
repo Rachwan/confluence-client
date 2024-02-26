@@ -1,3 +1,19 @@
+.filterButton {
+  background-color: var(--second-blue);
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: var(--main-transition);
+  width: 100%;
+}
+.filterButton:hover {
+  background-color: var(--main-blue);
+}
 /* Main wrapper */
 .wrapper {
   display: flex;
@@ -50,6 +66,16 @@
   outline: none;
   color: white;
   font-weight: 600;
+}
+.filter__wrapper .category.categoryActiveLink {
+  background: var(--main-blue);
+  border-color: transparent;
+  outline: none;
+  color: white;
+  font-weight: 600;
+}
+.filter__wrapper .category.categoryActiveLink .icon {
+  filter: brightness(0) invert(1);
 }
 /* platform */
 
@@ -121,8 +147,8 @@
 .range .activeLink {
   color: var(--main-blue);
 }
-.city.activeLink {
-  color: red;
+.city a.activeLink {
+  color: var(--main-blue);
 }
 /* Second Section wrapper */
 .influencers__wrapper {
@@ -161,6 +187,7 @@
   font-size: 14px;
   border-radius: 30px;
   background: #f1f3f6;
+  cursor: pointer;
 }
 
 .main__container {
@@ -176,13 +203,6 @@
   gap: 30px;
   row-gap: 60px;
 }
-/* .activePlatform {
-  background-color: var(--main-blue);
-  padding: 13px 20px;
-  border-radius: 30px;
-  border: none;
-}
-*/
 .platformHeader .activeLink {
   color: var(--main-blue);
 }

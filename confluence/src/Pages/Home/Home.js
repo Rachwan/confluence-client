@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import Header from "../../Layout/Header/Header";
@@ -12,12 +12,41 @@ import iconOne from "../../Assets/Icons/Main-serv1-230x238.png";
 import iconTwo from "../../Assets/Icons/Main-serv2-230x238.png";
 import iconThree from "../../Assets/Icons/Main-serv3.png";
 import iconFour from "../../Assets/Icons/Main-serv4.png";
-import moneyIcon from "../../Assets/Icons/money-bill-solid.svg";
 import imageOne from "../../Assets/Images/Main-banner01-edit.png";
 import imageTwo from "../../Assets/Images/Main-banner02-edit.png";
 import Footer from "../../Layout/Footer/Footer";
+import search from "../../Assets/Icons/search.svg";
+import handeShake from "../../Assets/Icons/handshake.svg";
+import whiteStar from "../../Assets/Icons/white-solid.svg";
+import unlock from "../../Assets/Icons/unlock.svg";
+import axios from "axios";
+import Loading from "../../Components/Loading/Loading.js";
 
 function Home() {
+  const [businesses, setBusinesses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchBusinesses = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND}/user/get/newestfive`
+      );
+      if (response.data) {
+        setBusinesses(response.data);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBusinesses();
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <>
       <main className={styles.main}>
@@ -27,7 +56,7 @@ function Home() {
           <meta name="keywords" content="" />
         </Helmet>
         <Header home={true} />
-        <Hero />
+        <Hero businesses={businesses} loading={loading} />
         {/* CheckByCategory */}
         <CheckByCategory />
         {/* How it works */}
@@ -36,9 +65,10 @@ function Home() {
             <div className={styles.wrapper}>
               <div className={styles.content}>
                 <div className={styles.heading}>
-                  <h2 className={styles.title}>How it works</h2>
+                  <h2 className={styles.title}>Simplify the Process</h2>
                   <p className={styles.paragraph}>
-                    We have a lot of opportunities for you.
+                    Unlock a multitude of opportunities with our straightforward
+                    process.
                   </p>
                 </div>
                 <div className={styles.boxes}>
@@ -46,40 +76,48 @@ function Home() {
                     <div className={styles.icon}>
                       <img src={iconOne} alt="" />
                     </div>
-                    <div className={styles.title__box}>Create Account</div>
+                    <div className={styles.title__box}>Sign Up</div>
                     <div className={styles.box__phrase}>
-                      Vivamus vel fringilla est. Fusce fermentum, quam a aliquet
-                      semper, eros sapien ullamcorpe.
+                      Kickstart your journey by signing up and joining our
+                      diverse community. Experience the ease of registration and
+                      become part of an ever-expanding network of influencers
+                      and businesses.
                     </div>
                   </div>
                   <div className={styles.box}>
                     <div className={styles.icon}>
                       <img src={iconTwo} alt="" />
                     </div>
-                    <div className={styles.title__box}>Create Account</div>
+                    <div className={styles.title__box}>Collaborate</div>
                     <div className={styles.box__phrase}>
-                      Vivamus vel fringilla est. Fusce fermentum, quam a aliquet
-                      semper, eros sapien ullamcorpe.
+                      Embark on a seamless journey of collaboration. Explore a
+                      wide array of partnership opportunities tailored for your
+                      brand. Foster meaningful connections and create impactful
+                      campaigns.
                     </div>
                   </div>
                   <div className={styles.box}>
                     <div className={styles.icon}>
                       <img src={iconThree} alt="" />
                     </div>
-                    <div className={styles.title__box}>Create Account</div>
+                    <div className={styles.title__box}>Discover Profiles</div>
                     <div className={styles.box__phrase}>
-                      Vivamus vel fringilla est. Fusce fermentum, quam a aliquet
-                      semper, eros sapien ullamcorpe.
+                      Effortlessly browse diverse profiles to discover
+                      influencers aligning with your brand vision. Streamline
+                      hiring decisions with comprehensive profiles, ensuring
+                      informed choices.
                     </div>
                   </div>
                   <div className={styles.box}>
                     <div className={styles.icon}>
                       <img src={iconFour} alt="" />
                     </div>
-                    <div className={styles.title__box}>Create Account</div>
+                    <div className={styles.title__box}>Review & Rate</div>
                     <div className={styles.box__phrase}>
-                      Vivamus vel fringilla est. Fusce fermentum, quam a aliquet
-                      semper, eros sapien ullamcorpe.
+                      Share your insights and shape our vibrant community.
+                      Whether acknowledging outstanding collaborations or
+                      offering suggestions, your voice matters in fostering
+                      meaningful connections.
                     </div>
                   </div>
                 </div>
@@ -94,49 +132,46 @@ function Home() {
             <div className={styles.wrapper}>
               <div className={styles.feature}>
                 <div className={styles.icon}>
-                  <img src={moneyIcon} alt="" />
+                  <img src={search} alt="" />
                 </div>
                 <div className={styles.content}>
-                  <h2 className={styles.title}>Verified Creators</h2>
+                  <h2 className={styles.title}>Unique Influencers</h2>
                   <div className={styles.description}>
-                    Search influencers for free. No subscriptions, contracts or
+                    Explore a world of influencers tailored for your brand.
+                  </div>
+                </div>
+              </div>
+              <div className={styles.feature}>
+                <div className={styles.icon}>
+                  <img src={unlock} alt="" />
+                </div>
+                <div className={styles.content}>
+                  <h2 className={styles.title}>Collaboration Freedom</h2>
+                  <div className={styles.description}>
+                    Unlock the freedom to search influencers with no hidden
                     fees.
                   </div>
                 </div>
               </div>
               <div className={styles.feature}>
                 <div className={styles.icon}>
-                  <img src={moneyIcon} alt="" />
+                  <img src={whiteStar} alt="" />
                 </div>
                 <div className={styles.content}>
-                  <h2 className={styles.title}>No Upfront Cost</h2>
+                  <h2 className={styles.title}>Influencer Spotlight</h2>
                   <div className={styles.description}>
-                    Search influencers for free. No subscriptions, contracts or
-                    fees.
+                    Discover influencers in the spotlight, free of contracts.
                   </div>
                 </div>
               </div>
               <div className={styles.feature}>
                 <div className={styles.icon}>
-                  <img src={moneyIcon} alt="" />
+                  <img src={handeShake} alt="" />
                 </div>
                 <div className={styles.content}>
-                  <h2 className={styles.title}>Verified Creators</h2>
+                  <h2 className={styles.title}>Dynamic Discovery</h2>
                   <div className={styles.description}>
-                    Search influencers for free. No subscriptions, contracts or
-                    fees.
-                  </div>
-                </div>
-              </div>
-              <div className={styles.feature}>
-                <div className={styles.icon}>
-                  <img src={moneyIcon} alt="" />
-                </div>
-                <div className={styles.content}>
-                  <h2 className={styles.title}>No Upfront Cost</h2>
-                  <div className={styles.description}>
-                    Search influencers for free. No subscriptions, contracts or
-                    fees.
+                    Explore influencers dynamically, no strings attached.
                   </div>
                 </div>
               </div>

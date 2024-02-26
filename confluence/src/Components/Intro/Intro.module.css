@@ -4,15 +4,58 @@
 .intro {
   height: 380px;
   display: flex;
-  background-image: url(../../Assets/Images/contact-bread.jpg);
   justify-content: center;
   align-items: center;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
 }
-.background {
-  background-image: none;
+.intro::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+.influencers {
+  background-image: url(../../Assets/Images/contact-bread.jpg);
+}
+.maleInfluencer {
+  background-image: url(../../Assets/Images/influencer.jpg);
+  background-position: 0 -150px;
+}
+.femaleInfluencer {
+  background-image: url(../../Assets/Images/female-influencer1.jpg);
+  background-position: 0 -300px;
+}
+.collaboration {
+  background-image: url(../../Assets/Images/collab.jpeg);
+}
+.contact {
+  background-image: url(../../Assets/Images/contact.jpg);
+}
+@media (max-width: 1440px) {
+  .femaleInfluencer {
+    background-position: center center;
+  }
+}
+@media (max-width: 992px) {
+  .maleInfluencer {
+    background-position: unset;
+  }
+  .collaboration {
+    background-position: unset;
+  }
+}
+.intro .content,
+.chain {
+  z-index: 3;
+  position: relative;
 }
 .intro .content {
   color: var(--white-color);

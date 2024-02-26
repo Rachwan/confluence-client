@@ -15,16 +15,14 @@ function Collaboration() {
   const [similarCollabs, setSimilarCollabs] = useState([]);
   const location = useLocation();
   const data = location.state && location.state;
-
   // Fetch the collab related to this influencer
   const [fourCollabs, setFourCollabs] = useState([]);
   const fetchFourCollabs = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND}/collaboration/userfourcollaborations/${data?.userId?._id}`
+        `${process.env.REACT_APP_BACKEND}/collaboration/userfourcollaborations/${data.userId._id}/${data._id}`
       );
       setFourCollabs(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -72,28 +70,40 @@ function Collaboration() {
       return followers.toString();
     }
   }
-  // const settings = {
-  //   dots: true,
-  //   autoplay: true,
-  //   autoplaySpeed: 1500,
-  //   pauseOnHover: true,
-  //   className: "center",
-  //   centerMode: true,
-  //   infinite: true,
-  //   centerPadding: "70px",
-  //   slidesToShow: 3,
-  //   speed: 500,
-  // };
   const settings = {
     dots: true,
-    autoplay: true,
-    autoplaySpeed: 1500,
-    pauseOnHover: true,
-    centerMode: true,
-    centerPadding: "0px",
     infinite: true,
     slidesToShow: 3,
-    speed: 500,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -107,6 +117,7 @@ function Collaboration() {
         influencer={true}
         pageName={data?.userId?.name}
         title={data?.title}
+        background={"collaboration"}
       />
       <div className={`container ${styles.wrapper}`}>
         <div className={styles.images}>
@@ -264,13 +275,34 @@ function Collaboration() {
                   ))}
               </div>
             </div>
-            <h3 className={styles.check__this}>
-              You can also check this for {data?.userId?.name}:
-            </h3>
-            <div className={styles.related__self}>
-              {fourCollabs &&
-                fourCollabs.map((collab) => (
-                  <div className={styles.singlee}>
+            {fourCollabs && fourCollabs.length !== 0 ? (
+              <>
+                <h3 className={styles.check__this}>
+                  You can also check this for {data?.userId?.name}:
+                </h3>
+                <div className={styles.related__self}>
+                  {fourCollabs.map((collab) => (
+                    <div className={styles.singlee}>
+                      <ViewRelatedCollabs
+                        key={collab?._id}
+                        data={collab}
+                        linkTo={`${collab?.userId?.name}/collaboration/${collab?.title}`}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : null}
+          </div>
+        </div>
+        {/* Related Collabs */}
+        {similarCollabs && similarCollabs.length !== 0 ? (
+          <>
+            <div className={styles.related__wrapper}>
+              <h2 className={styles.title}>Related Collaborations</h2>
+              <div className={styles.related}>
+                {similarCollabs.map((collab) => (
+                  <div className={styles.single}>
                     <ViewRelatedCollabs
                       key={collab?._id}
                       data={collab}
@@ -278,25 +310,10 @@ function Collaboration() {
                     />
                   </div>
                 ))}
+              </div>
             </div>
-          </div>
-        </div>
-        {/* Related influencers */}
-        <div className={styles.related__wrapper}>
-          <h2 className={styles.title}>Related Collaborations</h2>
-          <div className={styles.related}>
-            {similarCollabs &&
-              similarCollabs.map((collab) => (
-                <div className={styles.single}>
-                  <ViewRelatedCollabs
-                    key={collab?._id}
-                    data={collab}
-                    linkTo={`${collab?.userId?.name}/collaboration/${collab?.title}`}
-                  />
-                </div>
-              ))}
-          </div>
-        </div>
+          </>
+        ) : null}
       </div>
     </main>
   );

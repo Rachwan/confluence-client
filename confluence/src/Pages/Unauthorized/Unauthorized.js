@@ -2,18 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Unauthorized.module.css";
 import { Helmet } from "react-helmet-async";
-import mainImage from "../../Assets/Images/404-page.png";
-import secondImage from "../../Assets/Images/404.png";
+import unauthorized from "../../Assets/Images/unauthorized1.svg";
 import Header from "../../Layout/Header/Header";
 
 function Unauthorized() {
   return (
     <main className={styles.main__wrapper}>
       <Helmet>
-        <title>Page Not Found - Confluence</title>
+        <title>Unauthorized | Confluence</title>
         <meta
           name="description"
-          content="Oops! The page you are looking for cannot be found. Check the URL or go back to the home page."
+          content="Oops! Your are not authorized. Check the URL or go back to the home page."
         />
         <meta name="keywords" content="404, page not found, error" />
       </Helmet>
@@ -21,7 +20,9 @@ function Unauthorized() {
       <div className={styles.main}>
         <div className={`container ${styles.wrapper}`}>
           <div className={styles.content}>
-            <img src={secondImage} alt="" />
+            <h1 className={styles.main__title}>
+              <span>Unauthorized</span> To Go This Path!
+            </h1>
             <p className={styles.message}>
               Lost on the collaboration path? Redirecting you to influential
               connections.
@@ -33,7 +34,14 @@ function Unauthorized() {
             </div>
           </div>
           <div className={styles.mainImage}>
-            <img src={mainImage} alt="A Sad Guy" />
+            <img src={unauthorized} alt="An unauthorized" />
+            <div className={styles.buttonWrapper}>
+              <Link to={"/"}>
+                <div className={`${styles.button} ${styles.second__button}`}>
+                  Back To Home
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

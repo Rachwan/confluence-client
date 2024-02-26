@@ -18,7 +18,9 @@ const View = ({ data }) => {
     0
   );
 
-  const followersToShow = formatFollowersCount(totalFollowers);
+  const followersToShow = formatFollowersCount(
+    data?.totalFollowers || totalFollowers
+  );
   return (
     <div className={styles.influencer}>
       <div
@@ -51,7 +53,7 @@ const View = ({ data }) => {
           {data?.categoryId?.name} influencer
         </Link>
         <p className={styles.text}>
-          {data?.name} is inspiring others to live their best lives
+          Discover {data?.name}. A World of Influence Await.
         </p>
       </div>
     </div>

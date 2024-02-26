@@ -6,17 +6,21 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ViewRelated from "../../Components/ViewRelated/ViewRelated";
+import LoadingSection from "../LoadingSection/LoadingSection";
 
 function FeaturedInfluencers() {
   const [eightInf, setEightInf] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchEightInf = async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND}/user/get/newesteight`
       );
-      setEightInf(response.data);
-      console.log(response.data);
+      if (response.data) {
+        setEightInf(response.data);
+        setLoading(false);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -30,17 +34,8 @@ function FeaturedInfluencers() {
 
   const settings = {
     // dots: true,
-    // infinite: true,
-    // speed: 500,
-    // slidesToShow: 5,
-    // slidesToScroll: 1,
-    dots: true,
     infinite: true,
     slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1440,
@@ -83,18 +78,24 @@ function FeaturedInfluencers() {
       <section className={styles.main__wrapper}>
         <div className={`container ${styles.wrapper}`}>
           <SectionHead
-            title={"Featured Influencers"}
-            description={"We have a lot of opportunities for you!"}
+            title={"Inspirational Voices"}
+            description={"Endless possibilities await your brand!"}
           />
           <div className={styles.collabs}>
-            <Slider {...settings}>
-              {eightInf &&
-                eightInf.map((influencer) => (
-                  <div className={styles.single}>
-                    <ViewRelated key={influencer?._id} data={influencer} />
-                  </div>
-                ))}
-            </Slider>
+            {loading ? (
+              <LoadingSection
+                padding={"calc(var(--main-section-spacing) / 2)"}
+              />
+            ) : (
+              <Slider {...settings}>
+                {eightInf &&
+                  eightInf.map((influencer) => (
+                    <div className={styles.single} key={influencer._id}>
+                      <ViewRelated key={influencer?._id} data={influencer} />
+                    </div>
+                  ))}
+              </Slider>
+            )}
           </div>
         </div>
       </section>

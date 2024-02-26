@@ -9,7 +9,8 @@ const Intro = ({
   background = false,
 }) => {
   return (
-    <section className={`${styles.intro} ${background ? styles.test : ""}`}>
+    <section
+      className={`${styles.intro} ${background ? styles[background] : ""}`}>
       <div className={styles.wrapper}>
         <div className={styles.chain}>
           <Link to={"/"}>

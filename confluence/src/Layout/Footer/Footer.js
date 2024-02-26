@@ -61,22 +61,17 @@ const Footer = () => {
             </div>
           </Link>
           <p className={styles.slogan}>
-            Connecting brands with digital stars that takes you far.
+            Connecting brands with digital stars, crafting collaborations that
+            propel you towards success.
           </p>
         </div>
         <div className={styles.company}>
-          <h3 className={styles.section__title}>Resources</h3>
+          <h3 className={styles.section__title}>Website Sections</h3>
           <ul className={styles.links}>
             <Link to="/">
               <li>
                 <img src={anglesRight} alt="" />
                 Home
-              </li>
-            </Link>
-            <Link to="/about">
-              <li>
-                <img src={anglesRight} alt="" />
-                About
               </li>
             </Link>
             <Link to="/influencers">
@@ -89,35 +84,41 @@ const Footer = () => {
               <li>
                 <img src={anglesRight} alt="" />
                 Pricing
+              </li>
+            </Link>
+            <Link to="/about">
+              <li>
+                <img src={anglesRight} alt="" />
+                About
               </li>
             </Link>
           </ul>
         </div>
         <div className={styles.company}>
-          <h3 className={styles.section__title}>About</h3>
+          <h3 className={styles.section__title}>Navigation Links</h3>
           <ul className={styles.links}>
-            <Link to="/">
+            <Link to={"/contact"}>
               <li>
                 <img src={anglesRight} alt="" />
-                Home
+                Contact
               </li>
             </Link>
-            <Link to="/about">
+            <Link to="/creator-signup">
               <li>
                 <img src={anglesRight} alt="" />
-                About
+                Join as Creator
               </li>
             </Link>
-            <Link to="/influencers">
+            <Link to="/brand-signup">
               <li>
                 <img src={anglesRight} alt="" />
-                Influencers
+                Join as Brand
               </li>
             </Link>
-            <Link to={"/pricing"}>
+            <Link to="/login">
               <li>
                 <img src={anglesRight} alt="" />
-                Pricing
+                Login
               </li>
             </Link>
           </ul>

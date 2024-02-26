@@ -157,12 +157,13 @@
 }
 .features .feature .icon img {
   width: 80px;
+  height: 80px;
 }
 .features .feature .content .title {
   font-size: 28px;
   color: var(--white-color);
-  margin-top: 10px;
-  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 .features .feature .content .description {
   color: var(--white-color);
@@ -188,6 +189,7 @@
 @media (max-width: 768px) {
   .features .feature .icon img {
     width: 65px;
+    height: 65px;
   }
   .features .feature .content .title {
     line-height: 27px;
@@ -199,10 +201,11 @@
     padding-top: calc(var(--main-section-spacing) / 2);
     padding-bottom: calc(var(--main-section-spacing) / 2);
   }
+  .features .wrapper {
+    gap: 30px;
+  }
   .features .feature {
     width: 100%;
-  }
-  .features .feature .content .title {
   }
 }
 

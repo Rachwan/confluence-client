@@ -22,7 +22,7 @@ export const UserProvider = ({ children }) => {
         `${process.env.REACT_APP_BACKEND}/logged-in-user`
       );
       setUser(response.data.user);
-      console.log("Fetched user data:", response.data.user);
+      console.log("userrrrr", response.data.user);
       setUserUpdated(false);
     } catch (err) {
       setUser(null);

@@ -1,28 +1,10 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import styles from "./Hero.module.css";
 import heroImage from "../../Assets/Images/Main-slider_img.png";
+import LoadingSection from "../../Components/LoadingSection/LoadingSection.js";
 import { Link } from "react-router-dom";
-import company from "../../Assets/Images/Main-Client2.png";
 
-function Hero() {
-  const [businesses, setBusinesses] = useState([]);
-
-  const fetchBusinesses = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND}/user/get/newestfive`
-      );
-      setBusinesses(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchBusinesses();
-  }, []);
-
+function Hero({ businesses, loading }) {
   return (
     <>
       <section className={styles.main__hero}>
@@ -30,14 +12,21 @@ function Hero() {
           <div className={`container ${styles.wrapper}`}>
             <div className={styles.content}>
               <h1 className={styles.main__title}>
-                Find and hire the perfect Influencer for the Job
+                {/* Find and hire the perfect Influencer for the Job */}
+                Discover and Connect with Influencers Tailored for Your Brand
               </h1>
               <p className={styles.description}>
+                {/* Our marketplace streamlines collaboration, enabling influencers
+                to showcase their unique talents and collaborations efficiently. */}
                 Our marketplace streamlines collaboration, enabling influencers
-                to showcase their unique talents and collaborations efficiently.
+                to efficiently showcase their unique talents. Find the perfect
+                match for your brand's needs.
               </p>
-              <Link to={"/creators"}>
-                <div className={styles.button}>Discover Now</div>
+              <Link to={"/influencers"} target="_blank">
+                <div className={styles.button}>
+                  {/* Discover Now */}
+                  Explore Now
+                </div>
               </Link>
             </div>
             <div className={styles.image__wrapper}>
@@ -51,15 +40,21 @@ function Hero() {
               You are in <span className={styles.special}>Good Company:</span>
             </h2>
             <div className={styles.companies}>
-              {businesses &&
-                businesses.map((business) => (
-                  <div className={styles.company}>
-                    <img
-                      src={`${process.env.REACT_APP_BACKEND}/${business?.profile}`}
-                      alt=""
-                    />
-                  </div>
-                ))}
+              {loading ? (
+                <LoadingSection padding={"0"} />
+              ) : (
+                <>
+                  {businesses &&
+                    businesses.map((business) => (
+                      <div className={styles.company} key={business._id}>
+                        <img
+                          src={`${process.env.REACT_APP_BACKEND}/${business?.profile}`}
+                          alt=""
+                        />
+                      </div>
+                    ))}
+                </>
+              )}
             </div>
           </div>
         </div>
