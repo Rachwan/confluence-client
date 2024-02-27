@@ -149,7 +149,7 @@ function BrandSignup() {
           icon: "success",
         });
         setTimeout(() => {
-          navigate("/", { replace: true });
+          navigate("/influencers", { replace: true });
         }, 1000);
       }
     } catch (error) {

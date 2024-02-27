@@ -23,7 +23,7 @@
   height: 85px;
   z-index: 1000;
   position: relative;
-  background-color: #83b6f8;
+  background-color: var(--third-blue);
 }
 .container {
   display: flex;

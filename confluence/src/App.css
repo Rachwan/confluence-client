@@ -7,6 +7,7 @@
   --main-orange: #f29218;
   --main-blue: #1878f2;
   --second-blue: #00306e;
+  --third-blue: #83b6f8;
   --white-color: #fff;
   --black-color: #000;
 
@@ -62,7 +63,7 @@ a {
   background-color: var(--main-blue-hover);
 }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--main-blue);
+  background-color: var(--third-blue);
 }
 
 .slick-dots {

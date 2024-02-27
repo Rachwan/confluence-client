@@ -56,7 +56,7 @@ function Header({ home = false }) {
     const handleScroll = () => {
       const scrollY = window.scrollY;
 
-      if (scrollY > 300) {
+      if (scrollY > 150) {
         setIsFixed(true);
       } else {
         setIsFixed(false);
@@ -204,29 +204,6 @@ function Header({ home = false }) {
                 </NavLink>
               </>
             )}
-            {/* <NavLink
-              to="/creator-signup"
-              className={`${styles.link} ${
-                location.pathname === "/creator-signup"
-                  ? styles.active__link
-                  : ""
-              } ${styles.removeLink}`}>
-              <li>Join as Creator</li>
-            </NavLink>
-            <NavLink
-              to="/brand-signup"
-              className={`${styles.link} ${
-                location.pathname === "/brand-signup" ? styles.active__link : ""
-              } ${styles.removeLink}`}>
-              <li>Join as Brand</li>
-            </NavLink>
-            <NavLink
-              to="/login"
-              className={`${styles.link} ${
-                location.pathname === "/login" ? styles.active__link : ""
-              } ${styles.removeLink}`}>
-              <li>Login</li>
-            </NavLink> */}
           </ul>
         </nav>
         <div className={styles.auth}>
