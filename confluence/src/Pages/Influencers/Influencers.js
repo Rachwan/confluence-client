@@ -26,11 +26,11 @@ function Influencers() {
   const [loading, setLoading] = useState(true);
   const [loadingPage, setLoadingPage] = useState(true);
   const location = useLocation();
-
+  console.log(location);
   const [filterOptions, setFilterOptions] = useState({
     categories: location?.state?.filterState?.categories || [],
-    platformId: null,
-    platformRange: null,
+    platformId: location?.state?.filterState?.platformId || null,
+    platformRange: location?.state?.filterState?.platformRange || null,
     cities: [],
     totalRange: [],
   });
@@ -46,10 +46,22 @@ function Influencers() {
   }, [filterOptions]);
 
   useEffect(() => {
-    if (location.state?.filterState) {
-      console.log("hello 1");
+    // Categories
+    if (location.state?.filterState?.categories) {
+      console.log("helloooo yooooo");
+      setSelectedCategory(location.state?.filterState?.categories);
       fetchFilteredInfluencers({
         categories: location.state.filterState.categories || [],
+      });
+    }
+    // Platform
+    if (location.state?.filterState?.platformId) {
+      // setSelectedCategory(location.state?.filterState?.categories);
+      setSelectedPlatform(location?.state?.filterState?.platformId);
+      setActiveLink(location?.state?.filterState?.platformRange[0]);
+      fetchFilteredInfluencers({
+        platformId: location?.state?.filterState?.platformId,
+        platformRange: location?.state?.filterState?.platformRange,
       });
     }
   }, [location.state]);
@@ -189,32 +201,59 @@ function Influencers() {
   };
   // ------------------
 
-  const handlePlatformClick = (platform) => {
+  const handlePlatformClick = (platformId) => {
     setSelectedPlatform((prevPlatform) =>
-      prevPlatform === platform ? null : platform
+      prevPlatform === platformId ? null : platformId
     );
     setActiveLink(null);
     setFilterOptions((prevOptions) => ({
       ...prevOptions,
-      platformId: prevOptions.platformId === platform._id ? null : platform._id,
+      platformId: prevOptions.platformId === platformId ? null : platformId,
     }));
   };
 
   const handleLinkClick = (range) => {
-    setActiveLink(range);
+    setFilterOptions((prevOptions) => {
+      // Check if prevOptions.platformRange is null or undefined
+      const isNullOrUndefined = !prevOptions.platformRange;
 
-    setFilterOptions((prevOptions) => ({
-      ...prevOptions,
-      platformRange: [range],
-    }));
+      // Check if the clicked range is the same as the current active range
+      const isActive =
+        !isNullOrUndefined && prevOptions.platformRange[0] === range;
+
+      // Toggle the active link and reset the platform range accordingly
+      const updatedOptions = {
+        ...prevOptions,
+        platformRange: isActive ? [] : [range],
+      };
+
+      // Update the active link state based on the toggle
+      setActiveLink(isActive ? null : range);
+
+      return updatedOptions;
+    });
   };
 
   const handleTotalFollowersClick = (range) => {
-    setTotalFollowersActiveLink(range);
-    setFilterOptions((prevOptions) => ({
-      ...prevOptions,
-      totalRange: [range],
-    }));
+    setFilterOptions((prevOptions) => {
+      // Check if prevOptions.totalRange is null or undefined
+      const isNullOrUndefined = !prevOptions.totalRange;
+
+      // Check if the clicked range is the same as the current active range
+      const isActive =
+        !isNullOrUndefined && prevOptions.totalRange[0] === range;
+
+      // Toggle the active link and reset the total range accordingly
+      const updatedOptions = {
+        ...prevOptions,
+        totalRange: isActive ? [] : [range],
+      };
+
+      // Update the active link state based on the toggle
+      setTotalFollowersActiveLink(isActive ? null : range);
+
+      return updatedOptions;
+    });
   };
 
   const toggleArrayItem = (array, item) => {
@@ -266,7 +305,7 @@ function Influencers() {
   const fetchFilteredInfluencers = async (filterBy) => {
     setFilterLoading(true);
     setLoading(false);
-
+    console.log(filterBy);
     try {
       const { categories, platformId, platformRange, cities, totalRange } =
         filterBy;
@@ -340,9 +379,11 @@ function Influencers() {
                     platform.name === "Instagram"
                       ? styles.instagram__hover
                       : styles.platform__hover
-                  } ${selectedPlatform === platform && styles.activePlatform}`}
+                  } ${
+                    selectedPlatform === platform._id && styles.activePlatform
+                  }`}
                   style={{ "--hover-color": platform.activeColor }}
-                  onClick={() => handlePlatformClick(platform)}>
+                  onClick={() => handlePlatformClick(platform._id)}>
                   <div className={styles.platformHeader}>
                     <div>
                       <img

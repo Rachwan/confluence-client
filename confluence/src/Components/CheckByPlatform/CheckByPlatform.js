@@ -7,10 +7,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import LoadingSection from "../LoadingSection/LoadingSection";
+import { useNavigate } from "react-router-dom";
 
 function CheckByPlatform() {
   const [platformsData, setPlatformsData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const fetchplatformsData = async () => {
     try {
@@ -73,6 +75,11 @@ function CheckByPlatform() {
     ],
   };
 
+  const handlePlatform = (id) => {
+    const filterState = { platformId: id, platformRange: ["100K-500K"] };
+    navigate("/influencers", { state: { filterState } });
+  };
+
   return (
     <>
       <section className={styles.main__wrapper}>
@@ -90,19 +97,23 @@ function CheckByPlatform() {
               <Slider {...settings}>
                 {platformsData &&
                   platformsData.map((platform) => (
-                    <Link
-                      to={"/"}
-                      className={styles.platform}
-                      key={platform._id}>
-                      <div
-                        className={styles.image}
-                        style={{
-                          backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${platform.background})`,
-                        }}></div>
-                      <div className={styles.platform__name}>
-                        {platform.name}
-                      </div>
-                    </Link>
+                    <div
+                      onClick={() => handlePlatform(platform?._id)}
+                      key={platform?._id}>
+                      <Link
+                        to={`/influencers?platformId=${platform?._id}`}
+                        className={styles.platform}
+                        key={platform._id}>
+                        <div
+                          className={styles.image}
+                          style={{
+                            backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${platform.background})`,
+                          }}></div>
+                        <div className={styles.platform__name}>
+                          {platform.name}
+                        </div>
+                      </Link>
+                    </div>
                   ))}
               </Slider>
             )}
