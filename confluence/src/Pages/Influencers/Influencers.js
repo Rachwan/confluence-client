@@ -8,6 +8,7 @@ import View from "../../Components/View/View";
 import LoadingSection from "../../Components/LoadingSection/LoadingSection";
 import Loading from "../../Components/Loading/Loading";
 import { useLocation } from "react-router-dom";
+import { useRef } from "react";
 
 function Influencers() {
   const [selectedPlatform, setSelectedPlatform] = useState(null);
@@ -27,57 +28,31 @@ function Influencers() {
   const location = useLocation();
 
   const [filterOptions, setFilterOptions] = useState({
-    categories: [],
+    categories: location?.state?.filterState?.categories || [],
     platformId: null,
     platformRange: null,
     cities: [],
     totalRange: [],
   });
 
-  // Influencers
-  // const fetchAllInfluencersData = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${process.env.REACT_APP_BACKEND}/user/get/influencer`
-  //     );
-  //     setLoading(false);
-  //     setAllInfluencers(response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching influencers:", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchAllInfluencersData();
-  // }, []);
-
-  // *******************
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (!firstRender.current) {
+      console.log("hello 3");
+      fetchFilteredInfluencers(filterOptions);
+    } else {
+      firstRender.current = false;
+    }
+  }, [filterOptions]);
 
   useEffect(() => {
-    if (location.state && location?.state?.filterState) {
-      console.log("helloooo");
-      setFilterOptions(() => ({
-        // ...prevOptions,
+    if (location.state?.filterState) {
+      console.log("hello 1");
+      fetchFilteredInfluencers({
         categories: location.state.filterState.categories || [],
-      }));
-      // handleFilter(filterOptions);
+      });
     }
   }, [location.state]);
-  // useEffect(() => {
-  //   if (location.state?.filterState) {
-  //     setFilterOptions({
-  //       categories: location.state.filterState.categories || [],
-  //     });
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   if (filterOptions) {
-  //     handleFilter(filterOptions);
-  //   } else {
-  //     setInfluencers(allInfluencers);
-  //   }
-  // }, [filterOptions]);
   //--------------------
 
   // Categories + Loading
@@ -177,16 +152,16 @@ function Influencers() {
   //-------------------------------------------------
 
   const handleCategoryClick = (categoryId) => {
-    setSelectedCategory((prevCategories) =>
-      prevCategories?.includes(categoryId)
-        ? prevCategories?.filter((id) => id !== categoryId)
-        : [...prevCategories, categoryId]
-    );
-
-    setFilterOptions((prevOptions) => ({
-      ...prevOptions,
-      categories: toggleArrayItem(prevOptions.categories, categoryId),
-    }));
+    setSelectedCategory((prevCategories) => {
+      const updatedCategories = prevCategories.includes(categoryId)
+        ? prevCategories.filter((id) => id !== categoryId)
+        : [...prevCategories, categoryId];
+      setFilterOptions((prevOptions) => ({
+        ...prevOptions,
+        categories: updatedCategories,
+      }));
+      return updatedCategories;
+    });
   };
 
   // Add this helper function to check if a category is selected
@@ -288,42 +263,38 @@ function Influencers() {
   //   }
   // };
   const [filterLoading, setFilterLoading] = useState(false);
-  useEffect(() => {
-    const fetchFilteredInfluencers = async () => {
-      setFilterLoading(true);
-      setLoading(false);
+  const fetchFilteredInfluencers = async (filterBy) => {
+    setFilterLoading(true);
+    setLoading(false);
 
-      try {
-        const { categories, platformId, platformRange, cities, totalRange } =
-          filterOptions;
+    try {
+      const { categories, platformId, platformRange, cities, totalRange } =
+        filterBy;
 
-        const params = {
-          categories,
-          platformId,
-          platformRange,
-          cities,
-          totalRange: totalRange?.length > 0 ? totalRange : null,
-        };
+      const params = {
+        categories,
+        platformId,
+        platformRange,
+        cities,
+        totalRange: totalRange?.length > 0 ? totalRange : null,
+      };
 
-        const response = await axios.get(
-          `${process.env.REACT_APP_BACKEND}/user/get/By/Filter`,
-          { params },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        setInfluencers(response.data);
-      } catch (error) {
-        console.error("Error fetching filtered influencers:", error);
-      } finally {
-        setFilterLoading(false);
-      }
-    };
-
-    fetchFilteredInfluencers();
-  }, [filterOptions]);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND}/user/get/By/Filter`,
+        { params },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setInfluencers(response.data);
+    } catch (error) {
+      console.error("Error fetching filtered influencers:", error);
+    } finally {
+      setFilterLoading(false);
+    }
+  };
 
   if (loadingPage) {
     return <Loading />;
