@@ -22,7 +22,6 @@ function Influencers() {
   const [citiesData, setCitiesData] = useState([]);
 
   const [influencers, setInfluencers] = useState([]);
-  const [allInfluencers, setAllInfluencers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingPage, setLoadingPage] = useState(true);
   const location = useLocation();
@@ -38,7 +37,6 @@ function Influencers() {
   const firstRender = useRef(true);
   useEffect(() => {
     if (!firstRender.current) {
-      console.log("hello 3");
       fetchFilteredInfluencers(filterOptions);
     } else {
       firstRender.current = false;
@@ -48,7 +46,6 @@ function Influencers() {
   useEffect(() => {
     // Categories
     if (location.state?.filterState?.categories) {
-      console.log("helloooo yooooo");
       setSelectedCategory(location.state?.filterState?.categories);
       fetchFilteredInfluencers({
         categories: location.state.filterState.categories || [],
@@ -56,7 +53,6 @@ function Influencers() {
     }
     // Platform
     if (location.state?.filterState?.platformId) {
-      // setSelectedCategory(location.state?.filterState?.categories);
       setSelectedPlatform(location?.state?.filterState?.platformId);
       setActiveLink(location?.state?.filterState?.platformRange[0]);
       fetchFilteredInfluencers({
@@ -214,20 +210,16 @@ function Influencers() {
 
   const handleLinkClick = (range) => {
     setFilterOptions((prevOptions) => {
-      // Check if prevOptions.platformRange is null or undefined
       const isNullOrUndefined = !prevOptions.platformRange;
 
-      // Check if the clicked range is the same as the current active range
       const isActive =
         !isNullOrUndefined && prevOptions.platformRange[0] === range;
 
-      // Toggle the active link and reset the platform range accordingly
       const updatedOptions = {
         ...prevOptions,
         platformRange: isActive ? [] : [range],
       };
 
-      // Update the active link state based on the toggle
       setActiveLink(isActive ? null : range);
 
       return updatedOptions;
@@ -236,20 +228,16 @@ function Influencers() {
 
   const handleTotalFollowersClick = (range) => {
     setFilterOptions((prevOptions) => {
-      // Check if prevOptions.totalRange is null or undefined
       const isNullOrUndefined = !prevOptions.totalRange;
 
-      // Check if the clicked range is the same as the current active range
       const isActive =
         !isNullOrUndefined && prevOptions.totalRange[0] === range;
 
-      // Toggle the active link and reset the total range accordingly
       const updatedOptions = {
         ...prevOptions,
         totalRange: isActive ? [] : [range],
       };
 
-      // Update the active link state based on the toggle
       setTotalFollowersActiveLink(isActive ? null : range);
 
       return updatedOptions;
