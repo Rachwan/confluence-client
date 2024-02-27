@@ -127,35 +127,6 @@ function Influencers() {
     setSortValue(sortValue);
   };
 
-  const sortInfluencers = () => {
-    setLoading(true);
-    if (sortValue === "Default sorting") {
-      const arrayOfInfluencers = visibleInfluencers.slice().reverse();
-      setVisibleInfluencers(arrayOfInfluencers.slice(0, itemsPerPage));
-    } else if (sortValue === "By latest joined") {
-      const arrayOfInfluencers = visibleInfluencers.slice();
-      setVisibleInfluencers(arrayOfInfluencers.slice(0, itemsPerPage));
-    }
-    if (sortValue === "By Followers: low to high") {
-      const sortedInfluencers = visibleInfluencers
-        .slice()
-        .sort((a, b) => a.totalFollowers - b.totalFollowers);
-      setVisibleInfluencers(sortedInfluencers);
-    }
-    if (sortValue === "By Followers: high to low") {
-      const sortedInfluencers = visibleInfluencers
-        .slice()
-        .sort((a, b) => b.totalFollowers - a.totalFollowers);
-      setVisibleInfluencers(sortedInfluencers);
-    }
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
-  };
-  useEffect(() => {
-    sortInfluencers();
-  }, [sortValue]);
-  // --------
   // Pagination
   const [activePage, setActivePage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
@@ -169,15 +140,31 @@ function Influencers() {
   const [visibleInfluencers, setVisibleInfluencers] = useState([]);
 
   useEffect(() => {
+    setLoading(true);
     const newRangeStart = (currentPage - 1) * itemsPerPage + 1;
     const newRangeEnd = Math.min(currentPage * itemsPerPage, totalItems);
 
     setRangeStart(newRangeStart);
     setRangeEnd(newRangeEnd);
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    setVisibleInfluencers(influencers.slice(indexOfFirstItem, indexOfLastItem));
-  }, [currentPage, itemsPerPage, totalItems, influencers]);
+
+    let sortedInfluencers = [...influencers]; // Create a copy to avoid modifying the original state
+    if (sortValue === "Default sorting") {
+      sortedInfluencers = sortedInfluencers;
+    } else if (sortValue === "By latest joined") {
+      sortedInfluencers.reverse();
+    } else if (sortValue === "By Followers: low to high") {
+      sortedInfluencers.sort((a, b) => a.totalFollowers - b.totalFollowers);
+    } else if (sortValue === "By Followers: high to low") {
+      sortedInfluencers.sort((a, b) => b.totalFollowers - a.totalFollowers);
+    }
+
+    setVisibleInfluencers(
+      sortedInfluencers.slice(newRangeStart - 1, newRangeEnd)
+    );
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, [currentPage, itemsPerPage, totalItems, influencers, sortValue]);
 
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
