@@ -17,6 +17,8 @@ import ComingSoon from "../Pages/ComingSoon/ComingSoon.js";
 import Collaboration from "../Pages/Collaboration/Collaboration.js";
 import Loading from "../Components/Loading/Loading.js";
 import Unauthorized from "../Pages/Unauthorized/Unauthorized.js";
+import ForgetPassword from "../Pages/FogetPassword/FogetPassword.js";
+import ResetPassword from "../Pages/ResetPassword/ResetPassword.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
@@ -58,6 +60,12 @@ const Router = () => {
               element={<Collaboration />}
             />
             <Route path="/loading" element={<Loading />} />
+            <Route path="/forget-password" element={<ForgetPassword />} />
+            <Route path="/reset-password/" element={<ResetPassword />} />
+            <Route
+              path="/reset-password/:id/:token"
+              element={<ResetPassword />}
+            />
           </Route>
 
           {/* Protected Routes */}

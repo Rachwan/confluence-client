@@ -83,9 +83,17 @@ function Login() {
           text: "Login successfully!",
           icon: "success",
         });
-        setTimeout(() => {
-          navigate("/", { replace: true });
-        }, 1000);
+        if (response.data.data.role === "admin") {
+          setTimeout(() => {
+            window.location.href = `${process.env.REACT_APP_DASHBOARD_LINK}/`;
+          }, 1000);
+        } else if (response.data.data.role === "influencer") {
+          window.location.href = `${process.env.REACT_APP_DASHBOARD_LINK}/influencer-details`;
+        } else {
+          navigate(`/`, {
+            replace: true,
+          });
+        }
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
@@ -182,7 +190,7 @@ function Login() {
                   onClick={handleSubmit}>
                   Login
                 </button>
-                <Link to={"/lostpassword"}>
+                <Link to={"/forget-password"} target="_blank">
                   <p className={styles.lostpassword}>Lost your password?</p>
                 </Link>
               </div>
