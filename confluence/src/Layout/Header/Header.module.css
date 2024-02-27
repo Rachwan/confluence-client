@@ -1,11 +1,23 @@
-header {
+.header {
   display: flex;
   align-items: center;
-}
-.header {
   height: 85px;
   z-index: 1000;
   position: relative;
+}
+@media (min-width: 992px) {
+  header.fixedHeader {
+    position: fixed;
+    top: -75px;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    background-color: white;
+    height: 75px;
+    transform: translateY(75px);
+    transition: transform 0.5s ease, height 0.3s ease;
+    box-shadow: 0px -22px 48px rgba(0, 0, 0, 0.3);
+  }
 }
 .home__header {
   height: 85px;
@@ -17,6 +29,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: -webkit-fill-available;
 }
 .logo__wrapper {
   display: flex;

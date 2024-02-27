@@ -50,9 +50,32 @@ function Header({ home = false }) {
     setNav(false);
   }, [location]);
 
+  const [isFixed, setIsFixed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY > 300) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className={home ? styles.home__header : styles.header}>
-      <div className={`container ${styles.container}`}>
+    <header
+      className={`${home ? styles.home__header : styles.header} ${
+        isFixed ? styles.fixedHeader : styles.removeFixedHeader
+      }`}>
+      <div className={`container ${styles.container} `}>
         <Link to={"/"}>
           <div className={styles.logo__wrapper}>
             <div className={styles.logo}>
