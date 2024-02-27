@@ -140,7 +140,7 @@ function CreatorSignup() {
     <>
       <main className={styles.main}>
         <Helmet>
-          <title>Signup As Creator - Confluence</title>
+          <title>Signup As Creator | Confluence</title>
           <meta name="description" content="" />
           <meta name="keywords" content="" />
         </Helmet>

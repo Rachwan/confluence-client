@@ -117,7 +117,7 @@ function SingleInfluencer() {
   return (
     <main className={styles.main}>
       <Helmet>
-        <title>{`${data?.name} - Confluence`}</title>
+        <title>{`${data?.name} | Confluence`}</title>
         <meta
           name="description"
           content={`Get in touch with ${data?.name}. Whether you're a business looking to collaborate or an influencer with ${data?.totalFollowers} followers in the ${data?.categoryId?.name} category, we're here to connect and support you.`}
@@ -131,7 +131,7 @@ function SingleInfluencer() {
         pageName={data?.name}
         influencer={true}
         background={
-          data?.gender === "Male" ? "maleInfluencer" : "femaleInfluencer"
+          data?.gender === "Female" ? "femaleInfluencer" : "maleInfluencer"
         }
       />
       <div className="container">

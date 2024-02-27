@@ -10,7 +10,7 @@ function Creators() {
   return (
     <>
       <Helmet>
-        <title>Our Creators - Confluence</title>
+        <title>Our Creators | Confluence</title>
         <meta
           name="description"
           content="Meet the talented creators on Confluence. Explore their profiles, expertise, and the unique perspectives they bring to digital collaborations. Join us in celebrating creativity and impactful partnerships."

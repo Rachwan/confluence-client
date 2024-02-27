@@ -9,6 +9,7 @@ import LoadingSection from "../../Components/LoadingSection/LoadingSection";
 import Loading from "../../Components/Loading/Loading";
 import { useLocation } from "react-router-dom";
 import { useRef } from "react";
+import SortBy from "../../Components/SortBy/SortBy";
 
 function Influencers() {
   const [selectedPlatform, setSelectedPlatform] = useState(null);
@@ -25,7 +26,6 @@ function Influencers() {
   const [loading, setLoading] = useState(true);
   const [loadingPage, setLoadingPage] = useState(true);
   const location = useLocation();
-  console.log(location);
   const [filterOptions, setFilterOptions] = useState({
     categories: location?.state?.filterState?.categories || [],
     platformId: location?.state?.filterState?.platformId || null,
@@ -121,6 +121,41 @@ function Influencers() {
     fetchCitiesData();
   }, []);
 
+  // Sorting
+  const [sortValue, setSortValue] = useState("Default sorting");
+  const handleChange = (sortValue) => {
+    setSortValue(sortValue);
+  };
+
+  const sortInfluencers = () => {
+    setLoading(true);
+    if (sortValue === "Default sorting") {
+      const arrayOfInfluencers = visibleInfluencers.slice().reverse();
+      setVisibleInfluencers(arrayOfInfluencers.slice(0, itemsPerPage));
+    } else if (sortValue === "By latest joined") {
+      const arrayOfInfluencers = visibleInfluencers.slice();
+      setVisibleInfluencers(arrayOfInfluencers.slice(0, itemsPerPage));
+    }
+    if (sortValue === "By Followers: low to high") {
+      const sortedInfluencers = visibleInfluencers
+        .slice()
+        .sort((a, b) => a.totalFollowers - b.totalFollowers);
+      setVisibleInfluencers(sortedInfluencers);
+    }
+    if (sortValue === "By Followers: high to low") {
+      const sortedInfluencers = visibleInfluencers
+        .slice()
+        .sort((a, b) => b.totalFollowers - a.totalFollowers);
+      setVisibleInfluencers(sortedInfluencers);
+    }
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  };
+  useEffect(() => {
+    sortInfluencers();
+  }, [sortValue]);
+  // --------
   // Pagination
   const [activePage, setActivePage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
@@ -131,6 +166,7 @@ function Influencers() {
   // For displaying the showing title
   const [rangeStart, setRangeStart] = useState(0);
   const [rangeEnd, setRangeEnd] = useState(0);
+  const [visibleInfluencers, setVisibleInfluencers] = useState([]);
 
   useEffect(() => {
     const newRangeStart = (currentPage - 1) * itemsPerPage + 1;
@@ -138,14 +174,10 @@ function Influencers() {
 
     setRangeStart(newRangeStart);
     setRangeEnd(newRangeEnd);
-  }, [currentPage, itemsPerPage, totalItems]);
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const visibleInfluencers = influencers.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    setVisibleInfluencers(influencers.slice(indexOfFirstItem, indexOfLastItem));
+  }, [currentPage, itemsPerPage, totalItems, influencers]);
 
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -252,48 +284,10 @@ function Influencers() {
     }
   };
 
-  // const handleFilter = async () => {
-  //   setLoading(true);
-
-  //   try {
-  //     console.log("Filter Options:", filterOptions);
-  //     const { categories, platformId, platformRange, cities, totalRange } =
-  //       filterOptions;
-  //     console.log("Filter Options:", filterOptions);
-  //     console.log("Total Range:", totalRange);
-
-  //     const params = {
-  //       categories,
-  //       platformId,
-  //       platformRange,
-  //       cities,
-  //       // ...(totalRange?.length > 0 && { totalRange }),
-  //       totalRange: totalRange?.length > 0 ? totalRange : null,
-  //     };
-
-  //     console.log(params);
-
-  //     const response = await axios.get(
-  //       `${process.env.REACT_APP_BACKEND}/user/get/By/Filter`,
-  //       { params },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     setInfluencers(response.data);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.error("Error fetching filtered influencers:", error);
-  //     setLoading(false);
-  //   }
-  // };
   const [filterLoading, setFilterLoading] = useState(false);
   const fetchFilteredInfluencers = async (filterBy) => {
     setFilterLoading(true);
     setLoading(false);
-    console.log(filterBy);
     try {
       const { categories, platformId, platformRange, cities, totalRange } =
         filterBy;
@@ -331,7 +325,7 @@ function Influencers() {
     <>
       <main className={styles.main}>
         <Helmet>
-          <title>Influencers - Confluence</title>
+          <title>Influencers | Confluence</title>
           <meta name="description" content="" />
           <meta name="keywords" content="" />
         </Helmet>
@@ -528,25 +522,8 @@ function Influencers() {
                     : `Showing ${rangeStart}–${rangeEnd} of ${totalItems} results`}
                 </p>
               </div>
-              <form className={styles.form} method="get">
-                <select
-                  name="orderby"
-                  class={styles.select}
-                  aria-label="Shop order">
-                  <option value="menu_order">Default sorting</option>
-                  <option value="popularity" selected="selected">
-                    Sort by popularity
-                  </option>
-                  <option value="rating">Sort by average rating</option>
-                  <option value="date">Sort by latest</option>
-                  <option value="price">Sort by price: low to high</option>
-                  <option value="price-desc">Sort by price: high to low</option>
-                </select>
-                <input type="hidden" name="paged" value="1" />
-                <input type="hidden" name="query_type_country" value="or" />
-              </form>
+              <SortBy sortValue={sortValue} onSort={handleChange} />
             </div>
-            {console.log(visibleInfluencers)}
             <div className={styles.main__container}>
               <div className={styles.influencers}>
                 {loading || filterLoading ? (

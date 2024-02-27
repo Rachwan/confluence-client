@@ -2,14 +2,14 @@ import React from "react";
 import styles from "./About.module.css";
 import { Helmet } from "react-helmet-async";
 import aboutImg from "../../Assets/Images/Main-about_bg.png";
-import rachwan from '../../Assets/Icons/Main-floating1.png'
+import rachwan from "../../Assets/Icons/Main-floating1.png";
 
 function About() {
   return (
     <>
       <main className={styles.main}>
         <Helmet>
-          <title>About Us - Confluence</title>
+          <title>About Us | Confluence</title>
           <meta name="description" content="" />
           <meta name="keywords" content="" />
         </Helmet>

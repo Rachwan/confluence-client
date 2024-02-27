@@ -10,7 +10,7 @@ function NotFound() {
   return (
     <main className={styles.main__wrapper}>
       <Helmet>
-        <title>Page Not Found - Confluence</title>
+        <title>Page Not Found | Confluence</title>
         <meta
           name="description"
           content="Oops! The page you are looking for cannot be found. Check the URL or go back to the home page."

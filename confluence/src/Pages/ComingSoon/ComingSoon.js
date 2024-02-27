@@ -47,7 +47,7 @@ function ComingSoon() {
   return (
     <main className={styles.main__wrapper}>
       <Helmet>
-        <title>Coming soon - Confluence</title>
+        <title>Coming soon | Confluence</title>
         <meta
           name="description"
           content="Embark on a journey with Confluence! Our upcoming features will redefine how businesses and influencers collaborate. Stay tuned for exciting connections and opportunities."

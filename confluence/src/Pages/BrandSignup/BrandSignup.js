@@ -174,7 +174,7 @@ function BrandSignup() {
     <>
       <main className={styles.main}>
         <Helmet>
-          <title>Signup As Brand - Confluence</title>
+          <title>Signup As Brand | Confluence</title>
           <meta name="description" content="" />
           <meta name="keywords" content="" />
         </Helmet>

@@ -9,7 +9,7 @@ function Contact() {
   return (
     <main className={styles.main}>
       <Helmet>
-        <title>Contact Us - Confluence</title>
+        <title>Contact Us | Confluence</title>
         <meta
           name="description"
           content="Get in touch with Confluence. Whether you're a business looking to collaborate or an influencer seeking opportunities, we're here to connect and support you."

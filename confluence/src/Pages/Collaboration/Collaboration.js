@@ -109,7 +109,7 @@ function Collaboration() {
   return (
     <main className={styles.main}>
       <Helmet>
-        <title>{`${data?.title} - ${data?.userId?.name} | Confluence`}</title>
+        <title>{`${data?.title} | ${data?.userId?.name} | Confluence`}</title>
         <meta name="description" content="(((Title or Single title)))" />
         <meta name="keywords" content="" />
       </Helmet>

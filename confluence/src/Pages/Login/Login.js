@@ -94,9 +94,9 @@ function Login() {
           text: "Incorrect email or password.",
           icon: "question",
         });
-      } else if (error.response &&  error.response.status === 400) {
+      } else if (error.response && error.response.status === 400) {
         Swal.fire({
-          title: "You have been here?", 
+          title: "You have been here?",
           text: "Email already exists.",
           icon: "question",
         });
@@ -114,7 +114,7 @@ function Login() {
     <>
       <main className={styles.main}>
         <Helmet>
-          <title>Login - Confluence</title>
+          <title>Login | Confluence</title>
           <meta name="description" content="" />
           <meta name="keywords" content="" />
         </Helmet>
