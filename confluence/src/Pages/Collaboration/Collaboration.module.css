@@ -296,6 +296,7 @@
   .related__self .singlee {
     width: calc(50% - 15px);
   }
+  .related__self .singlee:nth-child(3),
   .related__self .singlee:nth-child(4) {
     display: block;
   }
