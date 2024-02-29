@@ -119,4 +119,13 @@
   .influencer .image__wrapper {
     height: 400px;
   }
+  .influencer .details .name {
+    font-size: 16px;
+  }
+  .influencer .content .category {
+    font-size: 16px;
+  }
+  .influencer .content .text {
+    font-size: 14px;
+  }
 }

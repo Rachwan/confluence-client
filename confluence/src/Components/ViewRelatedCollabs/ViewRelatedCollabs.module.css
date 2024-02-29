@@ -83,3 +83,21 @@
     gap: 10px;
   }
 }
+
+@media (max-width: 600px) {
+  .collab {
+    width: 100%;
+  }
+  .collab .image__wrapper {
+    height: 400px;
+  }
+  .collab .details .name {
+    font-size: 16px;
+  }
+  .collab .content .category {
+    font-size: 16px;
+  }
+  .collab .content .text {
+    font-size: 14px;
+  }
+}

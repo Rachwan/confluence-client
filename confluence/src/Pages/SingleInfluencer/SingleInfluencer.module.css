@@ -330,14 +330,6 @@
     width: 100%;
   }
 }
-/* @media (max-width: 768px) {
-  .filter__wrapper {
-    width: 100%;
-  }
-  .influencers__wrapper {
-    width: 100%;
-  }
-} */
 
 @media (max-width: 600px) {
   .single {
@@ -362,8 +354,32 @@
     border-right: none;
     margin-bottom: 0;
   }
+  .personal__info .image .profile {
+    width: 150px;
+    height: 150px;
+  }
+  .personal__info .name {
+    font-size: 22px;
+  }
+  .personal__info .category,
+  .personal__info .city,
+  .personal__info .age,
+  .personal__info .gender,
+  .personal__info .contact {
+    font-size: 18px;
+  }
   .social__stats {
     width: 100%;
     padding-left: 0;
+  }
+  .stats .title {
+    font-size: 22px;
+    margin-top: 20px;
+  }
+  .influencers__wrapper .header .content .result {
+    font-size: 22px;
+  }
+  .related__wrapper .title {
+    font-size: 22px;
   }
 }
