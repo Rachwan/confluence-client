@@ -12,7 +12,7 @@
   width: 100%;
 }
 .collab .image__wrapper:hover {
-  box-shadow: var(--box-shadow-hover);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 .image__wrapper .profile {
   position: absolute;

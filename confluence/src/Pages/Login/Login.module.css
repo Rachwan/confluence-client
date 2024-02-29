@@ -205,7 +205,7 @@ label {
     font-size: 35px;
   }
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .main__section .signup__wrapper {
     width: 100%;
     padding: 30px 25px 30px;
@@ -213,16 +213,36 @@ label {
   .form__title {
     font-size: 25px;
   }
-}
-@media (max-width: 425px) {
+} */
+@media (max-width: 600px) {
+  .intro {
+    height: 250px;
+  }
+  .main__section .signup__wrapper {
+    width: 100%;
+    padding: 30px 25px 30px;
+  }
+  .form__title {
+    font-size: 22px;
+  }
+  label {
+    font-size: 14px;
+  }
+  .password__input img {
+    right: 20px;
+    width: 15px;
+    top: 50%;
+  }
   .btnHolder {
     flex-direction: column;
     gap: 10px;
   }
   .Submit__button {
+    font-size: 14px;
     width: 100%;
+    padding: 10px 18px;
   }
   .lostpassword {
-    font-size: 15px;
+    font-size: 14px;
   }
 }

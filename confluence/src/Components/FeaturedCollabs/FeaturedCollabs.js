@@ -76,7 +76,7 @@ function FeaturedCollabs() {
       <section className={styles.main__wrapper}>
         <div className={`container ${styles.wrapper}`}>
           <SectionHead
-            title={"Collaboration Showcase"}
+            title={"Collab Showcase"}
             description={"Unlock the potential of influential partnerships!"}
           />
           <div className={styles.collabs}>

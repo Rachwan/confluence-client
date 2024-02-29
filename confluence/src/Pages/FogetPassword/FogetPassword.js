@@ -100,7 +100,7 @@ function FogetPassword() {
               encType="multipart/form-data">
               <div className={styles.single__input}>
                 <label htmlFor="email">
-                  Enter you email to receive a verfication code
+                  Enter you email to recover your account
                   <span className={styles.star}>*</span>
                 </label>
                 <input

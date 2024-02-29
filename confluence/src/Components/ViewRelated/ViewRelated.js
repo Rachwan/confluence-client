@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./ViewRelated.module.css";
+import { motion } from "framer-motion";
 
 const ViewRelated = ({ data }) => {
   const totalFollowers = data?.platforms?.reduce(
@@ -18,12 +19,19 @@ const ViewRelated = ({ data }) => {
   }
   const followersToShow = formatFollowersCount(totalFollowers);
   return (
-    <div className={styles.collab}>
-      <div
+    <motion.div
+      className={styles.collab}
+      initial={{ y: 100, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.3 }}>
+      <motion.div
         className={styles.image__wrapper}
         style={{
           backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.background})`,
-        }}>
+        }}
+        initial={{ y: 100, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.3 }}>
         <Link
           to={`/influencer/${data?.name}`}
           state={data}
@@ -40,7 +48,7 @@ const ViewRelated = ({ data }) => {
             </div>
           </div>
         </Link>
-      </div>
+      </motion.div>
       <div className={styles.content}>
         <Link
           to={`/influencer/${data?.name}`}
@@ -53,7 +61,7 @@ const ViewRelated = ({ data }) => {
           more.
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default ViewRelated;

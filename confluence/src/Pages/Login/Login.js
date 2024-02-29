@@ -87,6 +87,10 @@ function Login() {
           setTimeout(() => {
             window.location.href = `${process.env.REACT_APP_DASHBOARD_LINK}/`;
           }, 1000);
+        } else if (response.data.data.role === "influencer") {
+          setTimeout(() => {
+            window.location.href = `${process.env.REACT_APP_DASHBOARD_LINK}/influencer-details`;
+          }, 1000);
         } else {
           navigate(`/`, {
             replace: true,

@@ -6,7 +6,7 @@ import confluence from "../../Assets/Icons/confluenceTwo.svg";
 import edit from "../../Assets/Icons/pen-to-square-solid.svg";
 import { UserContext } from "../../UseContext/UserContext.js";
 import { useNavigate } from "react-router-dom";
-import burger from "../../Assets/Icons/bars-solid.svg";
+import burger from "../../Assets/Icons/bars-solid1.svg";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -140,8 +140,22 @@ function Header({ home = false }) {
               }`}>
               <li>Contact</li>
             </NavLink>
+            {/* <NavLink
+              to="/login"
+              className={`${styles.link} ${
+                location.pathname === "/login" ? styles.active__link : ""
+              }`}>
+              <li>Login</li>
+            </NavLink> */}
             {!user ? (
               <>
+                <NavLink
+                  to="/login"
+                  className={`${styles.link} ${
+                    location.pathname === "/login" ? styles.active__link : ""
+                  }`}>
+                  <li>Login</li>
+                </NavLink>
                 <NavLink
                   to="/creator-signup"
                   className={`${styles.link} ${
@@ -160,13 +174,13 @@ function Header({ home = false }) {
                   } ${styles.removeLink}`}>
                   <li>Join as Brand</li>
                 </NavLink>
-                <NavLink
+                {/* <NavLink
                   to="/login"
                   className={`${styles.link} ${
                     location.pathname === "/login" ? styles.active__link : ""
                   } ${styles.removeLink}`}>
                   <li>Login</li>
-                </NavLink>
+                </NavLink> */}
               </>
             ) : user.role === "admin" || user.role === "influencer" ? (
               <>
@@ -209,7 +223,7 @@ function Header({ home = false }) {
         <div className={styles.auth}>
           {!user ? (
             <>
-              <div className={styles.my__account}>
+              {/* <div className={styles.my__account}>
                 <Link to={"/login"} className={styles.login__href}>
                   <img
                     src={loginIcon}
@@ -217,7 +231,7 @@ function Header({ home = false }) {
                     className={styles.login__icon}
                   />
                 </Link>
-              </div>
+              </div> */}
               <div className={styles.buttons}>
                 <Link to={"/creator-signup"}>
                   <div

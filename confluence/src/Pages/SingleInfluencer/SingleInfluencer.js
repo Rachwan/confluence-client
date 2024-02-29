@@ -12,6 +12,7 @@ import genderIcon from "../../Assets/Icons/gender.svg";
 import ViewRelated from "../../Components/ViewRelated/ViewRelated";
 import { useLocation } from "react-router-dom";
 import LoadingSection from "../../Components/LoadingSection/LoadingSection";
+import { motion } from "framer-motion";
 
 function SingleInfluencer() {
   const [collaborations, setCollaborations] = useState([]);
@@ -19,7 +20,7 @@ function SingleInfluencer() {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
   const data = location.state && location.state;
-  console.log(data);
+
   // Fetch the collab related to this influencer
   const fetchCollaborations = async () => {
     try {
@@ -114,6 +115,21 @@ function SingleInfluencer() {
 
   //--------------------------------------------------
 
+  // const textVariantsUp = {
+  //   initial: {
+  //     y: 100,
+  //     opacity: 0,
+  //   },
+  //   animate: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 1,
+  //       staggerChildren: 0.8,
+  //     },
+  //   },
+  // };
+
   return (
     <main className={styles.main}>
       <Helmet>
@@ -135,28 +151,54 @@ function SingleInfluencer() {
         }
       />
       <div className="container">
-        <div className={styles.wrapper}>
+        <motion.div
+          className={styles.wrapper}
+          initial={{ y: 100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}>
           {/* Filter Section */}
-          <div className={styles.filter__wrapper}>
+          <motion.div
+            className={styles.filter__wrapper}
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}>
             <img
               src={verified}
               className={styles.verified}
               alt="Verified Icon"
             />
-            <div className={styles.personal__info}>
-              <div className={styles.image}>
+            <motion.div
+              className={styles.personal__info}
+              initial={{ y: 100, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}>
+              <motion.div className={styles.image}>
                 <div
                   className={styles.profile}
                   style={{
                     backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.profile})`,
                   }}></div>
-              </div>
+              </motion.div>
 
-              <h2 className={styles.name}>{data?.name}</h2>
-              <h2 className={styles.category}>
+              <motion.h2
+                className={styles.name}
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}>
+                {data?.name}
+              </motion.h2>
+              <motion.h2
+                className={styles.category}
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}>
                 {data?.categoryId?.name} Influencer
-              </h2>
-              <div className={styles.additional}>
+              </motion.h2>
+              <motion.div
+                className={styles.additional}
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}>
                 <span className={styles.city}>
                   <img src={locationIcon} alt="" /> {data?.cityId?.name}
                 </span>
@@ -166,44 +208,58 @@ function SingleInfluencer() {
                 <span className={styles.gender}>
                   <img src={genderIcon} alt="" /> {data?.gender || "Male"}
                 </span>
-              </div>
-              <Link
-                to={`https://wa.me/${data?.number}`}
-                className={styles.link}>
-                <div className={styles.phone}>
-                  <div className={styles.icon}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512">
-                      <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
-                    </svg>
+              </motion.div>
+              <motion.div
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}>
+                <Link
+                  to={`https://wa.me/${data?.number}`}
+                  className={styles.link}>
+                  <div className={styles.phone}>
+                    <div className={styles.icon}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512">
+                        <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+                      </svg>
+                    </div>
+                    <p className={styles.content}>
+                      {formatPhoneNumber(data?.number)}
+                    </p>
                   </div>
-                  <p className={styles.content}>
-                    {formatPhoneNumber(data?.number)}
-                  </p>
-                </div>
-              </Link>
-              <Link to={`mailto:${data?.email}`} className={styles.link}>
-                <div className={styles.email}>
-                  <div className={styles.icon}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512">
-                      <path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z" />
-                    </svg>
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}>
+                <Link to={`mailto:${data?.email}`} className={styles.link}>
+                  <div className={styles.email}>
+                    <div className={styles.icon}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512">
+                        <path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z" />
+                      </svg>
+                    </div>
+                    <p className={styles.content}>{data?.email}</p>
                   </div>
-                  <p className={styles.content}>{data?.email}</p>
-                </div>
-              </Link>
-            </div>
+                </Link>
+              </motion.div>
+            </motion.div>
             <div className={styles.social__stats}>
               <div className={styles.stats}>
                 <h4 className={styles.title}>Social Stats</h4>
 
-                <div className={styles.accounts}>
+                <motion.div
+                  className={styles.accounts}
+                  initial={{ y: 100, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8 }}>
                   {data?.platforms &&
                     data?.platforms?.map((platform) => (
-                      <div
+                      <motion.div
                         className={styles.account}
                         style={{
                           ...(platform?.platformId?.name === "Instagram"
@@ -213,7 +269,10 @@ function SingleInfluencer() {
                             : {
                                 borderLeft: `3px solid ${platform?.platformId?.activeColor}`,
                               }),
-                        }}>
+                        }}
+                        initial={{ y: 100, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.3 }}>
                         <div
                           className={styles.social__icon}
                           style={{
@@ -235,12 +294,12 @@ function SingleInfluencer() {
                             Followers
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
-                </div>
+                </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Influencers Section */}
           <div className={styles.influencers__wrapper}>
@@ -293,7 +352,7 @@ function SingleInfluencer() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Related influencers */}
         {similarInfluencers && similarInfluencers.length !== 0 ? (

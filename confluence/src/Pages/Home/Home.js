@@ -21,6 +21,7 @@ import whiteStar from "../../Assets/Icons/white-solid.svg";
 import unlock from "../../Assets/Icons/unlock.svg";
 import axios from "axios";
 import Loading from "../../Components/Loading/Loading.js";
+import { motion, useInView } from "framer-motion";
 
 function Home() {
   const [businesses, setBusinesses] = useState([]);
@@ -44,9 +45,25 @@ function Home() {
     fetchBusinesses();
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
+  // if (loading) {
+  //   return <Loading />;
+  // }
+
+  const textVariantsLeft = {
+    initial: {
+      x: -500,
+      opacity: 0,
+    },
+    animate: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
   return (
     <>
       <main className={styles.main}>
@@ -63,15 +80,23 @@ function Home() {
         <section className={styles.how__it__works}>
           <div className="container">
             <div className={styles.wrapper}>
-              <div className={styles.content}>
-                <div className={styles.heading}>
+              <motion.div
+                className={styles.content}
+                useInView={textVariantsLeft}
+                initial="initial"
+                animate="animate">
+                <motion.div
+                  className={styles.heading}
+                  useInView={textVariantsLeft}>
                   <h2 className={styles.title}>Simplify the Process</h2>
                   <p className={styles.paragraph}>
                     Unlock a multitude of opportunities with our straightforward
                     process.
                   </p>
-                </div>
-                <div className={styles.boxes}>
+                </motion.div>
+                <motion.div
+                  className={styles.boxes}
+                  useInView={textVariantsLeft}>
                   <div className={styles.box}>
                     <div className={styles.icon}>
                       <img src={iconOne} alt="" />
@@ -120,8 +145,8 @@ function Home() {
                       meaningful connections.
                     </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
             <div className={styles.image}></div>
           </div>

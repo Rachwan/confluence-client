@@ -173,6 +173,9 @@
   background-color: var(--main-blue);
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
 }
+.influencers__wrapper .header .content .result {
+  font-size: 18px;
+}
 .influencers__wrapper .header .form {
   padding: 0 15px;
   background-color: var(--main-blue);
@@ -288,6 +291,23 @@
 }
 
 @media (max-width: 600px) {
+  .filter__wrapper .title {
+    font-size: 22px;
+  }
+  .filter__wrapper .platform,
+  .filter__wrapper .category {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  .filter__wrapper .platform .icon,
+  .filter__wrapper .category .icon {
+    height: 16px;
+  }
+  .by__city .city a,
+  .range a {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
   .wrapper {
     padding-top: calc(var(--main-section-spacing) / 2);
     padding-bottom: calc(var(--main-section-spacing) / 2);
@@ -303,5 +323,17 @@
   .form,
   .form .select {
     width: 100%;
+  }
+  .influencers__wrapper .header .content .result {
+    font-size: 16px;
+  }
+  /* Pagination */
+  .pagination {
+    gap: 5px;
+  }
+  .pagination .pagination__button {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
   }
 }

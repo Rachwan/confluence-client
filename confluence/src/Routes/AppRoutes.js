@@ -19,6 +19,7 @@ import Loading from "../Components/Loading/Loading.js";
 import Unauthorized from "../Pages/Unauthorized/Unauthorized.js";
 import ForgetPassword from "../Pages/FogetPassword/FogetPassword.js";
 import ResetPassword from "../Pages/ResetPassword/ResetPassword.js";
+import ScrollToTop from "../Components/ScrollToTop/ScrollToTop.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
@@ -34,6 +35,7 @@ const Router = () => {
   return (
     <div>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           {/* Routes W/o Layout */}
           <Route path="/" element={<Home />} />

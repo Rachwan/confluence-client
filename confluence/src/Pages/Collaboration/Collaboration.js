@@ -10,6 +10,7 @@ import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { motion } from "framer-motion";
 
 function Collaboration() {
   const [similarCollabs, setSimilarCollabs] = useState([]);
@@ -120,7 +121,11 @@ function Collaboration() {
         background={"collaboration"}
       />
       <div className={`container ${styles.wrapper}`}>
-        <div className={styles.images}>
+        <motion.div
+          className={styles.images}
+          initial={{ y: 100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}>
           <Slider {...settings}>
             <div className={styles.image__wrapper}>
               <div
@@ -151,12 +156,18 @@ function Collaboration() {
                 className={styles.image}></div>
             </div>
           </Slider>
-        </div>
+        </motion.div>
         <div className={styles.content}>
           <div className={styles.info}>
             <div className={styles.text}>
               <h2 className={styles.title}>Description</h2>
-              <p className={styles.description}>{data?.description}</p>
+              <motion.p
+                className={styles.description}
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}>
+                {data?.description}
+              </motion.p>
             </div>
             <div className={styles.table__wrapper}>
               <h2 className={styles.title}>Additional information</h2>
@@ -165,58 +176,120 @@ function Collaboration() {
                   {data?.additional &&
                     data?.additional.map((item) => (
                       <tr key={item._id} className={styles.tr}>
-                        <th className={styles.th}>{item.name}</th>
-                        <td className={styles.td}>{item.detail}</td>
+                        <motion.th
+                          className={styles.th}
+                          initial={{ y: 50, opacity: 0 }}
+                          whileInView={{ y: 0, opacity: 1 }}
+                          transition={{ duration: 0.8 }}>
+                          {item.name}
+                        </motion.th>
+                        <motion.td
+                          className={styles.td}
+                          initial={{ y: 50, opacity: 0 }}
+                          whileInView={{ y: 0, opacity: 1 }}
+                          transition={{ duration: 0.8 }}>
+                          {item.detail}
+                        </motion.td>
                       </tr>
                     ))}
                 </tbody>
               </table>
             </div>
-            <div className={styles.reviews__wrapper}>
-              <h4 className={styles.reviews__title}>
+            <motion.div
+              className={styles.reviews__wrapper}
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}>
+              <motion.h4
+                className={styles.reviews__title}
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}>
                 There are no reviews yet.
-              </h4>
-              <h2 className={styles.main__title}>
-                Be the first to review “Amanda Chamber: Living Life
-                Unapologetically”
-              </h2>
-              <p className={styles.display__message}>
+              </motion.h4>
+              <motion.h2
+                className={styles.main__title}
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}>
+                Be the first to review “{data?.userId?.name}“: Living Life
+                Unapologetically
+              </motion.h2>
+              <motion.p
+                className={styles.display__message}
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}>
                 Your email address will not be published. Required fields are
                 marked <span className={styles.star}>*</span>
-              </p>
-              <div className={styles.ratings}>
-                <p className={styles.select__title}>Your rating</p>
-                <div className={styles.select__rating}>
+              </motion.p>
+              <motion.div
+                className={styles.ratings}
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}>
+                <motion.p
+                  className={styles.select__title}
+                  initial={{ y: 50, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8 }}>
+                  Your rating
+                </motion.p>
+                <motion.div
+                  className={styles.select__rating}
+                  initial={{ y: 50, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8 }}>
                   <img src={star} alt="" className={styles.star__icon} />
                   <img src={star} alt="" className={styles.star__icon} />
                   <img src={star} alt="" className={styles.star__icon} />
                   <img src={star} alt="" className={styles.star__icon} />
                   <img src={star} alt="" className={styles.star__icon} />
-                </div>
+                </motion.div>
                 <form action="">
-                  <div className={styles.single__input}>
-                    <label htmlFor="name">
+                  <motion.div
+                    className={styles.single__input}
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8 }}>
+                    <motion.label
+                      htmlFor="name"
+                      initial={{ y: 50, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.8 }}>
                       Name <span className={styles.star}>*</span>
-                    </label>
+                    </motion.label>
                     <input
                       type="text"
                       name="Name"
                       id="name"
                       placeholder="Your Name"
                     />
-                  </div>
-                  <div className={styles.single__input}>
-                    <label htmlFor="email">
+                  </motion.div>
+                  <motion.div
+                    className={styles.single__input}
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8 }}>
+                    <motion.label
+                      htmlFor="email"
+                      initial={{ y: 50, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.8 }}>
                       Email <span className={styles.star}>*</span>
-                    </label>
+                    </motion.label>
                     <input
                       type="email"
                       name="Email"
                       id="email"
                       placeholder="Your Email"
                     />
-                  </div>
-                  <div className={styles.single__input}>
+                  </motion.div>
+                  <motion.div
+                    className={styles.single__input}
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8 }}>
                     <label htmlFor="yourr">
                       Your review <span className={styles.star}>*</span>
                     </label>
@@ -227,40 +300,62 @@ function Collaboration() {
                       rows="10"
                       className={styles.textarea}
                       placeholder="Place your review here"></textarea>
-                  </div>
-                  <div className={styles.btnHolder}>
-                    <button
+                  </motion.div>
+                  <motion.div
+                    className={styles.btnHolder}
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8 }}>
+                    <motion.button
+                      initial={{ y: 50, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.8 }}
                       className={styles.Submit__button}
                       type="submit"
                       value="submit">
                       Submit
-                    </button>
-                  </div>
+                    </motion.button>
+                  </motion.div>
                 </form>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-          <div className={styles.sections}>
-            <div className={styles.message__wrraper}>
+          <motion.div className={styles.sections}>
+            <motion.div
+              className={styles.message__wrraper}
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}>
               <Link
                 to={`/influencer/${data?.userId?.name}`}
                 state={data?.userId}>
-                <div className={styles.profile}>
-                  <div
+                <motion.div
+                  className={styles.profile}
+                  initial={{ y: 50, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8 }}>
+                  <motion.div
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8 }}
                     className={styles.profile__img}
                     style={{
                       backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.userId?.profile})`,
-                    }}></div>
+                    }}></motion.div>
                   <h3 className={styles.name}>{data?.userId?.name}</h3>
-                </div>
+                </motion.div>
               </Link>
-              <p className={styles.note}>
+              <motion.p
+                className={styles.note}
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}>
                 Thanks for checking out my listing. Have any questions?
-              </p>
+              </motion.p>
               <div className={styles.platforms}>
                 {data?.userId?.platforms &&
                   data?.userId?.platforms?.slice(0, 4).map((platform) => (
-                    <Link to={`/${platform?.platformId?.name}-Link`}>
+                    <Link to={`${platform?.link}`} target="_blank">
                       <div className={styles.platform}>
                         <img
                           src={`${process.env.REACT_APP_BACKEND}/${platform?.platformId?.icon}`}
@@ -271,10 +366,11 @@ function Collaboration() {
                           {formatFollowersCount(platform?.followers)} Followers
                         </span>
                       </div>
+                      {console.log(platform)}
                     </Link>
                   ))}
               </div>
-            </div>
+            </motion.div>
             {fourCollabs && fourCollabs.length !== 0 ? (
               <>
                 <h3 className={styles.check__this}>
@@ -293,7 +389,7 @@ function Collaboration() {
                 </div>
               </>
             ) : null}
-          </div>
+          </motion.div>
         </div>
         {/* Related Collabs */}
         {similarCollabs && similarCollabs.length !== 0 ? (

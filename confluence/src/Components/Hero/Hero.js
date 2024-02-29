@@ -3,60 +3,151 @@ import styles from "./Hero.module.css";
 import heroImage from "../../Assets/Images/Main-slider_img.png";
 import LoadingSection from "../../Components/LoadingSection/LoadingSection.js";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function Hero({ businesses, loading }) {
+  // Functional component for the hero section on the homepage
+  const textVariantsLeft = {
+    initial: {
+      x: -500,
+      opacity: 0,
+    },
+    animate: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const textVariantsRight = {
+    initial: {
+      x: 500,
+      opacity: 0,
+    },
+    animate: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        staggerChildren: 0.4,
+      },
+    },
+  };
+
+  const textVariantsUp = {
+    initial: {
+      y: 100,
+      opacity: 0,
+    },
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        staggerChildren: 0.8,
+      },
+    },
+  };
+
+  const textVariantsImges = {
+    initial: {
+      y: 100,
+      opacity: 0,
+    },
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1.5,
+        staggerChildren: 1,
+      },
+    },
+  };
+
   return (
     <>
       <section className={styles.main__hero}>
         <div className={styles.hero}>
           <div className={`container ${styles.wrapper}`}>
-            <div className={styles.content}>
-              <h1 className={styles.main__title}>
+            <motion.div
+              className={styles.content}
+              variants={textVariantsLeft}
+              initial="initial"
+              animate="animate">
+              <motion.h1
+                className={styles.main__title}
+                variants={textVariantsLeft}>
                 {/* Find and hire the perfect Influencer for the Job */}
                 Discover and Connect with Influencers Tailored for Your Brand
-              </h1>
-              <p className={styles.description}>
+              </motion.h1>
+              <motion.p
+                className={styles.description}
+                variants={textVariantsLeft}>
                 {/* Our marketplace streamlines collaboration, enabling influencers
                 to showcase their unique talents and collaborations efficiently. */}
                 Our marketplace streamlines collaboration, enabling influencers
-                to efficiently showcase their unique talents. Find the perfect
-                match for your brand's needs.
-              </p>
+                to efficiently showcase their unique talents.
+                {/* Find the perfect
+                match for your brand's needs. */}
+              </motion.p>
               <Link to={"/influencers"} target="_blank">
-                <div className={styles.button}>
+                <motion.div
+                  className={styles.button}
+                  variants={textVariantsLeft}>
                   {/* Discover Now */}
                   Explore Now
-                </div>
+                </motion.div>
               </Link>
-            </div>
-            <div className={styles.image__wrapper}>
+            </motion.div>
+            <motion.div
+              className={styles.image__wrapper}
+              variants={textVariantsRight}
+              initial="initial"
+              animate="animate">
               <img src={heroImage} alt="Influencers" />
-            </div>
+            </motion.div>
           </div>
         </div>
+
         <div className={styles.deals}>
-          <div className={styles.wrapper}>
-            <h2 className={styles.title}>
+          <motion.div
+            className={styles.wrapper}
+            variants={textVariantsUp}
+            initial="initial"
+            animate="animate">
+            <motion.h2 className={styles.title}>
               You are in <span className={styles.special}>Good Company:</span>
-            </h2>
-            <div className={styles.companies}>
+            </motion.h2>
+            <motion.div
+              className={styles.companies}
+              variants={textVariantsUp}
+              initial="initial"
+              animate="animate">
               {loading ? (
                 <LoadingSection padding={"0"} />
               ) : (
                 <>
                   {businesses &&
                     businesses.map((business) => (
-                      <div className={styles.company} key={business._id}>
-                        <img
+                      <motion.div
+                        className={styles.company}
+                        key={business._id}
+                        variants={textVariantsImges}
+                        initial="initial"
+                        animate="animate">
+                        <motion.img
+                          variants={textVariantsImges}
                           src={`${process.env.REACT_APP_BACKEND}/${business?.profile}`}
-                          alt=""
-                        />
-                      </div>
+                          alt=""></motion.img>
+                      </motion.div>
                     ))}
                 </>
               )}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </>

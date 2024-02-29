@@ -503,10 +503,10 @@ function Influencers() {
                 <div className={styles.background}></div>
                 <p className={styles.result}>
                   {totalItems === 0
-                    ? "Showing 0 results"
+                    ? "Showing 0 influencers"
                     : totalItems === 1
-                    ? "Showing 1 only result"
-                    : `Showing ${rangeStart}–${rangeEnd} of ${totalItems} results`}
+                    ? "Showing 1 influencer"
+                    : `Showing ${rangeStart}–${rangeEnd} of ${totalItems} influencers`}
                 </p>
               </div>
               <SortBy sortValue={sortValue} onSort={handleChange} />

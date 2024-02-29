@@ -86,3 +86,8 @@
     font-size: 35px;
   }
 }
+@media (max-width: 600px) {
+  .intro {
+    height: 250px;
+  }
+}

@@ -13,9 +13,22 @@
   border-radius: 30px;
   background: var(--main-blue);
   cursor: pointer;
+  font-weight: 600;
 }
 .select option {
   background-color: white;
   color: black;
   cursor: pointer !important;
+  font-weight: 500;
+}
+@media (max-width: 600px) {
+  .form {
+    width: 100%;
+  }
+  .select {
+    font-weight: 300;
+    font-size: 12px;
+    font-weight: 500;
+    width: 100%;
+  }
 }

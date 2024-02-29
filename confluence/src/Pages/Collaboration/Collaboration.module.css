@@ -69,13 +69,13 @@
 }
 .table__wrapper .th {
   font-weight: 700;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* border: 1px solid rgba(0, 0, 0, 0.1); */
   line-height: 1.5;
   text-transform: capitalize;
   font-size: 17px;
 }
 .table__wrapper .td {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* border: 1px solid rgba(0, 0, 0, 0.1); */
   font-weight: 500;
   line-height: 1.5;
   padding: 15px 20px;

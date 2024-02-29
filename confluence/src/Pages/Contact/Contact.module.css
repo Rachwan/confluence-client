@@ -239,3 +239,27 @@ label {
     margin-bottom: 30px;
   }
 }
+
+@media (max-width: 600px) {
+  .intro {
+    height: 250px;
+  }
+  .contactNb > div .title {
+    font-size: 20px;
+  }
+  .contactNb > div p {
+    font-size: 14px;
+  }
+  .form__title {
+    font-size: 22px;
+  }
+  .input::placeholder,
+  .msgInput::placeholder {
+    opacity: 0.6;
+    font-size: 14px;
+  }
+  .Submit__button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}

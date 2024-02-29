@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./ViewRelatedCollabs.module.css";
+import { motion } from "framer-motion";
 
 const ViewRelatedCollabs = ({ data }) => {
   const totalFollowers = data?.userId?.platforms?.reduce(
@@ -18,12 +19,19 @@ const ViewRelatedCollabs = ({ data }) => {
   }
   const followersToShow = formatFollowersCount(totalFollowers);
   return (
-    <div className={styles.collab}>
-      <div
+    <motion.div
+      className={styles.collab}
+      initial={{ y: 100, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8 }}>
+      <motion.div
         className={styles.image__wrapper}
         style={{
           backgroundImage: `url(${process.env.REACT_APP_BACKEND}/${data?.background})`,
-        }}>
+        }}
+        initial={{ y: 100, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}>
         <Link
           to={`/${data?.userId?.name}/collaborations/${data?.title}`}
           state={data}
@@ -40,7 +48,7 @@ const ViewRelatedCollabs = ({ data }) => {
             </div>
           </div>
         </Link>
-      </div>
+      </motion.div>
       <div className={styles.content}>
         <Link
           to={`/${data?.userId?.name}/collaborations/${data?.title}`}
@@ -57,7 +65,7 @@ const ViewRelatedCollabs = ({ data }) => {
         </Link>
         <p className={styles.text}>{data?.title}</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default ViewRelatedCollabs;

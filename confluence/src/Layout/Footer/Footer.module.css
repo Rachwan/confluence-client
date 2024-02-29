@@ -169,8 +169,50 @@
     width: 100%;
   }
 }
+@media (max-width: 600px) {
+  .logo__wrapper .logo img {
+    width: 22px;
+    filter: brightness(0) invert(1);
+  }
+  .logo__name {
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--white-color);
+    margin-left: 5px;
+  }
+  .logo__description .slogan {
+    font-size: 14px;
+    margin-top: 15px;
+  }
+  .company {
+    gap: 10px;
+    font-size: 20px;
+  }
+  .section__title {
+    font-size: 20px;
+  }
+  .links li {
+    gap: 10px;
+    font-size: 14px;
+  }
+  .sub__title {
+    font-size: 14px;
+    margin: 20px 0 20px;
+  }
+  .single__input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  .input {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
 @media (max-width: 400px) {
   .copyright {
-    font-size: 15px;
+    font-size: 14px;
   }
 }
