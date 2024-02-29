@@ -1,0 +1,86 @@
+.main {
+  height: calc(100vh - 85px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 50px;
+  width: 50%;
+}
+.content .main__title {
+  text-align: left;
+  font-size: 40px;
+}
+.content .main__title span {
+  color: var(--main-blue);
+}
+.content .message {
+  text-align: left;
+  font-size: 20px;
+}
+.mainImage {
+  width: 50%;
+}
+.mainImage img {
+  max-width: 100%;
+}
+.button__wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.button {
+  color: var(--white-color);
+  padding: 12px 25px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  border-radius: 30px;
+  display: block;
+  width: fit-content;
+  cursor: pointer;
+  transition: var(--main-transition);
+  background: var(--main-blue);
+}
+.button:hover {
+  background: var(--black-color);
+}
+@media (min-width: 992px) {
+  .second__button {
+    display: none;
+  }
+}
+@media (max-width: 992px) {
+  .content {
+    display: none;
+  }
+  .mainImage {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
+  .mainImage img {
+    max-width: 80%;
+  }
+}
+@media (max-width: 600px) {
+  .mainImage img {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,152 @@
+.main {
+  height: calc(100vh - 85px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #fafafa;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  width: 100%;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+}
+.content .title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.content .title .soon {
+  display: inline-block;
+  background-color: var(--main-blue);
+  color: var(--white-color);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 7px 7px 30px rgba(0, 0, 0, 0.1);
+}
+.content .message {
+  text-align: center;
+  font-size: 35px;
+}
+.notificated__message {
+  text-align: center;
+  font-size: 25px;
+}
+.single__input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+.input {
+  width: 35%;
+  border-radius: 30px 0 0 30px;
+  border: 1px solid #ddd;
+  padding: 12px 25px;
+  font-size: 16px;
+  height: 50px;
+}
+.input:focus {
+  outline: none;
+  border: 1px solid var(--main-blue);
+}
+.input::placeholder {
+  transition: 0.4s;
+  font-family: "Barlow", sans-serif;
+}
+.input:focus::placeholder {
+  opacity: 0;
+}
+.button {
+  color: var(--white-color);
+  padding: 12px 25px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 22px;
+  border-radius: 0 30px 30px 0;
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+  transition: var(--main-transition);
+  background: var(--main-blue);
+  height: 50px;
+}
+.button:hover {
+  background: var(--black-color);
+}
+@media (max-width: 1200px) {
+  .input {
+    width: 50%;
+  }
+}
+@media (max-width: 992px) {
+  .input {
+    width: 55%;
+  }
+}
+@media (max-width: 767px) {
+  .content {
+    width: 100%;
+  }
+  .content .title {
+    flex-direction: column;
+    font-size: 40px;
+  }
+  .content .message {
+    font-size: 20px;
+  }
+  .notificated__message {
+    font-size: 20px;
+  }
+  .input {
+    width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    gap: 30px;
+  }
+  .content .message {
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 0;
+  }
+  .notificated__message {
+    text-align: center;
+    font-size: 14px;
+  }
+  .single__input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+  }
+  .input {
+    width: 70%;
+    padding: 12px 25px;
+    font-size: 14px;
+    height: 50px;
+  }
+  .button {
+    color: var(--white-color);
+    padding: 15px 14px;
+    font-size: 14px;
+    border-radius: 0 30px 30px 0;
+  }
+}

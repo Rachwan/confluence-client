@@ -1,0 +1,207 @@
+.main__hero {
+  position: relative;
+}
+.hero {
+  background-image: url(../../Assets/Images/Main-slider.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* padding: 37px 0 0 0; */
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content {
+  width: 55%;
+  margin-bottom: 37px;
+}
+.image__wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+}
+.image__wrapper img {
+  max-width: 100%;
+}
+.content .main__title {
+  line-height: 50px;
+  color: #242424;
+  font-size: 45px;
+}
+.description {
+  margin: 32px 0;
+  line-height: 27px;
+  font-weight: 400;
+  color: #373737;
+  font-size: 18px;
+}
+.button {
+  color: var(--black-color);
+  background: var(--white-color);
+  padding: 12px 25px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  border-radius: 30px;
+  display: block;
+  width: fit-content;
+  cursor: pointer;
+  transition: var(--main-transition);
+  text-decoration: none;
+  display: inline-block;
+  width: fit-content;
+}
+.button:hover {
+  color: var(--white-color);
+  background: var(--black-color);
+}
+
+.deals {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50%);
+}
+.deals .wrapper {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 100px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0 15px 10px -10px;
+  padding: 35px 50px;
+  height: 120px;
+}
+.deals .title {
+  font-family: Barlow;
+  line-height: 34px;
+  color: #242424;
+}
+.deals .title span {
+  color: var(--main-orange);
+}
+.deals .companies {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  flex: 1 1;
+  justify-content: center;
+  gap: 20px;
+}
+.deals .company img {
+  width: 110px;
+  transition: var(--main-transition);
+}
+.deals .company img:hover {
+  opacity: 0.6;
+}
+@media (min-width: 1440px) {
+  .hero {
+    max-height: 80vh;
+  }
+  .description {
+    width: 90%;
+  }
+  .deals .title {
+    font-size: 26px;
+  }
+}
+@media (max-width: 1440px) {
+  .hero {
+    height: 65vh;
+    display: flex;
+    /* padding-top: 40px; */
+  }
+  .content .main__title {
+    line-height: 60px;
+    font-size: 50px;
+  }
+  .description {
+    margin: 20px 0;
+    font-size: 19px;
+  }
+  .deals .wrapper {
+    padding: 35px 40px;
+    height: 100px;
+  }
+  .deals .title {
+    font-size: 25px;
+  }
+  .deals .companies .company:nth-child(1) {
+    display: none;
+  }
+  .deals .companies {
+    gap: 10px;
+  }
+}
+@media (max-width: 1200px) {
+  .hero {
+    height: 65vh;
+    background-position: inherit;
+  }
+  .content .main__title {
+    line-height: 60px;
+    font-size: 39px;
+  }
+  .description {
+    margin: 20px 0;
+    font-size: 17px;
+  }
+  .button {
+    padding: 12px 18px;
+    font-size: 16px;
+  }
+  .deals .title {
+    font-size: 22px;
+  }
+  .deals .companies .company:nth-child(2) {
+    display: none;
+  }
+}
+@media (max-width: 992px) {
+  .deals {
+    display: none;
+  }
+  .content .main__title {
+    font-size: 31px;
+    line-height: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .image__wrapper {
+    display: none;
+  }
+  .content {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 0;
+    height: 60vh;
+  }
+  .content {
+    margin-bottom: 0;
+  }
+  .content .main__title {
+    font-size: 25px;
+  }
+  .description {
+    margin: 15px 0;
+    font-size: 15px;
+  }
+  .button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}

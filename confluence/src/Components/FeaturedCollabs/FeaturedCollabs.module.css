@@ -1,0 +1,10 @@
+.main__wrapper {
+  padding-top: var(--main-section-spacing);
+  padding-bottom: calc(var(--main-section-spacing) * 2);
+}
+@media (max-width: 768px) {
+  .main__wrapper {
+    padding-top: 0;
+    padding-bottom: var(--main-section-spacing);
+  }
+}

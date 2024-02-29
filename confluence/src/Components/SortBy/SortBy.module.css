@@ -1,0 +1,34 @@
+.form {
+  padding: 0 15px;
+  background-color: var(--main-blue);
+  border-radius: 30px;
+}
+.select {
+  border: transparent;
+  color: white;
+  font-weight: 300;
+  height: 40px;
+  outline: 0;
+  font-size: 14px;
+  border-radius: 30px;
+  background: var(--main-blue);
+  cursor: pointer;
+  font-weight: 600;
+}
+.select option {
+  background-color: white;
+  color: black;
+  cursor: pointer !important;
+  font-weight: 500;
+}
+@media (max-width: 600px) {
+  .form {
+    width: 100%;
+  }
+  .select {
+    font-weight: 300;
+    font-size: 12px;
+    font-weight: 500;
+    width: 100%;
+  }
+}

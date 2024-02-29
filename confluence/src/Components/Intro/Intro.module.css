@@ -1,0 +1,93 @@
+.main {
+  padding-bottom: 300px;
+}
+.intro {
+  height: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+}
+.intro::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+.influencers {
+  background-image: url(../../Assets/Images/contact-bread.jpg);
+}
+.maleInfluencer {
+  background-image: url(../../Assets/Images/influencer.jpg);
+  background-position: 0 -150px;
+}
+.femaleInfluencer {
+  background-image: url(../../Assets/Images/female-influencer1.jpg);
+  background-position: 0 -300px;
+}
+.collaboration {
+  background-image: url(../../Assets/Images/collab.jpeg);
+}
+.contact {
+  background-image: url(../../Assets/Images/contact.jpg);
+}
+@media (max-width: 1440px) {
+  .femaleInfluencer {
+    background-position: center center;
+  }
+}
+@media (max-width: 992px) {
+  .maleInfluencer {
+    background-position: unset;
+  }
+  .collaboration {
+    background-position: unset;
+  }
+}
+.intro .content,
+.chain {
+  z-index: 3;
+  position: relative;
+}
+.intro .content {
+  color: var(--white-color);
+  font-size: 60px;
+  color: white;
+  text-align: center;
+}
+.chain {
+  text-align: center;
+}
+.chain .sub__chain {
+  color: white;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+  margin-left: 5px;
+}
+
+@media (max-width: 992px) {
+  .intro .content {
+    font-size: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .intro .content {
+    font-size: 35px;
+  }
+}
+@media (max-width: 600px) {
+  .intro {
+    height: 250px;
+  }
+}

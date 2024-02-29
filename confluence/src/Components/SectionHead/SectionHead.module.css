@@ -1,0 +1,60 @@
+.main__wrapper {
+  margin-bottom: 35px;
+  border-bottom: 1px dashed #ddd;
+  padding-bottom: 20px;
+}
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.wrapper .title {
+  font-family: Barlow;
+  color: #242424;
+  font-size: 40px;
+}
+.description {
+  font-family: Barlow;
+  color: #373737;
+  line-height: 27px;
+  font-size: 18px;
+}
+.button {
+  border-radius: 30px;
+  padding: 15px 25px;
+  font-size: 15px;
+  transition: var(--main-transition);
+  font-weight: 500;
+  color: var(--black-color);
+}
+.button:hover {
+  background-color: var(--main-blue-hover);
+}
+
+@media (max-width: 1440px) {
+}
+@media (max-width: 1200px) {
+  .text .title {
+    font-size: 39px;
+  }
+}
+@media (max-width: 992px) {
+  .text .title {
+    font-size: 31px;
+    line-height: 40px;
+  }
+}
+@media (max-width: 600px) {
+  .text .title {
+    font-size: 22px;
+  }
+  .description {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
