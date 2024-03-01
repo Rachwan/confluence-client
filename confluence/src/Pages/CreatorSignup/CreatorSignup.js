@@ -111,10 +111,10 @@ function CreatorSignup() {
           icon: "success",
         });
         setTimeout(() => {
-          // navigate(
-          //   `${process.env.REACT_APP_DASHBOARD_LINK}/influencer-details`,
-          //   { replace: true }
-          // );
+          navigate(
+            `${process.env.REACT_APP_DASHBOARD_LINK}/influencer-details`,
+            { replace: true }
+          );
           window.location.href = `${process.env.REACT_APP_DASHBOARD_LINK}/influencer-details`;
         }, 1000);
       }
