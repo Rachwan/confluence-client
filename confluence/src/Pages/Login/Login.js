@@ -77,8 +77,7 @@ function Login() {
         formData
       );
       if (response.data) {
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("userRole", response.data.data.role);
+        console.log(response.data);
         await fetchUserData();
         Swal.fire({
           title: "Welcome Back",

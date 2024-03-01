@@ -142,8 +142,6 @@ function BrandSignup() {
       );
 
       if (response.data) {
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("userRole", response.data.data.role);
         setUser(response.data);
         Swal.fire({
           title: "Welcome",

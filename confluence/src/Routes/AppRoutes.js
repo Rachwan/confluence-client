@@ -23,7 +23,6 @@ import ScrollToTop from "../Components/ScrollToTop/ScrollToTop.js";
 
 const Router = () => {
   const { user } = useContext(UserContext);
-  const userRoleFromLocalStorage = localStorage.getItem("userRole");
 
   const DashboardRedirect = () => {
     useEffect(() => {
@@ -76,13 +75,10 @@ const Router = () => {
             element={
               <ProtectedRoute
                 isAllowed={
-                  (user &&
-                    (user.role === "admin" ||
-                      user.role === "influencer" ||
-                      user.role === "business")) ||
-                  userRoleFromLocalStorage === "admin" ||
-                  userRoleFromLocalStorage === "influencer" ||
-                  userRoleFromLocalStorage === "business"
+                  user &&
+                  (user.role === "admin" ||
+                    user.role === "influencer" ||
+                    user.role === "business")
                 }
               />
             }>
