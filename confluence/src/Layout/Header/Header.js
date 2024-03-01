@@ -11,27 +11,31 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 function Header({ home = false }) {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, setUserUpdated } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleLogout = async () => {
     try {
-      const action = await axios.post(
-        `${process.env.REACT_APP_BACKEND}/logout`
-      );
-      if (action) {
-        localStorage.removeItem("token");
-        setUser(null);
-        Swal.fire({
-          title: "Logout successfully!",
-          text: "Sad to see you going.",
-          icon: "success",
-        });
-        setTimeout(() => {
-          navigate("/", { replace: true });
-        }, 1000);
-      }
+      // const action = await axios.post(
+      //   `${process.env.REACT_APP_BACKEND}/logout`
+      // );
+      // if (action) {
+
+      await axios.post(`${process.env.REACT_APP_BACKEND}/logout`);
+      localStorage.removeItem("token");
+      localStorage.removeItem("userRole");
+      setUserUpdated(true);
+      setUser(null);
+      Swal.fire({
+        title: "Logout successfully!",
+        text: "Sad to see you going.",
+        icon: "success",
+      });
+      setTimeout(() => {
+        navigate("/", { replace: true });
+      }, 1000);
+      // }
     } catch (error) {
       Swal.fire({
         icon: "error",
