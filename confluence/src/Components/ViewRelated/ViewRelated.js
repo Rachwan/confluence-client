@@ -17,7 +17,9 @@ const ViewRelated = ({ data }) => {
       return followers?.toString();
     }
   }
-  const followersToShow = formatFollowersCount(totalFollowers);
+  const followersToShow = formatFollowersCount(
+    data?.userId?.totalFollowers || totalFollowers
+  );
   return (
     <motion.div
       className={styles.collab}

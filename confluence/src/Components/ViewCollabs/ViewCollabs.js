@@ -18,7 +18,9 @@ const ViewCollabs = ({ data, formatFollowersCount }) => {
       return followers?.toString();
     }
   }
-  const followersToShow = formatFollowersCount(totalFollowers);
+  const followersToShow = formatFollowersCount(
+    data?.userId?.totalFollowers || totalFollowers
+  );
 
   // const textVariantsUp = {
   //   initial: {

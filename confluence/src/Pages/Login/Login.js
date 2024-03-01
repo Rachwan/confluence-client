@@ -10,7 +10,7 @@ import hideOrSeen from "../../Assets/Icons/seen.png";
 import OAuth from "../../OAuth/OAuth.js";
 
 function Login() {
-  const { fetchUserData } = useContext(UserContext);
+  const { fetchUserData, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -77,25 +77,27 @@ function Login() {
         formData
       );
       if (response.data) {
-        await fetchUserData();
-        Swal.fire({
-          title: "Welcome Back",
-          text: "Login successfully!",
-          icon: "success",
-        });
-        if (response.data.data.role === "admin") {
-          setTimeout(() => {
-            window.location.href = `${process.env.REACT_APP_DASHBOARD_LINK}/`;
-          }, 1000);
-        } else if (response.data.data.role === "influencer") {
-          setTimeout(() => {
-            window.location.href = `${process.env.REACT_APP_DASHBOARD_LINK}/influencer-details`;
-          }, 1000);
-        } else {
-          navigate(`/`, {
-            replace: true,
-          });
-        }
+        // await fetchUserData();
+        setUser(response.data);
+        // Swal.fire({
+        //   title: "Welcome Back",
+        //   text: "Login successfully!",
+        //   icon: "success",
+        // });
+        // if (response.data.data.role === "admin") {
+        //   setTimeout(() => {
+        //     window.location.href = `${process.env.REACT_APP_DASHBOARD_LINK}/`;
+        //   }, 1000);
+        // } else if (response.data.data.role === "influencer") {
+        //   setTimeout(() => {
+        //     window.location.href = `${process.env.REACT_APP_DASHBOARD_LINK}/influencer-details`;
+        //   }, 1000);
+        // } else {
+        //   navigate(`/`, {
+        //     replace: true,
+        //   });
+        // }
+        console.log(response.data);
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {

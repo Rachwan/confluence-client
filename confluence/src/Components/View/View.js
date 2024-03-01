@@ -18,7 +18,9 @@ const View = ({ data }) => {
     0
   );
 
-  const followersToShow = formatFollowersCount(data?.totalFollowers);
+  const followersToShow = formatFollowersCount(
+    data?.totalFollowers || totalFollowers
+  );
   return (
     <div className={styles.influencer}>
       <div
