@@ -14,7 +14,7 @@ function ProtectedRoutes({ isAllowed, children }) {
     return <Navigate to={"/login"} />;
   }
 
-  if (!isAllowed && !checkUser) {
+  if (!isAllowed) {
     return <Navigate to={"/unauthorized"} />;
   }
 
