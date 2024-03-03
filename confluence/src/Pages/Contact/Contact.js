@@ -31,29 +31,29 @@ function Contact() {
               <img src={message} alt="Message Icon" className={styles.icon} />
               <h3 className={styles.title}>Email Address</h3>
               <p className={styles.single__email}>
-                office@faimos.modeltheme.com
+                contact@confluence.com
               </p>
               <p className={styles.single__email}>
-                office@faimos.modeltheme.com
+                support@confluence.com
               </p>
             </div>
             <div className={styles.location}>
               <img src={earth} alt="Location Icon" className={styles.icon} />
               <h3 className={styles.title}>Headquarters</h3>
               <p className={styles.single__location}>
-                211 Ullamcorper St Roseville, New
+                42 Cedar Street, Achrafieh
               </p>
               <p className={styles.single__location}>
-                York, United States, 26483
+                Beirut, Lebanon
               </p>
             </div>
             <div className={styles.phone}>
               <img src={profile} alt="Profile Icon" className={styles.icon} />
               <h3 className={styles.title}>Phone Numbers</h3>
               <p className={styles.single__phone}>
-                Headquarters: +20 000 000 000
+                Headquarters: +961 76 445 648
               </p>
-              <p className={styles.single__phone}>Sales: +20 000 000 000</p>
+              <p className={styles.single__phone}>Sales: +961 70 540 616</p>
             </div>
           </section>
           <form className={styles.form} action="/" method="POST" name="contact">

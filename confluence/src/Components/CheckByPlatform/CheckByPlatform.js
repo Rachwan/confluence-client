@@ -86,7 +86,7 @@ function CheckByPlatform() {
         <div className={`container ${styles.wrapper}`}>
           <SectionHead
             title={"Explore by Platform"}
-            description={"Endless opportunities await your discovery!"}
+            description={"Discover limitless possibilities."}
           />
           <div className={styles.platforms}>
             {loading ? (

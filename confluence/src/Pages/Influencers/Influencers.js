@@ -325,10 +325,9 @@ function Influencers() {
                 categoriesData.map((category) => (
                   <div
                     key={category._id}
-                    className={`${styles.category} ${
-                      isCategorySelected(category._id) &&
+                    className={`${styles.category} ${isCategorySelected(category._id) &&
                       styles.categoryActiveLink
-                    }`}
+                      }`}
                     onClick={() => handleCategoryClick(category._id)}>
                     <img
                       src={`${process.env.REACT_APP_BACKEND}/${category.icon}`}
@@ -344,13 +343,11 @@ function Influencers() {
               {platformsData.map((platform) => (
                 <div
                   key={platform._id}
-                  className={`${styles.platform} ${
-                    platform.name === "Instagram"
+                  className={`${styles.platform} ${platform.name === "Instagram"
                       ? styles.instagram__hover
                       : styles.platform__hover
-                  } ${
-                    selectedPlatform === platform._id && styles.activePlatform
-                  }`}
+                    } ${selectedPlatform === platform._id && styles.activePlatform
+                    }`}
                   style={{ "--hover-color": platform.activeColor }}
                   onClick={() => handlePlatformClick(platform._id)}>
                   <div className={styles.platformHeader}>
@@ -505,8 +502,8 @@ function Influencers() {
                   {totalItems === 0
                     ? "Showing 0 influencers"
                     : totalItems === 1
-                    ? "Showing 1 influencer"
-                    : `Showing ${rangeStart}–${rangeEnd} of ${totalItems} influencers`}
+                      ? "Showing 1 influencer"
+                      : `Showing ${rangeStart}–${rangeEnd} of ${totalItems} influencers`}
                 </p>
               </div>
               <SortBy sortValue={sortValue} onSort={handleChange} />
@@ -538,15 +535,14 @@ function Influencers() {
                 )}
               </div>
               {!loading && !filterLoading && (
-                <div className={styles.pagination}>
+                <div className={pageNumbers != 1 && styles.pagination}>
                   {pageNumbers != 1 &&
                     pageNumbers.map((number) => (
                       <button
                         key={number}
                         onClick={() => handlePageChange(number)}
-                        className={`${styles.pagination__button} ${
-                          number === activePage ? styles.activePage : ""
-                        }`}>
+                        className={`${styles.pagination__button} ${number === activePage ? styles.activePage : ""
+                          }`}>
                         {number}
                       </button>
                     ))}

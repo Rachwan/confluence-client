@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./About.module.css";
 import { Helmet } from "react-helmet-async";
 import aboutImg from "../../Assets/Images/Main-about_bg.png";
-import rachwan from "../../Assets/Icons/Main-floating1.png";
+import rachwan from "../../Assets/Images/profile.jpg";
 
 function About() {
   return (
@@ -21,13 +21,9 @@ function About() {
         <section className={styles.hero}>
           <div className={`container ${styles.wrapper}`}>
             <div className={styles.content}>
-              <h1 className={styles.main__title}>Our mission from the start</h1>
+              <h1 className={styles.main__title}>Our Journey Begins Here</h1>
               <p className={styles.description}>
-                Our marketplace offers a wide range of features designed to make
-                the collaboration process efficient and effective. Influencers
-                can showcase their unique talents. Our marketplace offers a wide
-                range of features designed to make the collaboration process
-                efficient and effective.
+                Welcome to Confluence, where seamless collaboration between businesses and influencers takes center stage. Our marketplace is crafted to simplify the collaborative process, allowing influencers to showcase their unique talents effortlessly.
               </p>
               <div className={styles.founder}>
                 <div className={styles.image}>
@@ -36,8 +32,7 @@ function About() {
                 <div className={styles.founder__content}>
                   <p className={styles.title}>Rachwan Harb</p>
                   <p className={styles.description}>
-                    Quisque mauris ligula, convallis vitae orci cursus, auctor
-                    accum lorem.
+                    Embrace the Confluence experience, where your brand's influence finds its perfect match.
                   </p>
                 </div>
               </div>

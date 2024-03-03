@@ -81,7 +81,9 @@ function Hero({ businesses, loading }) {
                 className={styles.main__title}
                 variants={textVariantsLeft}>
                 {/* Find and hire the perfect Influencer for the Job */}
-                Discover and Connect with Influencers Tailored for Your Brand
+                Discover
+                {/* and Connect  */}
+                {" "} Influencers Tailored for Your Brand
               </motion.h1>
               <motion.p
                 className={styles.description}
@@ -119,7 +121,7 @@ function Hero({ businesses, loading }) {
             initial="initial"
             animate="animate">
             <motion.h2 className={styles.title}>
-              You are in <span className={styles.special}>Good Company:</span>
+              You're Among <span className={styles.special}>Great Brands:</span>
             </motion.h2>
             <motion.div
               className={styles.companies}

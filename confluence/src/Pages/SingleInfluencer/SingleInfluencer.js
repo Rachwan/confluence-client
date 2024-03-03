@@ -264,11 +264,11 @@ function SingleInfluencer() {
                         style={{
                           ...(platform?.platformId?.name === "Instagram"
                             ? {
-                                borderLeft: "3px solid #ee2a7b",
-                              }
+                              borderLeft: "3px solid #ee2a7b",
+                            }
                             : {
-                                borderLeft: `3px solid ${platform?.platformId?.activeColor}`,
-                              }),
+                              borderLeft: `3px solid ${platform?.platformId?.activeColor}`,
+                            }),
                         }}
                         initial={{ y: 100, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
@@ -337,15 +337,14 @@ function SingleInfluencer() {
                   </>
                 )}
               </div>
-              <div className={styles.pagination}>
+              <div className={pageNumbers != 1 && styles.pagination}>
                 {pageNumbers != 1 &&
                   pageNumbers.map((number) => (
                     <button
                       key={number}
                       onClick={() => handlePageChange(number)}
-                      className={`${styles.pagination__button} ${
-                        number === activePage ? styles.activePage : ""
-                      }`}>
+                      className={`${styles.pagination__button} ${number === activePage ? styles.activePage : ""
+                        }`}>
                       {number}
                     </button>
                   ))}

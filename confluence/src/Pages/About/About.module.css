@@ -84,7 +84,8 @@
   justify-content: center;
 }
 .founder .image img {
-  max-width: 100%;
+  max-width: 75%;
+  border-radius: 50%;
 }
 .founder__content .title {
   text-align: left;
@@ -131,7 +132,7 @@
     line-height: 20x;
   }
   .content .description {
-    margin: 15px 0;
+    margin: 15px 0 20px;
     line-height: 20px;
     font-size: 15px;
   }
@@ -148,7 +149,7 @@
     justify-content: center;
   }
   .founder .image img {
-    max-width: 60%;
+    max-width: 50%;
   }
   .founder__content .title {
     text-align: left;

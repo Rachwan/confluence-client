@@ -341,7 +341,7 @@
   }
 
   .influencers {
-    gap: 20px;
+    gap: 40px;
   }
   .filter__wrapper {
     width: 100%;
@@ -378,6 +378,9 @@
   }
   .influencers__wrapper .header .content .result {
     font-size: 22px;
+  }
+  .related {
+    gap: 40px;
   }
   .related__wrapper .title {
     font-size: 22px;

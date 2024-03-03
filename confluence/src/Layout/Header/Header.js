@@ -74,11 +74,24 @@ function Header({ home = false }) {
     };
   }, []);
 
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (!event.target.closest(`.${styles.nav}`)) {
+        setNav(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   return (
     <header
-      className={`${home ? styles.home__header : styles.header} ${
-        isFixed ? styles.fixedHeader : styles.removeFixedHeader
-      }`}>
+      className={`${home ? styles.home__header : styles.header} ${isFixed ? styles.fixedHeader : styles.removeFixedHeader
+        }`}>
       <div className={`container ${styles.container} `}>
         <Link to={"/"}>
           <div className={styles.logo__wrapper}>
@@ -111,37 +124,32 @@ function Header({ home = false }) {
             )}
             <NavLink
               to="/"
-              className={`${styles.link} ${
-                location.pathname === "/" ? styles.active__link : ""
-              }`}>
+              className={`${styles.link} ${location.pathname === "/" ? styles.active__link : ""
+                }`}>
               <li>Home</li>
             </NavLink>
             <NavLink
               to="/influencers"
-              className={`${styles.link} ${
-                location.pathname === "/influencers" ? styles.active__link : ""
-              }`}>
+              className={`${styles.link} ${location.pathname === "/influencers" ? styles.active__link : ""
+                }`}>
               <li>Influencers</li>
             </NavLink>
             <NavLink
               to="/pricing"
-              className={`${styles.link} ${
-                location.pathname === "/pricing" ? styles.active__link : ""
-              }`}>
+              className={`${styles.link} ${location.pathname === "/pricing" ? styles.active__link : ""
+                }`}>
               <li>Pricing</li>
             </NavLink>
             <NavLink
               to="/about"
-              className={`${styles.link} ${
-                location.pathname === "/about" ? styles.active__link : ""
-              }`}>
+              className={`${styles.link} ${location.pathname === "/about" ? styles.active__link : ""
+                }`}>
               <li>About</li>
             </NavLink>
             <NavLink
               to="/contact"
-              className={`${styles.link} ${
-                location.pathname === "/contact" ? styles.active__link : ""
-              }`}>
+              className={`${styles.link} ${location.pathname === "/contact" ? styles.active__link : ""
+                }`}>
               <li>Contact</li>
             </NavLink>
             {/* <NavLink
@@ -155,27 +163,24 @@ function Header({ home = false }) {
               <>
                 <NavLink
                   to="/login"
-                  className={`${styles.link} ${
-                    location.pathname === "/login" ? styles.active__link : ""
-                  }`}>
+                  className={`${styles.link} ${location.pathname === "/login" ? styles.active__link : ""
+                    }`}>
                   <li>Login</li>
                 </NavLink>
                 <NavLink
                   to="/creator-signup"
-                  className={`${styles.link} ${
-                    location.pathname === "/creator-signup"
-                      ? styles.active__link
-                      : ""
-                  } ${styles.removeLink}`}>
+                  className={`${styles.link} ${location.pathname === "/creator-signup"
+                    ? styles.active__link
+                    : ""
+                    } ${styles.removeLink}`}>
                   <li>Join as Creator</li>
                 </NavLink>
                 <NavLink
                   to="/brand-signup"
-                  className={`${styles.link} ${
-                    location.pathname === "/brand-signup"
-                      ? styles.active__link
-                      : ""
-                  } ${styles.removeLink}`}>
+                  className={`${styles.link} ${location.pathname === "/brand-signup"
+                    ? styles.active__link
+                    : ""
+                    } ${styles.removeLink}`}>
                   <li>Join as Brand</li>
                 </NavLink>
                 {/* <NavLink
@@ -190,12 +195,11 @@ function Header({ home = false }) {
               <>
                 <NavLink
                   to={`${process.env.REACT_APP_DASHBOARD_LINK}`}
-                  className={`${styles.link} ${
-                    location.pathname ===
+                  className={`${styles.link} ${location.pathname ===
                     `${process.env.REACT_APP_DASHBOARD_LINK}`
-                      ? styles.active__link
-                      : ""
-                  } ${styles.removeLink}`}
+                    ? styles.active__link
+                    : ""
+                    } ${styles.removeLink}`}
                   target="_blank">
                   <li>Dashboard</li>
                 </NavLink>
@@ -209,9 +213,8 @@ function Header({ home = false }) {
               <>
                 <NavLink
                   to={"/dashboard"}
-                  className={`${styles.link} ${
-                    location.pathname === "dashboard" ? styles.active__link : ""
-                  } ${styles.removeLink}`}
+                  className={`${styles.link} ${location.pathname === "dashboard" ? styles.active__link : ""
+                    } ${styles.removeLink}`}
                   target="_blank">
                   <li>Dashboard</li>
                 </NavLink>

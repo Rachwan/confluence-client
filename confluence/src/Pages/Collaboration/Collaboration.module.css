@@ -349,6 +349,9 @@
   .message__wrraper .name {
     font-size: 18px;
   }
+  .related__self {
+    gap: 40px;
+  }
   .related__self .singlee {
     width: 100%;
   }
@@ -374,5 +377,8 @@
   }
   .check__this {
     font-size: 22px;
+  }
+  .related {
+    gap: 40px;
   }
 }
