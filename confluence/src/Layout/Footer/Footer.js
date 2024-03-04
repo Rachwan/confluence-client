@@ -153,7 +153,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.copyright}>
-        © 2024 - Confluence All Rights Reserved  | {'  '}
+        © 2024 - Confluence All Rights Reserved  <span className={styles.block}>|</span> {'  '}
         <span>
           Powered by <Link to={'https://www.linkedin.com/in/rachwan-harb/'} target="_blank" className={styles.link}> Rachwan Harb</Link>
         </span>
