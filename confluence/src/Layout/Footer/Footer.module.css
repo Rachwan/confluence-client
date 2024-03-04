@@ -149,7 +149,15 @@
   text-align: center;
   padding-bottom: calc(var(--main-section-spacing) / 2);
 }
-
+.copyright .link {
+  color: var(--white-color);
+  font-weight: 600;
+  transition: var(--main-transition);
+  text-decoration: underline;
+}
+.copyright .link:hover {
+  opacity: 0.6;
+}
 @media (max-width: 992px) {
   .container__wrapper {
     flex-direction: column;

@@ -278,7 +278,7 @@
     font-size: 20px;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1100px) {
   .link.removeLink {
     display: none;
   }

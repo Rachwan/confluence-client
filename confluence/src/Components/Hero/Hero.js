@@ -82,16 +82,16 @@ function Hero({ businesses, loading }) {
                 variants={textVariantsLeft}>
                 {/* Find and hire the perfect Influencer for the Job */}
                 Discover
-                {/* and Connect  */}
+                and Connect with
                 {" "} Influencers Tailored for Your Brand
               </motion.h1>
               <motion.p
                 className={styles.description}
                 variants={textVariantsLeft}>
-                {/* Our marketplace streamlines collaboration, enabling influencers
-                to showcase their unique talents and collaborations efficiently. */}
                 Our marketplace streamlines collaboration, enabling influencers
-                to efficiently showcase their unique talents.
+                to showcase their unique talents and collaborations efficiently.
+                {/* Our marketplace streamlines collaboration, enabling influencers
+                to efficiently showcase their unique talents. */}
                 {/* Find the perfect
                 match for your brand's needs. */}
               </motion.p>
