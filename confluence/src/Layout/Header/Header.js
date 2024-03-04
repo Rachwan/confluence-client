@@ -183,17 +183,10 @@ function Header({ home = false }) {
                     } ${styles.removeLink}`}>
                   <li>Join as Brand</li>
                 </NavLink>
-                {/* <NavLink
-                  to="/login"
-                  className={`${styles.link} ${
-                    location.pathname === "/login" ? styles.active__link : ""
-                  } ${styles.removeLink}`}>
-                  <li>Login</li>
-                </NavLink> */}
               </>
             ) : user.role === "admin" || user.role === "influencer" ? (
               <>
-                <NavLink
+                <a
                   to={`${process.env.REACT_APP_DASHBOARD_LINK}`}
                   className={`${styles.link} ${location.pathname ===
                     `${process.env.REACT_APP_DASHBOARD_LINK}`
@@ -202,7 +195,7 @@ function Header({ home = false }) {
                     } ${styles.removeLink}`}
                   target="_blank">
                   <li>Dashboard</li>
-                </NavLink>
+                </a>
                 <NavLink
                   onClick={handleLogout}
                   className={`${styles.link} ${styles.removeLink}`}>
@@ -211,13 +204,13 @@ function Header({ home = false }) {
               </>
             ) : (
               <>
-                <NavLink
+                <a
                   to={"/dashboard"}
                   className={`${styles.link} ${location.pathname === "dashboard" ? styles.active__link : ""
                     } ${styles.removeLink}`}
                   target="_blank">
                   <li>Dashboard</li>
-                </NavLink>
+                </a>
                 <NavLink
                   onClick={handleLogout}
                   className={`${styles.link} ${styles.removeLink}`}>
