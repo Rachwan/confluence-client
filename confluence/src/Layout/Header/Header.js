@@ -152,13 +152,6 @@ function Header({ home = false }) {
                 }`}>
               <li>Contact</li>
             </NavLink>
-            {/* <NavLink
-              to="/login"
-              className={`${styles.link} ${
-                location.pathname === "/login" ? styles.active__link : ""
-              }`}>
-              <li>Login</li>
-            </NavLink> */}
             {!user ? (
               <>
                 <NavLink
@@ -187,7 +180,7 @@ function Header({ home = false }) {
             ) : user.role === "admin" || user.role === "influencer" ? (
               <>
                 <a
-                  to={`${process.env.REACT_APP_DASHBOARD_LINK}`}
+                  href={`${process.env.REACT_APP_DASHBOARD_LINK}`}
                   className={`${styles.link} ${location.pathname ===
                     `${process.env.REACT_APP_DASHBOARD_LINK}`
                     ? styles.active__link
@@ -204,13 +197,13 @@ function Header({ home = false }) {
               </>
             ) : (
               <>
-                <a
+                <NavLink
                   to={"/dashboard"}
                   className={`${styles.link} ${location.pathname === "dashboard" ? styles.active__link : ""
                     } ${styles.removeLink}`}
                   target="_blank">
                   <li>Dashboard</li>
-                </a>
+                </NavLink>
                 <NavLink
                   onClick={handleLogout}
                   className={`${styles.link} ${styles.removeLink}`}>
@@ -255,7 +248,7 @@ function Header({ home = false }) {
           ) : user.role === "admin" || user.role === "influencer" ? (
             <div className={styles.buttons}>
               <a
-                to={`${process.env.REACT_APP_DASHBOARD_LINK}`}
+                href={`${process.env.REACT_APP_DASHBOARD_LINK}`}
                 target="_blank">
                 <div
                   className={`${styles.dashboard__wrapper} ${styles.button} ${styles.join__as__creator}`}>
