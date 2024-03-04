@@ -254,7 +254,7 @@ function Header({ home = false }) {
             </>
           ) : user.role === "admin" || user.role === "influencer" ? (
             <div className={styles.buttons}>
-              <Link
+              <a
                 to={`${process.env.REACT_APP_DASHBOARD_LINK}`}
                 target="_blank">
                 <div
@@ -262,7 +262,7 @@ function Header({ home = false }) {
                   <img src={edit} alt="" className={styles.dashboard__icon} />
                   Dashboard
                 </div>
-              </Link>
+              </a>
               <div
                 className={`${styles.logout__wrapper} ${styles.button} ${styles.join__as__brand}`}
                 onClick={handleLogout}>
